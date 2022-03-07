@@ -46,7 +46,7 @@ function mol2_gen {
 cd $ITERATION
 # run antechamber to gen mol2 prep/lib file
 antechamber \
-    -i ${PDB}.pdb      `# input pdb file` \
+    -i ${PDB}.pdb           `# input pdb file` \
     -fi pdb                 `# input file format` \
     -o ${PDB}.mol2          `# output mol2 file(tleap compatible)` \
     -fo mol2                `# output file format` \
