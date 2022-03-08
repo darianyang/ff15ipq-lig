@@ -187,6 +187,7 @@ cd ../../
 
 ####################################################################
 ### The following functions are for mdgx conformation generation ###
+#### If you choose to use mdgx, adjust the &configs parameters  ####
 ##### Another method is to use high temperature MD: (script 1) #####
 ####################################################################
 
