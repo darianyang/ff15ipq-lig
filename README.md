@@ -6,11 +6,11 @@
 
 This directory provides an example of how to derive ff15ipq compatible parameters for a monastrol small molecule using slurm based HPC resources.
 
-Dependencies:
+### Dependencies:
 * AmberTools
 * ORCA
 
-The workflow is as follows:
+### The workflow is as follows:
 
 <p align="center">
     <img src="docs/ipq_workflow.png" alt="ipq workflow" width="500">
