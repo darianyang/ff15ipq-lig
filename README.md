@@ -1,10 +1,18 @@
 # Scripts for ff15ipq ligand parameter derivation
 
+<p align="center">
+    <img src="docs/ipq.png" alt="ipq" width="800">
+</p>
+
 This directory provides an example of how to derive ff15ipq compatible parameters for a monastrol small molecule using slurm based HPC resources.
 
 Dependencies:
 * AmberTools
 * ORCA
+
+<p align="center">
+    <img src="docs/ipq_workflow" alt="ipq workflow" width="600">
+</p>
 
 The workflow is as follows:
 * generate a mol2 file of your small molecule or ligand
@@ -16,3 +24,4 @@ The workflow is as follows:
     * see the /bonded directory
 * you will now have an finalized library file containing the atomic charges and a frcmod file containing the bonded parameters for your molecule of interest
     * load these files into tleap along with the ff15ipq force field and you're good to go! 
+
