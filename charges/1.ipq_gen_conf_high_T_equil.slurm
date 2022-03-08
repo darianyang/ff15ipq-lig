@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=solv_min_equil_20_conf_F4F
+#SBATCH --job-name=high_T_conf_gen_then_equil
 #SBATCH --cluster=smp
 #SBATCH --partition=smp
 #SBATCH --nodes=1

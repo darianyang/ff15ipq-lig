@@ -108,6 +108,11 @@ cd ../../
 }
 
 
+####################################################################
+### The following functions are for mdgx conformation generation ###
+##### Another method is to use high temperature MD: (script 1) #####
+####################################################################
+
 file_setup
 
 pdb_vacuo_gen
