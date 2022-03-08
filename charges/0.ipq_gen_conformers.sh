@@ -185,11 +185,11 @@ cd ../../
 
 #lib_gen
 
+####################################################################
+### The following functions are for mdgx conformation generation ###
+##### Another method is to use high temperature MD: (script 1) #####
+####################################################################
+
 #pdb_vacuo_gen
-
 #in_vacuo_min
-
-gen_confs_mdgx
-
-
-
+#gen_confs_mdgx
