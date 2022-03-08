@@ -16,8 +16,9 @@ This directory provides an example of how to derive ff15ipq compatible parameter
     <img src="docs/ipq_workflow.png" alt="ipq workflow" width="500">
 </p>
 
-* generate a mol2 file of your small molecule or ligand
+* generate a pdb file of your small molecule or ligand
     * this can be done using something like Avogadro
+    * in Avogadro, the molecule can also be energy minimized (reccomended)
 * derive a set of implicitly polarized (ipq) atomic partial charges for your molecule
     * see the /charges directory
 * optimize the initial set of bonded force field parameters that were roughly estimated in the charge derivation step

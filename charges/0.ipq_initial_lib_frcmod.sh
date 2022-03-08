@@ -4,10 +4,10 @@
 
 ######################################################################
 # set variables
-PDB=F4F
+PDB=mon
 ITERATION=v00
 
-# remember to adjust for frcmod incorporation options
+# remember to adjust antechamber arguments if needed
 ######################################################################
 
 function progress_check {
@@ -21,7 +21,6 @@ done
 }
 
 function stage1_file_setup {
-### stage 1: generate 20 conformations of target molecule
 ### directory and file setup
 
 mkdir -v $ITERATION
@@ -30,17 +29,18 @@ cd $ITERATION
 
 # edit pdb file: get rid of connecting lines, change HETATOM to ATOM
 sed -i '/CONECT/d' ${PDB}.pdb
+sed -i '/MASTER/d' ${PDB}.pdb
 sed -i 's/HETATM/ATOM  /g' ${PDB}.pdb
 
-# save new pdb file of PDB_solo
-# instead - start with solo and build dipeptide later in tleap
-#cat ${PDB}.pdb | grep ${PDB} > ${PDB}_solo.pdb
+# set the 3 letter id and name of the molecule (if not already set)
+# with raw avogadro output, the values need to be set
+sed -i 's/UNL/MON/g' ${PDB}.pdb
+sed -i 's/UNNAMED/Monastrol  /g' ${PDB}.pdb
 
 echo "dir: $ITERATION prepped."
 progress_check
 cd ../
 }
-
 
 function mol2_gen {
 cd $ITERATION
@@ -60,11 +60,14 @@ antechamber \
 
 # for W4F, first N atom is of atom type DU and should be N
 # the terminal C should not be CZ atom type
-sed -i 's/DU  /N   /' ${PDB}.mol2 &&
-sed -i 's/CZ  /C   /' ${PDB}.mol2 &&
+#sed -i 's/DU  /N   /' ${PDB}.mol2 &&
+#sed -i 's/CZ  /C   /' ${PDB}.mol2 &&
 
 echo "${PDB}.mol2 file generated."
 echo "Adjust AT in mol2 file to match ff15ipq lib AT."
+echo "If there are any dummy atoms (DU) these atom types are not in ff15ipq"
+echo "Update their AT name using something similar from parm15ipq_10.3.dat"
+echo "Or use a new AT, but you must update PARMCHK.DAT"
 progress_check
 cd ../
 }
@@ -79,15 +82,16 @@ parmchk2 \
     -p $AMBERHOME/dat/leap/parm/parm15ipq_10.3.dat
 
 echo "${PDB}.frcmod file generated."
-echo "Only F parameters are needed once AT updated to ff15ipq style naming."
+echo "Parameters with missing terms in ff15ipq will be set to zero."
+echo "Fill these out with initial guess values based on similar atoms."
+echo "Later on, these parameters will also be optimized." 
 progress_check
 cd ../
 }
 
 function lib_gen {
 cd $ITERATION
-# generate tleap input file for solo AA lib file
-# potentially don't need gaff file for this step
+# generate tleap input file for solo lib file
 cat << EOF > tleap_lib.in
 source leaprc.protein.ff15ipq
 loadAmberParams ${PDB}.frcmod
@@ -104,93 +108,8 @@ cd ../
 }
 
 
-function pdb_vacuo_gen {
-cd $ITERATION
-# tleap input for capped dipeptide vacuo files
-cat << EOF > tleap_vacuo.in
-source leaprc.protein.ff15ipq
-loadoff ${PDB}.lib
-loadAmberParams ${PDB}.frcmod
-${PDB} = sequence { ACE ${PDB} NME }
-check ${PDB}
-set ${PDB} box {32.006 32.006 32.006}
-saveAmberParm ${PDB} ${PDB}_V.top ${PDB}_V.crd
-savepdb ${PDB} ${PDB}_V.pdb
-quit
-EOF
-
-tleap -f tleap_vacuo.in > tleap_vacuo.out
-echo "in vacuo top/crd/pdb files generated for ${PDB} dipeptide."
-progress_check
-cd ../
-}
-
-
-function in_vacuo_min {
-cd $ITERATION
-
-# unrestrained in vacuo 10000 step minimization (500 SD)
-pmemd -O -i ../../amber/2_min.in -o 2_min.out \
--p ${PDB}_V.top -c ${PDB}_V.crd -r ${PDB}_V.rst &&
-
-echo "in vacuo min finished. Make sure mdgx iat values are correct before gen_conf step."
-progress_check
-cd ../ 
-}
-
-
-function gen_confs_mdgx {
-cd $ITERATION
-# TODO: add iat/phipsi var for gridsample
-# generate mdgx input file for generation of 20 conformations
-cat<<EOF > gen_confs.mdgx
-&files
-  -p ../${PDB}_V.top
-  -c ../${PDB}_V.rst
-  -o GenConformers.out
-&end
-
-&configs
-  GridSample @5 @7 @9  @25  { -180.0 180.0 }   Krst 32.0 fbhw 30.0
-  GridSample @7 @9 @25 @27  { -180.0 180.0 }   Krst 32.0 fbhw 30.0
-  combine 1 2
-  count 20
-  verbose 1
-
-  write   'pdb', 'inpcrd'
-  outbase 'Conf', 'Conf'
-  outsuff 'pdb', 'crd'
-&end 
-EOF
-
-# option to remove GenConformers dir if previous run failed
-rm -riv GenConformers
-
-# store mdgx conformations in GenConformers directory
-mkdir GenConformers
-cd GenConformers
-mdgx -i ../gen_confs.mdgx
-
-echo "20 ${PDB} conformers generated in mdgx"
-progress_check
-cd ../../
-}
-
-
 #stage1_file_setup
-
 #mol2_gen
+frcmod_gen
+lib_gen
 
-#frcmod_gen
-
-#lib_gen
-
-####################################################################
-### The following functions are for mdgx conformation generation ###
-#### If you choose to use mdgx, adjust the &configs parameters  ####
-##### Another method is to use high temperature MD: (script 1) #####
-####################################################################
-
-#pdb_vacuo_gen
-#in_vacuo_min
-#gen_confs_mdgx
