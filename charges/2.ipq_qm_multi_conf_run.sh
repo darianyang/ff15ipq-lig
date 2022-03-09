@@ -4,7 +4,7 @@
 ##############################################################
 
 # use of 2 CPUs seems to be optimal
-CPU=2
+CPU=1
 ITERATION=v00
 PDB=mon
 
@@ -36,10 +36,11 @@ cat << EOF > conf_${CONF}_mdgx_grid_gen.slurm
 #!/bin/bash
 #SBATCH --job-name=c${CONF}-${PDB}-ipq-mdgx-grid-gen
 #SBATCH --cluster=smp
-#SBATCH --partition=high-mem
+#SBATCH --partition=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=${CPU}
-#SBATCH --mem=216g
+##SBATCH --mem=216g
+#SBATCH --mem-per-cpu=64g
 #SBATCH --time=47:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
@@ -69,7 +70,7 @@ mpirun -np ${CPU} mdgx.MPI -i ipq_qm_mp2_grid_gen.mdgx
 crc-job-stats.py 
 EOF
 
-sbatch conf_${CONF}_mdgx_grid_gen.slurm 
+#sbatch conf_${CONF}_mdgx_grid_gen.slurm 
 
 cd ../
 done
