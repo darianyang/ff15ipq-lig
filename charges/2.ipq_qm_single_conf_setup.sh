@@ -3,8 +3,10 @@
 ##### ipq charge derivation: QM and grid file generation #####
 ##############################################################
 # ARG 1 = Conformation Int
+# ARG 2 = Identifier, only needed with high T conf gen
 
 CONF=$1
+PDB=$2
 
 # contingent step to delete old files
 if [ -f "ipolq.out" ]; then
@@ -31,7 +33,10 @@ fi
 # write ipq qm mdgx input file
 cat << EOF > ipq_qm_mp2_grid_gen.mdgx
 &files
-  -p Conf${CONF}.top
+  % use conformation specific topology files if mdgx_conf_gen was used
+  %-p Conf${CONF}.top
+  % use a single topology file is high_T_conf_gen was used
+  -p ../../${PDB}.top
   -c 6.3_eq2.rst
   -o ipolq.out
 &end

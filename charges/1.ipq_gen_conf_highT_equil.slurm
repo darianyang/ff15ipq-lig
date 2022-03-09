@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=high_T_conf_gen_then_equil
-#SBATCH --cluster=smp
-#SBATCH --partition=smp
+#SBATCH --cluster=invest
+#SBATCH --partition=lchong
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem=16g
@@ -73,36 +73,41 @@ function high_T_conf_gen {
 
     # make a conformers directory and move rst files
     mkdir GenConformers
-    # move conf rst files to GenConformers
-    mv 5_genconf.rst_* GenConformers
+
+    # move conf rst files to GenConformers and rename
+    CONF=1
+    for RST in {250000..5000000..250000} ; do
+        mv 5_genconf.rst_$RST GenConformers/Conf${CONF}.rst
+        let "CONF++"
+    done
 
     cd ..
 }
 
-# TODO: update to equil rst high T output files
 function equil_confs {
     cd $ITERATION/GenConformers
     # for each conformation,
     for CONF in {1..20}; do
         # make and go into subdirectory
         mkdir Conf${CONF}
-        mv Conf${CONF}.pdb Conf${CONF}
-        mv Conf${CONF}.crd Conf${CONF}
+        if [ -f Conf${CONF}.rst ] ; then
+            mv Conf${CONF}.rst Conf${CONF}
+        fi
         cd Conf${CONF}
     
         # restrained 2000 step minimization (500 SD)
         $DO_PARALLEL -O -i ../../../amber/6.1_min.in -o 6.1_min.out \
-            -p Conf${CONF}.top -c Conf${CONF}.crd -r 6.1_min.rst -ref Conf${CONF}.crd &&
+            -p ../../${PDB}.top -c Conf${CONF}.rst -r 6.1_min.rst -ref Conf${CONF}.rst &&
         echo ${CONF}.min finished
     
         # 20 ps restrained NVT equilibration using Langevin thermostat
         $DO_PARALLEL -O -i ../../../amber/6.2_eq1.in -o 6.2_eq1.out \
-            -p Conf${CONF}.top -c 6.1_min.rst -r 6.2_eq1.rst -ref 6.1_min.rst &&
+            -p ../../${PDB}.top -c 6.1_min.rst -r 6.2_eq1.rst -ref 6.1_min.rst &&
         echo ${CONF}.eq1 finished
     
         # 100 ps restrained NPT equilibration using Langevin thermostat and MC barostat
         $DO_PARALLEL -O -i ../../../amber/6.3_eq2.in -o 6.3_eq2.out \
-            -p Conf${CONF}.top -c 6.2_eq1.rst -r 6.3_eq2.rst -ref 6.2_eq1.rst &&
+            -p ../../${PDB}.top -c 6.2_eq1.rst -r 6.3_eq2.rst -ref 6.2_eq1.rst &&
         echo ${CONF}.eq2 finished
     
         cd ../

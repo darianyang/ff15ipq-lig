@@ -3,10 +3,10 @@
 ##### for all conformations: QM and grid file generation #####
 ##############################################################
 
-# use of 2 CPUs seems to be the best
+# use of 2 CPUs seems to be optimal
 CPU=2
-ITERATION=v03
-PDB=F4F
+ITERATION=v00
+PDB=mon
 
 # go to conformers directory
 cd $ITERATION/GenConformers
@@ -59,7 +59,8 @@ echo "Running Conformation ${CONF}"
 
 # script to setup directory for one conformation
 # takes 1 arg = Conformation Int
-bash 2.ipq_qm_single_conf_setup.sh ${CONF} &&
+# 2nd arg needed for high T conf gen, also compatible with mdgx conf gen
+bash 2.ipq_qm_single_conf_setup.sh ${CONF} ${PDB} &&
 
 # run mdgx on one conformation
 mpirun -np ${CPU} mdgx.MPI -i ipq_qm_mp2_grid_gen.mdgx
