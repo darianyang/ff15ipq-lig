@@ -1,9 +1,10 @@
 #!/bin/bash
 # set up REsP charge fitting file for 19F after grid files generation
 
-RES_CLASSES=(W4F W5F W6F W7F Y3F YDF F4F FTF)
-ITER=v03
-RESP=charge_fit/19F_FITQ_RESP_${ITER}_EQ_FTF.in
+ITER=v00
+PDB=mon
+# name of the input file to be generated
+RESP=$ITER/19F_FITQ_RESP_${ITER}_EQ_FTF.in
 
 # begin head of resp input file
 echo "
@@ -13,16 +14,14 @@ echo "
 
 &fitq" > $RESP
 
+# TODO: prob need to make a vacuum phase topology file (PDB_V.top)
+
 # input vacuum and solvent reacion field potential quantum calculations from IPolQ
 # COLUMNS: ipolq_command | vacu_grid_file | solv_grid_file | topology | conf_weight 
-for RES in ${RES_CLASSES[@]} ; do
-    # delete leftover files from previous resp of same iteration
-    rm -v $RES/$ITER/${RES}_V.top.
-    for CONF in {1..20} ; do
-        GRID_PATH=$RES/$ITER/GenConformers/Conf$CONF
-        echo "  ipolq  $GRID_PATH/grid_output.vacu  $GRID_PATH/grid_output.solv   $RES/$ITER/${RES}_V.top   1.0" >> $RESP
-    done
-done 
+for CONF in {1..20} ; do
+    GRID_PATH=$ITER/GenConformers/Conf$CONF
+    echo "  ipolq  $GRID_PATH/grid_output.vacu  $GRID_PATH/grid_output.solv   $ITER/${PDB}_V.top   1.0" >> $RESP
+done
 
 echo "
   % Fit parameters for the REsP 

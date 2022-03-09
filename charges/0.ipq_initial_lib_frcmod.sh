@@ -108,8 +108,8 @@ cd ../
 }
 
 
-#stage1_file_setup
-#mol2_gen
+stage1_file_setup
+mol2_gen
 frcmod_gen
 lib_gen
 

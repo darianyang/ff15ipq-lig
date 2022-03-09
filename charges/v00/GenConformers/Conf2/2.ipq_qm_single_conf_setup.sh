@@ -84,11 +84,16 @@ cat << EOF > ipq_qm_mp2_grid_gen.mdgx
   vshell2   = 0.5
   vshell3   = 0.7
   qmprog    = 'orca'
-  prepqm    = "PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/bin:\$PATH"
-  prepqm    = "LD_LIBRARY_PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/lib:\$LD_LIBRARY_PATH"
-  qmpath    = '/ihome/crc/build/orca/3.0.3/orca'
-  uvpath    = '/ihome/crc/build/orca/3.0.3/orca_vpot'
-  maxcore   = 16000
+  % this orca version works in parallel, which also needs these path variables to be set
+  %prepqm    = "PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/bin:\$PATH"
+  %prepqm    = "LD_LIBRARY_PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/lib:\$LD_LIBRARY_PATH"
+  %qmpath    = '/ihome/crc/build/orca/3.0.3/orca'
+  %uvpath    = '/ihome/crc/build/orca/3.0.3/orca_vpot'
+
+  qmpath    = '/ihome/crc/build/orca/5.0.0/orca_5_0_0_linux_x86-64_openmpi411/orca'
+  uvpath    = '/ihome/crc/build/orca/5.0.0/orca_5_0_0_linux_x86-64_openmpi411/orca_vpot'
+
+  maxcore   = 56000
   qmlev     = MP2
   basis     = cc-pvTZ
   unx       = 121
@@ -105,6 +110,7 @@ cat << EOF > ipq_qm_mp2_grid_gen.mdgx
   rcloud    = 1
   grid      = grid_output
   ptqfi     = srfp_output
+  scrdir    = scratch
 &end
 EOF
 

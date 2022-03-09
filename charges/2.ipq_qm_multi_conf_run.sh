@@ -64,13 +64,14 @@ echo "Running Conformation ${CONF}"
 bash 2.ipq_qm_single_conf_setup.sh ${CONF} ${PDB} &&
 
 # run mdgx on one conformation
-mpirun -np ${CPU} mdgx.MPI -i ipq_qm_mp2_grid_gen.mdgx
+#mpirun -np ${CPU} mdgx.MPI -i ipq_qm_mp2_grid_gen.mdgx
+mdgx -i ipq_qm_mp2_grid_gen.mdgx
 
 # gives stats of job, wall time, etc.
 crc-job-stats.py 
 EOF
 
-#sbatch conf_${CONF}_mdgx_grid_gen.slurm 
+sbatch conf_${CONF}_mdgx_grid_gen.slurm 
 
 cd ../
 done

@@ -25,6 +25,7 @@
             * for example: orca 3.0.3 works in parallel
             * note that these could be cluster specific issues (I'm using H2P at the University of Pittsburgh CRC)
     * It is important to consider and adjust for the amount of memory you may need (as we are running MP2 calculations):
+        * before you run all conformations: optimize the memory allocations
         * set the %maxcore keyword in &ipolq to 75% of the physical memory available
             * so if you have this set to 6000 (6 Gb), then request 8 Gb of memory with slurm
             * note that the %maxcore is the "max" memory per CPU core, which orca recommends to be 75% of the actual memory available since orca may use more than the maxcore setting allows
