@@ -115,6 +115,6 @@ function equil_confs {
 #########################################################################
 ### The following functions are for high temp conformation generation ###
 #########################################################################
-high_T_conf_gen
-#equil_confs
+#high_T_conf_gen
+equil_confs
 
