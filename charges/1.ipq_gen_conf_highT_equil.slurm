@@ -49,35 +49,33 @@ function high_T_conf_gen {
     echo -e $CMD > tleap_solv.in
     tleap -f tleap_solv.in > tleap_solv.out
 
-    exit # temp test
-
     # run amber scripts for high temperature conformation generation
 
     # unrestrained 10000 step minimization (500 SD)
-    $DO_PARALLEL -O -i amber/2_min.in -o 2_min.out \
+    $DO_PARALLEL -O -i ../amber/2_min.in -o 2_min.out \
         -p ${PDB}.top -c ${PDB}.crd -r 2_min.rst &&
     echo $PDB unrestrained min finished
 
     # 20 ps unrestrained NVT temp equilibration : Langevin thermostat (450K)
-    $DO_PARALLEL -O -i amber/6.2_eq1.in -o 6.2_eq1.out \
-        -p Conf${CONF}.top -c 6.1_min.rst -r 6.2_eq1.rst &&
-    echo $PDB unrestrained eq1 finished
+    $DO_PARALLEL -O -i ../amber/3_eq1.in -o 3_eq1.out \
+        -p ${PDB}.top -c 2_min.rst -r 3_eq1.rst &&
+    echo $PDB unrestrained 450K eq1 finished
 
-    # 100 ps unrestrained NPT volume equilibration : Langevin thermostat (450K) and MC barostat
-    $DO_PARALLEL -O -i amber/6.3_eq2.in -o 6.3_eq2.out \
-        -p Conf${CONF}.top -c 6.2_eq1.rst -r 6.3_eq2.rst &&
-    echo $PDB unrestrained eq2 finished
+    # 1 ns unrestrained NPT volume equilibration : Langevin thermostat (450K) and MC barostat
+    $DO_PARALLEL -O -i ../amber/4_eq2.in -o 4_eq2.out \
+        -p ${PDB}.top -c 3_eq1.rst -r 4_eq2.rst &&
+    echo $PDB unrestrained 450K eq2 finished
 
     # 10 ns unrestrained NPT production run : Langevin thermostat (450K) and MC barostat
-    $DO_PARALLEL -O -i amber/6.3_eq2.in -o 6.3_eq2.out \
-        -p Conf${CONF}.top -c 6.2_eq1.rst -r 6.3_eq2.rst &&
+    $DO_PARALLEL -O -i ../amber/5_genconf.in -o 5_genconf.out \
+        -p ${PDB}.top -c 4_eq2.rst -r 5_genconf.rst &&
     echo $PDB unrestrained 450K conf gen finished
 
     # make a conformers directory and move rst files
-    mkdir -p $ITERATION/GenConformers
-    # TODO: what are the rst files called?
+    mkdir GenConformers
+    # move conf rst files to GenConformers
+    mv 5_genconf.rst_* GenConformers
 
-    # finished with this iteration
     cd ..
 }
 
@@ -93,17 +91,17 @@ function equil_confs {
         cd Conf${CONF}
     
         # restrained 2000 step minimization (500 SD)
-        $DO_PARALLEL -O -i amber/6.1_min.in -o 6.1_min.out \
+        $DO_PARALLEL -O -i ../../../amber/6.1_min.in -o 6.1_min.out \
             -p Conf${CONF}.top -c Conf${CONF}.crd -r 6.1_min.rst -ref Conf${CONF}.crd &&
         echo ${CONF}.min finished
     
         # 20 ps restrained NVT equilibration using Langevin thermostat
-        $DO_PARALLEL -O -i amber/6.2_eq1.in -o 6.2_eq1.out \
+        $DO_PARALLEL -O -i ../../../amber/6.2_eq1.in -o 6.2_eq1.out \
             -p Conf${CONF}.top -c 6.1_min.rst -r 6.2_eq1.rst -ref 6.1_min.rst &&
         echo ${CONF}.eq1 finished
     
         # 100 ps restrained NPT equilibration using Langevin thermostat and MC barostat
-        $DO_PARALLEL -O -i amber/6.3_eq2.in -o 6.3_eq2.out \
+        $DO_PARALLEL -O -i ../../../amber/6.3_eq2.in -o 6.3_eq2.out \
             -p Conf${CONF}.top -c 6.2_eq1.rst -r 6.3_eq2.rst -ref 6.2_eq1.rst &&
         echo ${CONF}.eq2 finished
     
