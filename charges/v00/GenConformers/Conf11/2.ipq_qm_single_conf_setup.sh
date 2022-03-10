@@ -83,7 +83,9 @@ cat << EOF > ipq_qm_mp2_grid_gen.mdgx
   vhsell1   = 0.3
   vshell2   = 0.5
   vshell3   = 0.7
+
   qmprog    = 'orca'
+
   % this orca version works in parallel, which also needs these path variables to be set
   %prepqm    = "PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/bin:\$PATH"
   %prepqm    = "LD_LIBRARY_PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/lib:\$LD_LIBRARY_PATH"
@@ -95,7 +97,7 @@ cat << EOF > ipq_qm_mp2_grid_gen.mdgx
 
   maxcore   = 120000
   qmlev     = RI-MP2
-  basis     = cc-pVTZ cc-pVTZ/c
+  basis     = 'cc-pVTZ cc-pVTZ/c'
   unx       = 121
   uny       = 121
   unz       = 121

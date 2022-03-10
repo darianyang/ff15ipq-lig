@@ -97,7 +97,7 @@ cat << EOF > ipq_qm_mp2_grid_gen.mdgx
 
   maxcore   = 120000
   qmlev     = RI-MP2
-  basis     = cc-pVTZ cc-pVTZ/c
+  basis     = 'cc-pVTZ cc-pVTZ/c'
   unx       = 121
   uny       = 121
   unz       = 121
