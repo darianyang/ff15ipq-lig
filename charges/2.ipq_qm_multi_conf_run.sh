@@ -36,11 +36,11 @@ cat << EOF > conf_${CONF}_mdgx_grid_gen.slurm
 #!/bin/bash
 #SBATCH --job-name=c${CONF}-${PDB}-ipq-mdgx-grid-gen
 #SBATCH --cluster=smp
-#SBATCH --partition=smp
+#SBATCH --partition=high-mem
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=${CPU}
 ##SBATCH --mem=216g
-#SBATCH --mem-per-cpu=64g
+#SBATCH --mem-per-cpu=128g
 #SBATCH --time=47:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
@@ -71,7 +71,7 @@ mdgx -i ipq_qm_mp2_grid_gen.mdgx
 crc-job-stats.py 
 EOF
 
-sbatch conf_${CONF}_mdgx_grid_gen.slurm 
+#sbatch conf_${CONF}_mdgx_grid_gen.slurm 
 
 cd ../
 done

@@ -1,42 +1,8 @@
-#!/bin/bash
-##############################################################
-##### ipq charge derivation: QM and grid file generation #####
-##############################################################
-# ARG 1 = Conformation Int
-# ARG 2 = Identifier, only needed with high T conf gen
-
-CONF=$1
-PDB=$2
-
-# contingent step to delete old files
-if [ -f "ipolq.out" ]; then
-    rm -v ipolq.out
-fi
-if [ -f "mdcrd" ]; then
-    rm -v mdcrd
-fi
-# delete files from old run
-if [ -f "restrt" ]; then
-    rm -v restrt
-    rm -v qm*
-    rm -v *_output*
-    rm -v *_input*
-    rm -v *.tmp*
-    rm -rv scratch
-fi
-
-# if needed: make dir to use during QM
-if [ ! -d scratch ]; then
-    mkdir -v scratch
-fi
-
-# write ipq qm mdgx input file
-cat << EOF > ipq_qm_mp2_grid_gen.mdgx
 &files
   % use conformation specific topology files if mdgx_conf_gen was used
-  %-p Conf${CONF}.top
+  %-p Conf1.top
   % use a single topology file is high_T_conf_gen was used
-  -p ../../${PDB}.top
+  -p ../../mon.top
   -c 6.3_eq2.rst
   -o ipolq.out
 &end
@@ -83,12 +49,10 @@ cat << EOF > ipq_qm_mp2_grid_gen.mdgx
   vhsell1   = 0.3
   vshell2   = 0.5
   vshell3   = 0.7
-
   qmprog    = 'orca'
-
   % this orca version works in parallel, which also needs these path variables to be set
-  %prepqm    = "PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/bin:\$PATH"
-  %prepqm    = "LD_LIBRARY_PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/lib:\$LD_LIBRARY_PATH"
+  %prepqm    = "PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/bin:$PATH"
+  %prepqm    = "LD_LIBRARY_PATH=/ihome/crc/install/gcc-5.4.0/openmpi/1.6.5/lib:$LD_LIBRARY_PATH"
   %qmpath    = '/ihome/crc/build/orca/3.0.3/orca'
   %uvpath    = '/ihome/crc/build/orca/3.0.3/orca_vpot'
 
@@ -114,6 +78,3 @@ cat << EOF > ipq_qm_mp2_grid_gen.mdgx
   ptqfi     = srfp_output
   scrdir    = scratch
 &end
-EOF
-
-

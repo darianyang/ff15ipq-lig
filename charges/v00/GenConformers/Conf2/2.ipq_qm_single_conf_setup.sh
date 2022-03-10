@@ -93,9 +93,9 @@ cat << EOF > ipq_qm_mp2_grid_gen.mdgx
   qmpath    = '/ihome/crc/build/orca/5.0.0/orca_5_0_0_linux_x86-64_openmpi411/orca'
   uvpath    = '/ihome/crc/build/orca/5.0.0/orca_5_0_0_linux_x86-64_openmpi411/orca_vpot'
 
-  maxcore   = 56000
-  qmlev     = MP2
-  basis     = cc-pvTZ
+  maxcore   = 120000
+  qmlev     = RI-MP2
+  basis     = cc-pVTZ cc-pVTZ/c
   unx       = 121
   uny       = 121
   unz       = 121

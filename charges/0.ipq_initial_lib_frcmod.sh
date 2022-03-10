@@ -55,7 +55,7 @@ antechamber \
     -s 2                    `# verbose output option` \
     -m 1                    `# multiplicity (2S+1)` \
     -j 4                    `# use atom and part bond type prediction` \
-    -at amber               `# atomtype: amber formatting` \
+    -at amber               `# atomtype formatting : can also be gaff or gaff2` \
     -pf y &&                `# remove intermediate files`
 
 # for W4F, first N atom is of atom type DU and should be N

@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=c12-mon-ipq-mdgx-grid-gen
 #SBATCH --cluster=smp
-#SBATCH --partition=smp
+#SBATCH --partition=high-mem
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4
+#SBATCH --ntasks-per-node=1
 ##SBATCH --mem=216g
-#SBATCH --mem-per-cpu=20g
+#SBATCH --mem-per-cpu=128g
 #SBATCH --time=47:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
@@ -29,7 +29,8 @@ echo "Running Conformation 12"
 bash 2.ipq_qm_single_conf_setup.sh 12 mon &&
 
 # run mdgx on one conformation
-mpirun -np 4 mdgx.MPI -i ipq_qm_mp2_grid_gen.mdgx
+#mpirun -np 1 mdgx.MPI -i ipq_qm_mp2_grid_gen.mdgx
+mdgx -i ipq_qm_mp2_grid_gen.mdgx
 
 # gives stats of job, wall time, etc.
 crc-job-stats.py 
