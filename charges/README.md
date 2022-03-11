@@ -28,9 +28,9 @@
             * note that these could be cluster specific issues (I'm using H2P at the University of Pittsburgh CRC)
 * For monastrol (36 atoms), `MP2/cc-pVTZ` requires 114Gb+ for the MP2 module
     * If the RI approximation is used, this reduces to 300Mb
-        * RI-MP2 cc-pVTZ cc-pCTZ/C : 1 conformation takes about 5 hours
+        * `RI-MP2 cc-pVTZ cc-pCTZ/C` : 1 conformation takes about 5 hours
     * MP2 also failed with maxcore = 120Gb and slurm memory = 152Gb
-    * Attempting MP2/cc-pVTZ with 152Gb/168Gb
+    * Attempting `MP2/cc-pVTZ` with 152Gb/168Gb
     * TODO: add timings for MP2
 
 #### Script 3
@@ -40,6 +40,7 @@
 
 #### Next Steps
 * Now you can take the ipq solvent-vacuum averaged atomic partial charges from the resp fitting output and replace your AM1-BCC charges in the library file
+    * I usually do this using vim: `ctrl + v` then select and yank (`y`), then open existing file (`:e lib_file`) and paste (`p` or `P`)
 * After this, it's time to ITERATE. Run this process again from script 0 with your updated charges
    * When you get to the end and have a new set of charges, compare these to the first iteration (I usually do this in excel since the dataset is small)
       * if you save off a mol2 file using tleap, you can also visualize the atomic charge values with a program such as ChimeraX and maybe Avogadro
