@@ -2,6 +2,8 @@
 
 ### The workflow for the ipq charge derivation process is as follows:
 
+*Note that each script will need to be slightly adjusted or have some variables set for your particular small molecule system.*
+
 #### Script 0
 * First run script 0, which generates the initial parameters for the molecule using AM1-BCC charges and an frcmod file with terms that were not available in the parent ff15ipq force field
     * The charges are from the antechamber program
