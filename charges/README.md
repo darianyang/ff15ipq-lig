@@ -42,3 +42,4 @@
 #### Script 3
 * Now that the grid files are generated, they are all taken into a single restrained electrostatic potential (RESP) fitting procedure
 * There is some important adjustments to consider here which are all detailed in script 3 under the &fitq module of mdgx (TODO for monastrol)
+   * This includes bond equivalencies (degeneracies) and restraints on buried atoms (putting the R in RESP fitting)
