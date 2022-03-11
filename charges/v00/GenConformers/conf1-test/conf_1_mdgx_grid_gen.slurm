@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 ##SBATCH --mem=216g
-#SBATCH --mem-per-cpu=152g
+#SBATCH --mem-per-cpu=168g
 #SBATCH --time=47:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL

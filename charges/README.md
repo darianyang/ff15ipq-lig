@@ -26,9 +26,12 @@
         * if you need to run in parallel, try using an older version of orca
             * for example: orca 3.0.3 works in parallel
             * note that these could be cluster specific issues (I'm using H2P at the University of Pittsburgh CRC)
-* For monastrol (36 atoms), `MP2/cc-pVTZ` requires 114Gb for the MP2 module
+* For monastrol (36 atoms), `MP2/cc-pVTZ` requires 114Gb+ for the MP2 module
     * If the RI approximation is used, this reduces to 300Mb
-    * TODO: add timings
+        * RI-MP2 cc-pVTZ cc-pCTZ/C : 1 conformation takes about 5 hours
+    * MP2 also failed with maxcore = 120Gb and slurm memory = 152Gb
+    * Attempting MP2/cc-pVTZ with 152Gb/168Gb
+    * TODO: add timings for MP2
 
 #### Script 3
 * Now that the grid files are generated, they are all taken into a single restrained electrostatic potential (RESP) fitting procedure
@@ -59,4 +62,4 @@
 * I would recommend testing the mdgx `&ipolq` module first for a single conformation using a smaller simulation step limit and a faster level of QM theory/smaller basis set
     * e.g. `HF/STO-3G`; or something like `RI-MP2 def2-TZVP def2-TZVP/C RIJK def2/JK`, which has density fitting approximations for MP2 and for the HF SCF Coulomb and HF exchange integrals
     * An example of my tests are available in `v00/GenConformers/conf1-test`
-        * adjust the `ipq_qm_mp2_grid_gen_test.mdgx` script and run the `conf_1_mdgx_grid_gen.slurm` file (I usually test this on an interactive session)
+        * adjust the `ipq_qm_mp2_grid_gen_test.mdgx` or the `2.ipq_qm_single_conf_setup` script and run the `conf_1_mdgx_grid_gen.slurm` file (I usually test this on an interactive session)
