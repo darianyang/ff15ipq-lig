@@ -35,6 +35,9 @@
     * e.g. HF/STO-3G; or something like RI-MP2 def2-TZVP def2-TZVP/C RIJK def2/JK, which has density fitting approximations for MP2 and for the HF SCF Coulomb and HF exchange integrals
     * An example of my tests are available in v00/GenConformers/conf1-test
         * adjust the ipq_qm_mp2_grid_gen_test.mdgx script and run the conf_1_mdgx_grid_gen.slurm file (I usually test this on an interactive session)
+* For monastrol (36 atoms), MP2/cc-pVTZ requires 114Gb for the MP2 module
+    * If the RI approximation is used, this reduces to 300Mb
+    * TODO: add timings
 
 #### Script 3
 * Now that the grid files are generated, they are all taken into a single restrained electrostatic potential (RESP) fitting procedure
