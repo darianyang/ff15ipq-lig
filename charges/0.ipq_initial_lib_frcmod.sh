@@ -34,8 +34,8 @@ sed -i 's/HETATM/ATOM  /g' ${PDB}.pdb
 
 # set the 3 letter id and name of the molecule (if not already set)
 # with raw avogadro output, the values need to be set
-sed -i 's/UNL/MON/g' ${PDB}.pdb
-sed -i 's/UNNAMED/Monastrol  /g' ${PDB}.pdb
+sed -i "s/UNL/${PDB^^}/g" ${PDB}.pdb
+sed -i "s/UNNAMED/${PDB}.pdb/" ${PDB}.pdb
 
 echo "dir: $ITERATION prepped."
 progress_check
