@@ -42,7 +42,8 @@
 * Now you can take the ipq solvent-vacuum averaged atomic partial charges from the resp fitting output and replace your AM1-BCC charges in the library file
     * I usually do this using vim: `ctrl + v` then select and yank (`y`), then open existing file (`:e lib_file`) and paste (`p` or `P`)
 * After this, it's time to ITERATE. Run this process again from script 0 with your updated charges
-   * When you get to the end and have a new set of charges, compare these to the first iteration (I usually do this in excel since the dataset is small)
+    * This time, only run the first function for stage1_file_setup since you already have the other files
+    * When you get to the end and have a new set of charges, compare these to the first iteration (I usually do this in excel since the dataset is small)
       * if you save off a mol2 file using tleap, you can also visualize the atomic charge values with a program such as ChimeraX and maybe Avogadro
       * or just generate an updated topology file and open it up in VMD
    * If they are similar (within 10% difference), congrats! You've now got a self-consistent set of charges for your small molecule
