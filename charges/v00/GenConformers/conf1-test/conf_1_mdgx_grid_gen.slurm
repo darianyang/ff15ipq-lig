@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=c1-mon-ipq-mdgx-grid-gen
-#SBATCH --cluster=smp
-#SBATCH --partition=smp
+#SBATCH --job-name=c1-mon-ipq-mdgx-grid-gen-mp2-test
+#SBATCH --cluster=invest
+#SBATCH --partition=lchong
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4
+#SBATCH --ntasks-per-node=1
 ##SBATCH --mem=216g
-#SBATCH --mem-per-cpu=20g
+#SBATCH --mem-per-cpu=152g
 #SBATCH --time=47:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
@@ -41,7 +41,7 @@ bash 2.ipq_qm_single_conf_setup.sh 1 mon &&
 
 # run mdgx on one conformation
 #mpirun -np 4 mdgx.MPI -i ipq_qm_mp2_grid_gen_test.mdgx
-mdgx -i ipq_qm_mp2_grid_gen_test.mdgx
+mdgx -i ipq_qm_mp2_grid_gen.mdgx # running not on TEST
 
 # gives stats of job, wall time, etc.
 crc-job-stats.py 

@@ -24,14 +24,15 @@
         * if you need to run in parallel, try using an older version of orca
             * for example: orca 3.0.3 works in parallel
             * note that these could be cluster specific issues (I'm using H2P at the University of Pittsburgh CRC)
-    * It is important to consider and adjust for the amount of memory you may need (as we are running MP2 calculations):
+    * If you're running MP2 calculations, it is important to consider and adjust for the amount of memory you may need:
         * before you run all conformations: optimize the memory allocations
         * set the %maxcore keyword in &ipolq to 75% of the physical memory available
             * so if you have this set to 6000 (6 Gb), then request 8 Gb of memory with slurm
             * note that the %maxcore is the "max" memory per CPU core, which orca recommends to be 75% of the actual memory available since orca may use more than the maxcore setting allows
                 * so if you set %maxcore=2000 (2 Gb) and run on 4 CPUs, make sure each CPU has access to 2 Gb of memory + 25% (per orca recommendation), so total memory requested would be 10 Gb
         * if your run fails due to a "not enough memory" error, check the qm output file which will tell you at what point it failed and how much memory was allocated vs actually needed
-* I would recommend testing the mdgx &ipolq module first for a single conformation using a smaller simulation step limit and a faster level of QM theory/smaller basis set (e.g. HF/STO-3G)
+* I would recommend testing the mdgx &ipolq module first for a single conformation using a smaller simulation step limit and a faster level of QM theory/smaller basis set
+    * e.g. HF/STO-3G; or something like RI-MP2 def2-TZVP def2-TZVP/C RIJK def2/JK, which has density fitting approximations for MP2 and for the HF SCF Coulomb and HF exchange integrals
     * An example of my tests are available in v00/GenConformers/conf1-test
         * adjust the ipq_qm_mp2_grid_gen_test.mdgx script and run the conf_1_mdgx_grid_gen.slurm file (I usually test this on an interactive session)
 
