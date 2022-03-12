@@ -4,17 +4,17 @@
 ITER=v00
 PDB=mon
 # name of the input file to be generated
-RESP=$ITER/19F_FITQ_RESP_${ITER}_EQ_FTF.in
+RESP=$ITER/resp.in
 
 # begin head of resp input file
 echo "
 &files
-  -o    charge_fit/19F_FITQ_RESP_${ITER}_EQ_FTF.out
+  -o    $ITER/resp.out
 &end
 
 &fitq" > $RESP
 
-# TODO: prob need to make a vacuum phase topology file (PDB_V.top)
+# TODO: prob need to make a vacuum phase topology file (PDB_V.top) if using high_T conf gen
 
 # input vacuum and solvent reacion field potential quantum calculations from IPolQ
 # COLUMNS: ipolq_command | vacu_grid_file | solv_grid_file | topology | conf_weight 

@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=high_T_conf_gen_then_equil
-#SBATCH --cluster=smp
-#SBATCH --partition=smp
+#SBATCH --cluster=invest
+#SBATCH --partition=lchong
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem=16g
-#SBATCH --time=3:59:59  
+#SBATCH --time=11:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=job_logs/slurm_equil.out
@@ -42,13 +42,13 @@ function high_T_conf_gen {
     CMD="$CMD loadoff $LIB \n"
     CMD="$CMD loadamberparams $FRCMOD \n" 
     CMD="$CMD source leaprc.water.spceb \n"
-    CMD="$CMD ${PDB} = loadPdb ${PDB}.pdb \n"
-    #CMD="$CMD ${PDB} = loadmol2 ${PDB}.mol2 \n"
+    #CMD="$CMD ${PDB} = loadPdb ${PDB}.pdb \n"
+    CMD="$CMD ${PDB} = loadmol2 ${PDB}.mol2 \n"
     CMD="$CMD solvateoct ${PDB} SPCBOX 12.0 \n"
     CMD="$CMD saveAmberParm ${PDB} ${PDB}.top ${PDB}.crd \n"
     CMD="$CMD quit"
     echo -e $CMD > tleap_solv.in
-    tleap -f tleap_solv.in > tleap_solv.out
+    tleap -f tleap_solv.in > tleap_solv.out &&
 
     # run amber scripts for high temperature conformation generation
 
@@ -76,10 +76,13 @@ function high_T_conf_gen {
     # make a conformers directory and move rst files
     mkdir GenConformers
 
-    # move conf rst files to GenConformers and rename
+    # clean up high_T conformers output
     CONF=1
     for RST in {250000..5000000..250000} ; do
-        mv 5_genconf.rst_$RST GenConformers/Conf${CONF}.rst
+        # move conf rst files to GenConformers and rename
+        mv 5_genconf.rst_$RST GenConformers/Conf${CONF}.rst && 
+        # make pdb file, centered with no CRYST1 record of box coordinates
+        ambpdb -p ${PDB}.top -c GenConformers/Conf${CONF}.rst -ctr -nobox > GenConformers/Conf${CONF}.pdb  
         let "CONF++"
     done
 
@@ -92,8 +95,9 @@ function equil_confs {
     for CONF in {1..20}; do
         # make and go into subdirectory
         mkdir Conf${CONF}
-        if [ -f Conf${CONF}.rst ] ; then
+        if [ -f Conf${CONF}.* ] ; then
             mv Conf${CONF}.rst Conf${CONF}
+            mv Conf${CONF}.pdb Conf${CONF}
         fi
         cd Conf${CONF}
     

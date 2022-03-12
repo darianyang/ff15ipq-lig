@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=solv_min_equil_20_conf_F4F
+#SBATCH --job-name=mdgx_conf_gen_solv_equil_20_conf
 #SBATCH --cluster=smp
 #SBATCH --partition=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem=16g
-#SBATCH --time=1:59:59  
+#SBATCH --time=3:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=job_logs/slurm_equil.out
@@ -36,7 +36,7 @@ function pdb_vacuo_gen {
 cd $ITERATION
 # tleap input for capped dipeptide vacuo files
 cat << EOF > tleap_vacuo.in
-source leaprc.protein.ff15ipq
+#source leaprc.protein.ff15ipq
 source leaprc.gaff
 loadoff $LIB
 loadAmberParams $FRCMOD
@@ -57,7 +57,7 @@ function in_vacuo_min {
 cd $ITERATION
 
 # unrestrained in vacuo 10000 step minimization (500 SD)
-pmemd -O -i amber/2_min.in -o 2_min.out \
+pmemd -O -i ../amber/2_min.in -o 2_min.out \
 -p ${PDB}_V.top -c ${PDB}_V.crd -r ${PDB}_V.rst &&
 
 echo "in vacuo min finished."
@@ -115,7 +115,7 @@ for CONF in {1..20}; do
     cd Conf${CONF}
 
     # write tleap file for solvation of vacuo structures
-    #CMD="source leaprc.protein.ff15ipq \n"
+    #CMD="     source leaprc.protein.ff15ipq \n"
     CMD="     source leaprc.gaff \n"
     CMD="$CMD loadoff $LIB \n"
     CMD="$CMD loadamberparams $FRCMOD \n" 
@@ -125,7 +125,7 @@ for CONF in {1..20}; do
     CMD="$CMD saveAmberParm ${PDB} Conf${CONF}.top Conf${CONF}.crd \n"
     CMD="$CMD quit"
     echo -e ${COMMAND} > tleap_solv.in
-    tleap -f tleap_solv.in > tleap_solv.out
+    tleap -f tleap_solv.in > tleap_solv.out &&
 
     # restrained 2000 step minimization (500 SD)
     $DO_PARALLEL -O -i ../../../../amber/6.1_min.in -o 6.1_min.out \

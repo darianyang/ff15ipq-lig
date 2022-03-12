@@ -29,11 +29,12 @@
             * note that these could be cluster specific issues (I'm using H2P at the University of Pittsburgh CRC)
 * For monastrol (36 atoms), `MP2/cc-pVTZ` requires 114Gb+ for the MP2 module
     * If the RI approximation is used, this reduces to 300Mb
-        * `RI-MP2 cc-pVTZ cc-pCTZ/C` : 1 conformation takes about 5 hours
+        * `RI-MP2 cc-pVTZ cc-pCTZ/C` : 1 conformation takes about 5-7 hours with 6/8Gb
     * MP2 also failed with maxcore = 120Gb and slurm memory = 152Gb
-    * Attempting `MP2/cc-pVTZ` with 152Gb/168Gb
-        * this didn't work either, ran out of memory again
+    * Attempting `MP2/cc-pVTZ` with 152Gb/168Gb and again with 184Gb
+        * both of these didn't work either, ran out of memory again
         * probably will need >200Gb of memory (this was typical of TRP systems)
+            * how about 208/216Gb?
 
 #### Script 3
 * Now that the grid files are generated, they are all taken into a single restrained electrostatic potential (RESP) fitting procedure
