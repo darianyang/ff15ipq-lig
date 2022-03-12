@@ -7,6 +7,7 @@
 #### Script 0
 * First run script 0, which generates the initial parameters for the molecule using AM1-BCC charges and an frcmod file with terms that were not available in the parent ff15ipq force field
     * The charges are from the antechamber program
+        * antechamber also handles atom types, which is currently set to use gaff
     * The frcmod file is from the parmchk2 program
         * this file needs to be filled out with initial guesses for the zero values
 
@@ -31,7 +32,8 @@
         * `RI-MP2 cc-pVTZ cc-pCTZ/C` : 1 conformation takes about 5 hours
     * MP2 also failed with maxcore = 120Gb and slurm memory = 152Gb
     * Attempting `MP2/cc-pVTZ` with 152Gb/168Gb
-    * TODO: add timings for MP2
+        * this didn't work either, ran out of memory again
+        * probably will need >200Gb of memory (this was typical of TRP systems)
 
 #### Script 3
 * Now that the grid files are generated, they are all taken into a single restrained electrostatic potential (RESP) fitting procedure
