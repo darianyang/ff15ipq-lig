@@ -33,5 +33,5 @@ This directory provides an example of how to derive ff15ipq compatible parameter
 * DT Yang, AM Gronenborn, and LT Chong. "Development and Validation of Fluorinated Amino Acid Parameters for use with the AMBER ff15ipq Protein Force Field", BioRxiv (2022) https://doi.org/10.1101/2022.01.06.475229
 
 ### A more detailed tutorial of the ipq parameter derivation process is available:
-* https://ambermd.org/tutorials/advanced/tutorial28/index.php
-* https://ambermd.org/tutorials/advanced/tutorial32/index.php
+* IPQ Charges: https://ambermd.org/tutorials/advanced/tutorial28/index.php
+* IPQ Bonded Parameters: https://ambermd.org/tutorials/advanced/tutorial32/index.php
