@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=high_T_conf_gen_then_equil
-#SBATCH --cluster=invest
-#SBATCH --partition=lchong
+#SBATCH --cluster=smp
+#SBATCH --partition=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --mem=16g
@@ -25,7 +25,7 @@ set -x
 ######################################################################
 # set variables
 PDB=mon
-ITERATION=v00
+ITERATION=gaff_00
 LIB=${PDB}.lib
 FRCMOD=${PDB}.frcmod
 
@@ -37,7 +37,8 @@ function high_T_conf_gen {
     cd $ITERATION
 
     # make a solvated structure using tleap
-    CMD="source leaprc.protein.ff15ipq \n"
+    #CMD="source leaprc.protein.ff15ipq \n"
+    CMD="     source leaprc.gaff \n"
     CMD="$CMD loadoff $LIB \n"
     CMD="$CMD loadamberparams $FRCMOD \n" 
     CMD="$CMD source leaprc.water.spceb \n"
@@ -67,6 +68,7 @@ function high_T_conf_gen {
     echo $PDB unrestrained 450K eq2 finished
 
     # 10 ns unrestrained NPT production run : Langevin thermostat (450K) and MC barostat
+    # rst files are saved every 500 ps, totaling to 20 conformations generated
     $DO_PARALLEL -O -i ../amber/5_genconf.in -o 5_genconf.out \
         -p ${PDB}.top -c 4_eq2.rst -r 5_genconf.rst &&
     echo $PDB unrestrained 450K conf gen finished

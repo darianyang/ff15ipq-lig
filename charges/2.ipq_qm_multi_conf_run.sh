@@ -4,7 +4,7 @@
 ##############################################################
 
 CPU=1
-ITERATION=v00
+ITERATION=gaff_00
 PDB=mon
 
 # go to conformers directory
@@ -38,7 +38,6 @@ cat << EOF > conf_${CONF}_mdgx_grid_gen.slurm
 #SBATCH --partition=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=${CPU}
-##SBATCH --mem=216g
 #SBATCH --mem-per-cpu=8g
 #SBATCH --time=23:59:59  
 #SBATCH --mail-user=dty7@pitt.edu

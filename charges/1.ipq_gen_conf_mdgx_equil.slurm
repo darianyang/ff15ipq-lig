@@ -24,35 +24,23 @@ set -x
 
 ######################################################################
 # set variables
-PDB=F4F
-ITERATION=v03
-LIB=$HOME/bgfs-dty7/19F_ff15ipq/19F_FF15IPQ_V02.lib
-FRCMOD=$HOME/bgfs-dty7/19F_ff15ipq/19F_FF15IPQ_V00.frcmod
+PDB=mon
+ITERATION=v00
+LIB=${PDB}.lib
+FRCMOD=${PDB}.frcmod
 
 export DO_PARALLEL="mpirun -np 8 pmemd.MPI"
 ######################################################################
-
-function file_setup {
-mkdir -v $ITERATION
-cp -v ${PDB}.pdb $ITERATION
-cd $ITERATION
-
-# edit pdb file: get rid of connecting lines, change HETATOM to ATOM
-sed -i '/CONECT/d' ${PDB}.pdb
-sed -i 's/HETATM/ATOM  /g' ${PDB}.pdb
-
-echo "dir: $ITERATION prepped."
-cd ../
-}
 
 function pdb_vacuo_gen {
 cd $ITERATION
 # tleap input for capped dipeptide vacuo files
 cat << EOF > tleap_vacuo.in
 source leaprc.protein.ff15ipq
+source leaprc.gaff
 loadoff $LIB
 loadAmberParams $FRCMOD
-${PDB} = sequence { ACE ${PDB} NME }
+${PDB} = loadpdb ${PDB}.pdb
 check ${PDB}
 set ${PDB} box {32.006 32.006 32.006}
 saveAmberParm ${PDB} ${PDB}_V.top ${PDB}_V.crd
@@ -81,6 +69,9 @@ cd ../
 function gen_confs_mdgx {
 cd $ITERATION
 # generate mdgx input file for generation of 20 conformations
+####################################################
+### the &configs options need specification here ###
+####################################################
 cat<<EOF > gen_confs.mdgx
 &files
   -p ../${PDB}_V.top
@@ -124,14 +115,15 @@ for CONF in {1..20}; do
     cd Conf${CONF}
 
     # write tleap file for solvation of vacuo structures
-    COMMAND="source leaprc.protein.ff15ipq \n"
-    COMMAND="${COMMAND}loadoff $LIB \n"
-    COMMAND="${COMMAND}loadamberparams $FRCMOD \n" 
-    COMMAND="${COMMAND}source leaprc.water.spceb \n"
-    COMMAND="${COMMAND}${PDB} = loadPdb Conf${CONF}.pdb \n"
-    COMMAND="${COMMAND}solvateoct ${PDB} SPCBOX 12.0 \n"
-    COMMAND="${COMMAND}saveAmberParm ${PDB} Conf${CONF}.top Conf${CONF}.crd \n"
-    COMMAND="${COMMAND}quit"
+    #CMD="source leaprc.protein.ff15ipq \n"
+    CMD="     source leaprc.gaff \n"
+    CMD="$CMD loadoff $LIB \n"
+    CMD="$CMD loadamberparams $FRCMOD \n" 
+    CMD="$CMD source leaprc.water.spceb \n"
+    CMD="$CMD ${PDB} = loadPdb Conf${CONF}.pdb \n"
+    CMD="$CMD solvateoct ${PDB} SPCBOX 12.0 \n"
+    CMD="$CMD saveAmberParm ${PDB} Conf${CONF}.top Conf${CONF}.crd \n"
+    CMD="$CMD quit"
     echo -e ${COMMAND} > tleap_solv.in
     tleap -f tleap_solv.in > tleap_solv.out
 
@@ -162,8 +154,6 @@ cd ../../
 #### If you choose to use mdgx, adjust the &configs parameters  ####
 ##### Another method is to use high temperature MD: (script 1) #####
 ####################################################################
-
-file_setup
 
 pdb_vacuo_gen
 
