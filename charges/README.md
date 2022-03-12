@@ -8,8 +8,10 @@
 * First run script 0, which generates the initial parameters for the molecule using AM1-BCC charges and an frcmod file with terms that were not available in the parent ff15ipq force field
     * The charges are from the antechamber program
         * antechamber also handles atom types, which is currently set to use gaff
+            * if you don't use gaff, new atom types may be needed
     * The frcmod file is from the parmchk2 program
-        * this file needs to be filled out with initial guesses for the zero values
+        * currently this uses gaff parameters
+            * if you don't use gaff, the frcmod file will need to be filled out with initial guesses for the zero values not found in the parameter file
 
 #### Script 1
 * Then run script 1, this will generate the conformations that will be subjected to QM ESP grid calculations
