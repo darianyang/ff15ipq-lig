@@ -16,7 +16,7 @@
     * There are 2 ways available to do this:
         * you can use high temperature (450K) simulations and save MD snapshots as the conformations
             * `1.ipq_gen_conf_highT_equil.slurm`
-        * or you can use the mdgx `&configs` module, which has alot of options in terms of restraining your molecule at user-specified atoms
+        * or you can use the mdgx `&configs` module, which has alot of options in terms of restraining your molecule at user-specified atoms (make sure to customize this for your system)
             * `1.ipq_gen_conf_mdgx_equil.slurm`
     * Both conformation generation scripts will also:
         * output a set of pdb files for each conformation, which can more easily visualized in vmd or a similar program
