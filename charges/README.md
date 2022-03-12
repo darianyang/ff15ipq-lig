@@ -15,8 +15,13 @@
 * Then run script 1, this will generate the conformations that will be subjected to QM ESP grid calculations
     * There are 2 ways available to do this:
         * you can use high temperature (450K) simulations and save MD snapshots as the conformations
-        * TODO - update : or you can use the mdgx `&configs` module, which has alot of options in terms of restraining your molecule at user-specified atoms
-    * Both conformation generation scripts will also then minimize and equilibrate each individual conformation with positional restraints
+            * `1.ipq_gen_conf_highT_equil.slurm`
+        * or you can use the mdgx `&configs` module, which has alot of options in terms of restraining your molecule at user-specified atoms
+            * `1.ipq_gen_conf_mdgx_equil.slurm`
+    * Both conformation generation scripts will also:
+        * output a set of pdb files for each conformation, which can more easily visualized in vmd or a similar program
+        * output a coordinate file (crd or rst)
+        * minimize and equilibrate each individual conformation with positional restraints
 
 #### Script 2 
 * Now it's time to use script 2 to get the ESP grids in both explicit solvent and in vacuum for each conformation
