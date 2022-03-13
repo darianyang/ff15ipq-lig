@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=c12-mon-ipq-mdgx-grid-gen
 #SBATCH --cluster=smp
-#SBATCH --partition=high-mem
+#SBATCH --partition=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 ##SBATCH --mem=216g
-#SBATCH --mem-per-cpu=128g
-#SBATCH --time=47:59:59  
+#SBATCH --mem-per-cpu=8g
+#SBATCH --time=23:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=slurm_conf_12.out

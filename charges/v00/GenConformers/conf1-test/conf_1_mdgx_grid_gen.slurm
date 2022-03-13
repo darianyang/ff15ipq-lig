@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=c1-mon-ipq-mdgx-grid-gen-mp2-test
-#SBATCH --cluster=invest
-#SBATCH --partition=lchong
+#SBATCH --cluster=smp
+#SBATCH --partition=high-mem
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-##SBATCH --mem=216g
-#SBATCH --mem-per-cpu=168g
+#SBATCH --mem=216g
+##SBATCH --mem-per-cpu=184g
 #SBATCH --time=47:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
