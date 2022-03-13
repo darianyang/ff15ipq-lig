@@ -97,10 +97,10 @@ def calc_percent_deviation(lib, resp):
     """
     abs_diff = np.abs(np.subtract(lib, resp))
     avg_abs_new_charge = np.average(np.abs(resp))
-    print("\navg_abs_new_chage (eV): ", avg_abs_new_charge)
+    print(f"\navg_abs_new_chage (eV): {avg_abs_new_charge:0.3f}")
 
     deviation = np.divide(abs_diff, avg_abs_new_charge) * 100
-    print("\nDeviation array (%): ", deviation)
+    print(f"\nDeviation array (%): {deviation}")
 
     return np.average(deviation)
 
@@ -109,12 +109,29 @@ def calc_percent_deviation(lib, resp):
 #b = np.array([-0.47978, 0.30403, -0.07841])
 #c = calc_percent_deviation(a, b)
 
+def build_new_lib_file(library, resp, new_lib_name):
+    """
+    Take the RESP &fitq mdgx output and fill out new library file.
+
+    Parameter
+    ---------
+    library : str
+        Path to previous library file.
+    resp : ndarray
+        Array of charge values extracted from the RESP output file.
+    new_lib_name : str
+        Name of new library file with resp fitted charges.
+    """
+   pass 
+
+
 if __name__ == "__main__":
+    np.set_printoptions(formatter={'float': lambda x: "{0:0.2f}".format(x)})
     lib = grab_lib_charges(library)
     resp = grab_resp_charges(resp_out)
     deviation = calc_percent_deviation(lib, resp)
     print("\nOriginal charge set (eV): ", lib)
-    print("New charge set (eV): ", resp)
+    print("\nNew charge set (eV): ", resp)
     print(f"\nThe final percent deviation between the {library} \n" +
           f"and {resp_out} charge sets is {deviation:0.2f}%\n")
     if deviation < 10:
@@ -123,3 +140,4 @@ if __name__ == "__main__":
         print(f"charges from the {resp_out} file to use for bonded parameter derivation.\n")
     elif deviation >= 10:
         print("\tI would recommend running another iteration until this value is < 10%\n")
+

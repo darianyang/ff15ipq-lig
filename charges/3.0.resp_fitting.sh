@@ -17,6 +17,12 @@ if [ ! -f $ITER/${PDB}_V.top ] ; then
     parmed -p $ITER/${PDB}.top -i $ITER/parmed.in > $ITER/parmed.out
 fi
  
+# clean up previous run topology file
+if [[ -f $ITER/${PDB}_V.top. && -f $ITER/resp.out ]] ; then
+    echo -e "\nCleaning up previous run files:"
+    rm -v $ITER/{${PDB}_V.top.,resp.out}
+    echo ""
+fi
 
 # begin head of resp input file
 echo "
@@ -34,52 +40,54 @@ for CONF in {1..20} ; do
 done
 
 echo "
-  % Fit parameters for the REsP 
-  pnrg      0.0
+  % The minimum proximity of any two points to be included in the fit
   flim      0.39
+
+  % The number of fitting points to select from each electrostatic potential grid 
   nfpt      3750
 
   % Calculation settings
   maxmem    6GB
   verbose   1
 
-  % Constraints on blocking group equivalent atoms
-  equalq    ':ACE & @H1,H2,H3'
-  equalq    ':ACE & @CH3'
-  equalq    ':ACE & @C'
-  equalq    ':ACE & @O'
-  equalq    ':NME & @HH31,HH32,HH33'
-  equalq    ':NME & @CH3'
-  equalq    ':NME & @N'
-  equalq    ':NME & @H'
-
-  % Constraints on amino acid equivalent atoms
-  equalq    ':W4F,W5F,W5F,W7F & @HB2,HB3'
-  equalq    ':Y3F,YDF & @HB2,HB3'
-  equalq    ':YDF & @HD1,HD2'
-  equalq    ':YDF & @F3Y,F5Y'
-  equalq    ':YDF & @CD1,CD2'
-  equalq    ':YDF & @CE1,CE2'
-  equalq    ':F4F,FTF & @HB2,HB3'
-  equalq    ':F4F,FTF & @HD1,HD2'
-  equalq    ':F4F,FTF & @HE1,HE2'
-  equalq    ':F4F,FTF & @CD1,CD2'
-  equalq    ':F4F,FTF & @CE1,CE2'
-  equalq    ':FTF & @F1C,F2C,F3C'
+  % Constraints on equivalent atoms
+  equalq    ':MON & @H,H1,H2'
+  equalq    ':MON & @H3,H4'
+  equalq    ':MON & @H5,H6,H7'
 
   % Restrain charges on buried atoms
-  minq      ':NME & @CH3'
-  minq      ':ACE & @CH3'
-  minq      '@CB'
+  minq      ':MON & @C7'
+  minq      ':MON & @C8'
+  minq      ':MON & @C3'
 
   % Force constant by which to restrain charges
   minqwt    1.0e-2
 
+  % Sum of all charges (total charge restraint)
+  qtot      0.0
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%% The following solvent probe parameters are for SPC/Eb %%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Lennard-Jones sigma (Å) of solvent probe
+  psig      3.1657
+  % Lennard-Jones epsilon (kcal/mol) of solvent probe
+  peps      0.1553
+  % The probe arm; points on the electrostatic potential grid that 
+  % would be inaccessible to the solvent probe may still be included 
+  % in the fit if they are within the probe arm’s reach
+  parm      1.01
+
+  % Maximum Lennard-Jones energy (kcal/mol) of solvent probe at which
+  % a point will qualify for inclusion in the fit
+  pnrg      0.0
+
 &end" >> $RESP
 
-#mdgx -i $RESP &&
+mdgx -i $RESP &&
 
 # check the output resp file for self-consistent charge convergence
 # args: 1 = library file, 2 = resp output file
-#python 3.check_converge.py $ITER/$LIB $ITER/resp.out
+echo -e "\nRUNNING: python 3.check_converge.py $ITER/$LIB $ITER/resp.out"
+python 3.1.check_converge.py $ITER/$LIB $ITER/resp.out
 

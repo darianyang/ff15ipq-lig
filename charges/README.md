@@ -49,6 +49,7 @@
             * 152/168Gb : Ran out after 6.5 hours
             * 184/184Gb : Ran out after 8 hours
             * 208/216Gb : Ran out after 11 hours
+            * 256/256Gb : Ran out after 11 hours
 * After script 2 finishes, you can check to make sure that the qm_output files looks appropriate using script 2.5:
     * `$ bash 2.5.check_completion.sh`
     * If any of your conformations failed, you can resubmit then by running:
@@ -61,7 +62,7 @@
 * There is some important adjustments to consider here which are all detailed in script 3 under the `&fitq` module of mdgx
     * This includes bond equivalencies (degeneracies) and restraints on buried atoms (putting the R in RESP fitting)
 * After fitting new charges, this script will run the `3.check_convergence.py` script to see how close or far away you are from reaching a self-consistent IPolQ charge set
-    * If you saveoff an updated mol2 file using tleap and the new library file, you can also visualize the atomic charge values with a program such as ChimeraX and maybe Avogadro
+    * If you saveoff an updated mol2 file using tleap and the new library file, you can also visualize the atomic charge values with a program such as VMD, ChimeraX, or maybe Avogadro
         * or just generate an updated topology file and open it up in VMD
     * If they are similar (within 10% difference), congrats! You've now got a self-consistent set of charges for your small molecule
         * if not, then you'll have to derive another set using your current charges as the starting point
