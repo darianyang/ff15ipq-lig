@@ -1,11 +1,22 @@
 #!/bin/bash
 # set up REsP charge fitting file for 19F after grid files generation
 
-ITER=v00
+ITER=gaff_00
 PDB=mon
 LIB=${PDB}.lib
 # name of the input file to be generated
 RESP=$ITER/resp.in
+
+
+# make a vacuum phase topology file (PDB_V.top) if using high_T conf gen
+if [ ! -f $ITER/${PDB}_V.top ] ; then
+    CMD=" strip :WAT \n"
+    CMD="$CMD parmout $ITER/${PDB}_V.top \n"
+    CMD="$CMD go"
+    echo -e "$CMD" > $ITER/parmed.in
+    parmed -p $ITER/${PDB}.top -i $ITER/parmed.in > $ITER/parmed.out
+fi
+ 
 
 # begin head of resp input file
 echo "
@@ -14,8 +25,6 @@ echo "
 &end
 
 &fitq" > $RESP
-
-# TODO: prob need to make a vacuum phase topology file (PDB_V.top) if using high_T conf gen
 
 # input vacuum and solvent reacion field potential quantum calculations from IPolQ
 # COLUMNS: ipolq_command | vacu_grid_file | solv_grid_file | topology | conf_weight 
@@ -44,12 +53,6 @@ echo "
   equalq    ':NME & @N'
   equalq    ':NME & @H'
 
-  % Constraints on backbone atoms of the 19F residue set
-  equalq    ':W4F,W5F,W6F,W7F,Y3F,YDF,F4F,FTF & @C'
-  equalq    ':W4F,W5F,W6F,W7F,Y3F,YDF,F4F,FTF & @O'
-  equalq    ':W4F,W5F,W6F,W7F,Y3F,YDF,F4F,FTF & @N'
-  equalq    ':W4F,W5F,W6F,W7F,Y3F,YDF,F4F,FTF & @H'
-
   % Constraints on amino acid equivalent atoms
   equalq    ':W4F,W5F,W5F,W7F & @HB2,HB3'
   equalq    ':Y3F,YDF & @HB2,HB3'
@@ -72,20 +75,11 @@ echo "
   % Force constant by which to restrain charges
   minqwt    1.0e-2
 
-  % Fix blocking groups to be net neutral: amino acids implicitly forced to
-  % take on the net charge of their dipeptides
-  sumq      ':ACE'  0.0
-  sumq      ':NME'  0.0
-
-  % Tether charges towards their previous values
-  %tether    1
-  %tetherwt  0.5e-2
-
 &end" >> $RESP
 
 #mdgx -i $RESP &&
 
 # check the output resp file for self-consistent charge convergence
 # args: 1 = library file, 2 = resp output file
-python 3.check_converge.py $LIB $ITER/resp.out
+#python 3.check_converge.py $ITER/$LIB $ITER/resp.out
 
