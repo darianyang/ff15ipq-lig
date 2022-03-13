@@ -5,7 +5,8 @@
 *Note that each script will need to be slightly adjusted or have some variables set for your particular small molecule system.*
 
 #### Script 0
-* First run script 0, which generates the initial parameters for the molecule using AM1-BCC charges and an frcmod file with terms that were not available in the parent ff15ipq force field
+* Edit then run script 0, which generates the initial parameters for the molecule using AM1-BCC charges and an frcmod file with terms that were not available in the parent ff15ipq force field
+    * `$ bash 0.ipq_initial_lib_frcmod.sh`
     * The charges are from the antechamber program
         * antechamber also handles atom types, which is currently set to use gaff
             * if you don't use gaff, new atom types may be needed
@@ -14,12 +15,12 @@
             * if you don't use gaff, the frcmod file will need to be filled out with initial guesses for the zero values not found in the parameter file
 
 #### Script 1
-* Then run script 1, this will generate the conformations that will be subjected to QM ESP grid calculations
+* Then edit and run script 1, this will generate the conformations that will be subjected to QM ESP grid calculations
     * There are 2 ways available to do this:
         * you can use high temperature (450K) simulations and save MD snapshots as the conformations
-            * `1.ipq_gen_conf_highT_equil.slurm`
+            * `$ sbatch 1.ipq_gen_conf_highT_equil.slurm`
         * or you can use the mdgx `&configs` module, which has alot of options in terms of restraining your molecule at user-specified atoms (make sure to customize this for your system)
-            * `1.ipq_gen_conf_mdgx_equil.slurm`
+            * `$ sbatch 1.ipq_gen_conf_mdgx_equil.slurm`
     * Both conformation generation scripts will also:
         * output a set of pdb files for each conformation, which can more easily visualized in vmd or a similar program
         * output a coordinate file (crd or rst)
@@ -29,6 +30,7 @@
 * Now it's time to use script 2 to get the ESP grids in both explicit solvent and in vacuum for each conformation
 * This is all done with mdgx, but the user must provide the `&ipolq` settings, including the path to a qm calculation program such as orca or gaussian
     * These are adjusted in the `2.ipq_qm_single_conf_setup.sh` file, which is copied and ran in each conformation directory by the `2.ipq_qm_multi_conf_run.sh` file
+        * `$ bash 2.ipq_qm_multi_conf_run.sh`
         * note that for now, orca 5.0 works serially with amber 18 or 20
             * I'm not certain why, but running orca 5.0 in parallel is problematic with the current version of mdgx from amber 18 or 20
         * if you need to run in parallel, try using an older version of orca
@@ -45,7 +47,8 @@
 
 #### Script 3
 * Now that the grid files are generated, they are all taken into a single restrained electrostatic potential (RESP) fitting procedure
-    * edit then run the `3.resp_fitting.sh` script
+    * edit then run script 3: `$ bash 3.resp_fitting.sh`
+    * you do not need to edit the `3.check_converge.py` script
 * There is some important adjustments to consider here which are all detailed in script 3 under the `&fitq` module of mdgx
     * This includes bond equivalencies (degeneracies) and restraints on buried atoms (putting the R in RESP fitting)
 * After fitting new charges, this script will run the `3.check_convergence.py` script to see how close or far away you are from reaching a self-consistent IPolQ charge set
