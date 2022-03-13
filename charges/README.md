@@ -71,6 +71,9 @@
 * Now you can take the ipq solvent-vacuum averaged atomic partial charges from the resp fitting output and replace your AM1-BCC charges in the library file
     * I usually do this using vim:
         * open the resp output file (`$ vim resp_output`), go to the new charge values and `ctrl + v` to select them and yank (`y`), then open existing file (`:e lib_file`), paste (`p` or `P`), write out (`:w new_lib_file`), and quit without overwriting the old lib_file (`:q!`)
+    * I also wrote a python function in script 3.1 to do this:
+        * it should generate an updated library file called NEW_LIB_FILE.lib
+            * feel free to rename and roll with this one, but double check that the values look okay first
 * After this, you may have to ITERATE and run this process again from script 0 with your updated charges
     * If you do, only run the first function for stage1_file_setup since you already have the other files
         * this can be adjusted by commenting out the other functions at the bottom of script 0

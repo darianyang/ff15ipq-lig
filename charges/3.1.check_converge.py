@@ -34,7 +34,7 @@ import numpy as np
 library = sys.argv[1]
 resp_out = sys.argv[2]
 
-def grab_lib_charges(library):
+def grab_lib_charges(library, string=False):
     """
     Extract the charge values from a library file with 1 entry.
     Gets charge values between the first two !entry and !entry lines.
@@ -52,10 +52,14 @@ def grab_lib_charges(library):
         # only include the charge value
         charges.append(line[len(line)-10:-1])
 
-    # return a float ndarray
-    return np.loadtxt(charges, dtype=float)
+    # optionally return the string list
+    if string is True:
+        return charges
+    else:
+        # return a float ndarray
+        return np.loadtxt(charges, dtype=float)
 
-def grab_resp_charges(resp_out):
+def grab_resp_charges(resp_out, string=False):
     """
     Extract the IPolQ charge values from the mdgx &fitq resp fitting output.
     """
@@ -63,7 +67,7 @@ def grab_resp_charges(resp_out):
     with open(str(resp_out)) as f:
         lines = f.readlines()
 
-    # get the dynamics starting point of charge table
+    # get the dynamic starting point of charge table
     for line in lines:
         if line.startswith("(2.) Charges on all atoms"):
             start_index = lines.index(line)
@@ -79,8 +83,12 @@ def grab_resp_charges(resp_out):
         # grab the rightmost IPolQ,pert column
         charges.append(line[len(line)-9:-1])
     
-    # return a fload ndarray
-    return np.loadtxt(charges, dtype=float)
+    # optionally return the string list
+    if string is True:
+        return charges
+    else:
+        # return a fload ndarray
+        return np.loadtxt(charges, dtype=float)
 
 def calc_percent_deviation(lib, resp):
     """
@@ -109,7 +117,7 @@ def calc_percent_deviation(lib, resp):
 #b = np.array([-0.47978, 0.30403, -0.07841])
 #c = calc_percent_deviation(a, b)
 
-def build_new_lib_file(library, resp, new_lib_name):
+def build_new_lib_file(library, resp_out, new_lib_name):
     """
     Take the RESP &fitq mdgx output and fill out new library file.
 
@@ -117,13 +125,38 @@ def build_new_lib_file(library, resp, new_lib_name):
     ---------
     library : str
         Path to previous library file.
-    resp : ndarray
-        Array of charge values extracted from the RESP output file.
+    resp_out : str
+        Path to the resp output file.
     new_lib_name : str
         Name of new library file with resp fitted charges.
     """
-   pass 
+    # lib and resp file charge arrays as strings
+    lib = grab_lib_charges(library, string=True)
+    resp = grab_resp_charges(resp_out, string=True)
+    # make both arrays have the same char per string
+    resp = [i + "0" for i in resp]
 
+    # open and read in old library file
+    with open(str(library)) as f:
+        lines = f.readlines()
+    
+    # keep track of the charge array
+    charges_index = 0
+
+    # write out new library file with resp charges
+    with open(str(new_lib_name), "w") as f:
+        # copy over lines from old library file
+        for line in lines:
+            # but replace the old charge values
+            if line[len(line)-10:-1] in lib:
+                print(f"replacing {lib[charges_index]} with {resp[charges_index]}")
+                new_charge = line.replace(lib[charges_index], resp[charges_index])
+                f.write(new_charge)
+                charges_index += 1
+            else:
+                f.write(line)
+    
+    print(f"\n\tNew library file: {new_lib_name} was created.\n")
 
 if __name__ == "__main__":
     np.set_printoptions(formatter={'float': lambda x: "{0:0.2f}".format(x)})
@@ -140,4 +173,6 @@ if __name__ == "__main__":
         print(f"charges from the {resp_out} file to use for bonded parameter derivation.\n")
     elif deviation >= 10:
         print("\tI would recommend running another iteration until this value is < 10%\n")
+    print(f"Making a new library file with updated charges from {resp_out}:")
+    build_new_lib_file(library, resp_out, "NEW_LIB_FILE.lib")
 
