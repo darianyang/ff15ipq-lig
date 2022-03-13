@@ -3,6 +3,7 @@
 
 ITER=v00
 PDB=mon
+LIB=${PDB}.lib
 # name of the input file to be generated
 RESP=$ITER/resp.in
 
@@ -82,4 +83,9 @@ echo "
 
 &end" >> $RESP
 
-#mdgx -i $RESP
+#mdgx -i $RESP &&
+
+# check the output resp file for self-consistent charge convergence
+# args: 1 = library file, 2 = resp output file
+python 3.check_converge.py $LIB $ITER/resp.out
+
