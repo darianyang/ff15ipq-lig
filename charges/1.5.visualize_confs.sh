@@ -83,3 +83,5 @@ function vmd_view {
 #chimera_view
 chimerax_view
 #vmd_view
+
+# TODO: add a conformer RMSD matrix option using MDAnalysis?

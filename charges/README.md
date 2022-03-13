@@ -25,6 +25,12 @@
         * output a set of pdb files for each conformation, which can more easily visualized in vmd or a similar program
         * output a coordinate file (crd or rst)
         * minimize and equilibrate each individual conformation with positional restraints
+* Before moving on, check to make sure your conformations are diverse and relevent:
+    * Edit and run script 1.5 to visualize all conformations in chimera or chimerax
+        * `$ bash 1.5.visualize_conf.sh` 
+        * note that you should have chimera and/or chimerax as part of you PATH for this to run
+            * e.g. for mac : `export PATH="$PATH:/Applications/Chimera.app/Contents/MacOS"`
+            * for linux : `export PATH="$PATH:/home/USER/.local/UCSF-Chimera64-1.15rc/bin"`
 
 #### Script 2 
 * Now it's time to use script 2 to get the ESP grids in both explicit solvent and in vacuum for each conformation
