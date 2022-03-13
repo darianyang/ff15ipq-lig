@@ -15,14 +15,16 @@ Returns
 -------
 deviation : float
     The average percent deviation from the average absolute charge values.
-    If this value is <10%, you're in good shape to move on to next stage.
-    Otherwise, run another round of IPolQ charge derivation until <10%.
+    If this value is < 10%, you're in good shape to move on to next stage.
+    Otherwise, run another round of IPolQ charge derivation until < 10%.
 
         Abs Charge Difference = |new charge value - old charge value|
-        Average Abs Charge Value = <|All New Charge Values for the Iteration|>
+        Average Abs Charge Value = < |All New Charge Values for the Iteration| >
         
         Percent Deviation from Average Iteration Charge Values = 
         ( Abs Charge Difference / Average Abs Charge Value ) * 100
+
+        deviation = < Percent Deviation from Average Iteration Charge Values >
 """
 
 import sys
@@ -83,7 +85,7 @@ def grab_resp_charges(resp_out):
 def calc_percent_deviation(lib, resp):
     """
     Abs Charge Difference = |new charge value - old charge value|
-    Average Abs Charge Value = <|All New Charge Values for the Iteration|>
+    Average Abs Charge Value = < |All New Charge Values for the Iteration| >
 
     Percent Deviation from Average Iteration Charge Values =   
     ( Abs Charge Difference / Average Abs Charge Value ) * 100 
@@ -91,7 +93,7 @@ def calc_percent_deviation(lib, resp):
     Returns
     -------
     deviation : float
-        <Percent Deviation from Average Iteration Charge Values>
+        < Percent Deviation from Average Iteration Charge Values >
     """
     abs_diff = np.abs(np.subtract(lib, resp))
     avg_abs_new_charge = np.average(np.abs(resp))

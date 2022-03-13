@@ -28,7 +28,7 @@ if [[ -f grid_output.solv && -f grid_output.vacu ]]; then
 fi
 
 # copy over single conformation setup script
-cp -v ../../../2.ipq_qm_single_conf_setup.sh .
+cp -v ../../../2.0.ipq_qm_single_conf_setup.sh .
 
 # make mdgx file and run with sbatch
 cat << EOF > conf_${CONF}_mdgx_grid_gen.slurm
@@ -59,7 +59,7 @@ echo "Running Conformation ${CONF}"
 # script to setup directory for one conformation
 # takes 1 arg = Conformation Int
 # 2nd arg needed for high T conf gen, also compatible with mdgx conf gen
-bash 2.ipq_qm_single_conf_setup.sh ${CONF} ${PDB} &&
+bash 2.0.ipq_qm_single_conf_setup.sh ${CONF} ${PDB} &&
 
 # run mdgx on one conformation
 #mpirun -np ${CPU} mdgx.MPI -i ipq_qm_mp2_grid_gen.mdgx

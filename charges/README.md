@@ -6,7 +6,7 @@
 
 #### Script 0
 * Edit then run script 0, which generates the initial parameters for the molecule using AM1-BCC charges and an frcmod file with terms that were not available in the parent ff15ipq force field
-    * `$ bash 0.ipq_initial_lib_frcmod.sh`
+    * `$ bash 0.0.ipq_initial_lib_frcmod.sh`
     * The charges are from the antechamber program
         * antechamber also handles atom types, which is currently set to use gaff
             * if you don't use gaff, new atom types may be needed
@@ -18,9 +18,9 @@
 * Then edit and run script 1, this will generate the conformations that will be subjected to QM ESP grid calculations
     * There are 2 ways available to do this:
         * you can use high temperature (450K) simulations and save MD snapshots as the conformations
-            * `$ sbatch 1.ipq_gen_conf_highT_equil.slurm`
+            * `$ sbatch 1.0.ipq_gen_conf_highT_equil.slurm`
         * or you can use the mdgx `&configs` module, which has alot of options in terms of restraining your molecule at user-specified atoms (make sure to customize this for your system)
-            * `$ sbatch 1.ipq_gen_conf_mdgx_equil.slurm`
+            * `$ sbatch 1.0.ipq_gen_conf_mdgx_equil.slurm`
     * Both conformation generation scripts will also:
         * output a set of pdb files for each conformation, which can more easily visualized in vmd or a similar program
         * output a coordinate file (crd or rst)
@@ -35,7 +35,7 @@
 #### Script 2 
 * Now it's time to use script 2 to get the ESP grids in both explicit solvent and in vacuum for each conformation
 * This is all done with mdgx, but the user must provide the `&ipolq` settings, including the path to a qm calculation program such as orca or gaussian
-    * These are adjusted in the `2.ipq_qm_single_conf_setup.sh` file, which is copied and ran in each conformation directory by the `2.ipq_qm_multi_conf_run.sh` file
+    * These are adjusted in the `2.0.ipq_qm_single_conf_setup.sh` file, which is copied and ran in each conformation directory by the `2.0.ipq_qm_multi_conf_run.sh` file
         * `$ bash 2.ipq_qm_multi_conf_run.sh`
         * note that for now, orca 5.0 works serially with amber 18 or 20
             * I'm not certain why, but running orca 5.0 in parallel is problematic with the current version of mdgx from amber 18 or 20
@@ -50,11 +50,15 @@
             * 152/168Gb : Ran out after 6.5 hours
             * 184/184Gb : Ran out after 8 hours
             * 208/216Gb : Ran out after 11 hours
+* After script 2 finishes, you can check to make sure that the qm_output files looks appropriate using script 2.5:
+    * `$ bash 2.5.check_completion.sh`
+    * If any of your conformations failed, you can resubmit then by running:
+        * `$ bash 2.5.check_completion.sh resub`
 
 #### Script 3
 * Now that the grid files are generated, they are all taken into a single restrained electrostatic potential (RESP) fitting procedure
-    * edit then run script 3: `$ bash 3.resp_fitting.sh`
-    * you do not need to edit the `3.check_converge.py` script
+    * edit then run script 3: `$ bash 3.0.resp_fitting.sh`
+    * you do not need to edit the `3.1.check_converge.py` script or run it, script 3.0 will take care of it
 * There is some important adjustments to consider here which are all detailed in script 3 under the `&fitq` module of mdgx
     * This includes bond equivalencies (degeneracies) and restraints on buried atoms (putting the R in RESP fitting)
 * After fitting new charges, this script will run the `3.check_convergence.py` script to see how close or far away you are from reaching a self-consistent IPolQ charge set
@@ -85,4 +89,4 @@
 * I would recommend testing the mdgx `&ipolq` module first for a single conformation using a smaller simulation step limit and a faster level of QM theory/smaller basis set
     * e.g. `HF/STO-3G`; or something like `RI-MP2 def2-TZVP def2-TZVP/C RIJK def2/JK`, which has density fitting approximations for MP2 and for the HF SCF Coulomb and HF exchange integrals
     * An example of my tests are available in `v00/GenConformers/conf1-test`
-        * adjust the `ipq_qm_mp2_grid_gen_test.mdgx` or the `2.ipq_qm_single_conf_setup` script and run the `conf_1_mdgx_grid_gen.slurm` file (I usually test this on an interactive session)
+        * adjust the `ipq_qm_mp2_grid_gen_test.mdgx` or the `2.0.ipq_qm_single_conf_setup` script and run the `conf_1_mdgx_grid_gen.slurm` file (I usually test this on an interactive session)
