@@ -45,20 +45,21 @@
 
 #### Script 3
 * Now that the grid files are generated, they are all taken into a single restrained electrostatic potential (RESP) fitting procedure
-* There is some important adjustments to consider here which are all detailed in script 3 under the `&fitq` module of mdgx (TODO for monastrol)
-   * This includes bond equivalencies (degeneracies) and restraints on buried atoms (putting the R in RESP fitting)
+    * edit then run the `3.resp_fitting.sh` script
+* There is some important adjustments to consider here which are all detailed in script 3 under the `&fitq` module of mdgx
+    * This includes bond equivalencies (degeneracies) and restraints on buried atoms (putting the R in RESP fitting)
+* After fitting new charges, this script will run the `3.check_convergence.py` script to see how close or far away you are from reaching a self-consistent IPolQ charge set
+    * If you saveoff an updated mol2 file using tleap and the new library file, you can also visualize the atomic charge values with a program such as ChimeraX and maybe Avogadro
+        * or just generate an updated topology file and open it up in VMD
+    * If they are similar (within 10% difference), congrats! You've now got a self-consistent set of charges for your small molecule
+        * if not, then you'll have to derive another set using your current charges as the starting point
 
 #### Next Steps
 * Now you can take the ipq solvent-vacuum averaged atomic partial charges from the resp fitting output and replace your AM1-BCC charges in the library file
     * I usually do this using vim: `ctrl + v` then select and yank (`y`), then open existing file (`:e lib_file`) and paste (`p` or `P`)
-* After this, it's time to ITERATE. Run this process again from script 0 with your updated charges
-    * This time, only run the first function for stage1_file_setup since you already have the other files
-    * When you get to the end and have a new set of charges, compare these to the first iteration (I usually do this in excel since the dataset is small)
-      * if you save off a mol2 file using tleap, you can also visualize the atomic charge values with a program such as ChimeraX and maybe Avogadro
-      * or just generate an updated topology file and open it up in VMD
-   * If they are similar (within 10% difference), congrats! You've now got a self-consistent set of charges for your small molecule
-       * if not, then try again, I'm sure you'll get there eventually
-* Now take this self-consistent set of ipq charges and move on to the bonded parameter derivation stage (`../bonded/`)
+* After this, you may have to ITERATE and run this process again from script 0 with your updated charges
+    * If you do, only run the first function for stage1_file_setup since you already have the other files
+* Once they're converged, take this self-consistent set of ipq charges and move on to the bonded parameter derivation stage (`../bonded/`)
 
 <br>
   
