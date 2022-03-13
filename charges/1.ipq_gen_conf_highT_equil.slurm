@@ -81,6 +81,8 @@ function high_T_conf_gen {
     for RST in {250000..5000000..250000} ; do
         # move conf rst files to GenConformers and rename
         mv 5_genconf.rst_$RST GenConformers/Conf${CONF}.rst && 
+        
+        # TODO: strip with cpptraj to be consistent with mdgx conf gen?
         # make pdb file, centered with no CRYST1 record of box coordinates
         ambpdb -p ${PDB}.top -c GenConformers/Conf${CONF}.rst -ctr -nobox > GenConformers/Conf${CONF}.pdb  
         let "CONF++"
