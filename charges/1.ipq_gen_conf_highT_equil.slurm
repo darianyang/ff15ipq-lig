@@ -95,7 +95,7 @@ function equil_confs {
     for CONF in {1..20}; do
         # make and go into subdirectory
         mkdir Conf${CONF}
-        if [ -f Conf${CONF}.* ] ; then
+        if [[ -f Conf${CONF}.rst || -f Conf${CONF}.pdb ]] ; then
             mv Conf${CONF}.rst Conf${CONF}
             mv Conf${CONF}.pdb Conf${CONF}
         fi
@@ -126,6 +126,6 @@ function equil_confs {
 #########################################################################
 ### The following functions are for high temp conformation generation ###
 #########################################################################
-high_T_conf_gen
+#high_T_conf_gen
 equil_confs
 
