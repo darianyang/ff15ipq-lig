@@ -35,8 +35,7 @@
 #### Script 2 
 * Now it's time to use script 2 to get the ESP grids in both explicit solvent and in vacuum for each conformation
 * This is all done with mdgx, but the user must provide the `&ipolq` settings, including the path to a qm calculation program such as orca or gaussian
-    * These are adjusted in the `2.0.ipq_qm_single_conf_setup.sh` file, which is copied and ran in each conformation directory by the `2.0.ipq_qm_multi_conf_run.sh` file
-        * `$ bash 2.ipq_qm_multi_conf_run.sh`
+    * These are adjusted in the `2.0.ipq_qm_single_conf_setup.sh` file, which is copied and ran in each conformation directory by running the `2.0.ipq_qm_multi_conf_run.sh` file
         * note that for now, orca 5.0 works serially with amber 18 or 20
             * I'm not certain why, but running orca 5.0 in parallel is problematic with the current version of mdgx from amber 18 or 20
         * if you need to run in parallel, try using an older version of orca
