@@ -1,33 +1,33 @@
 #!/bin/bash
 # set up REsP charge fitting file for 19F after grid files generation
 
-ITER=gaff_00
+ITERATION=gaff_00
 PDB=mon
 LIB=${PDB}.lib
 # name of the input file to be generated
-RESP=$ITER/resp.in
+RESP=$ITERATION/resp.in
 
 
 # make a vacuum phase topology file (PDB_V.top) if using high_T conf gen
-if [ ! -f $ITER/${PDB}_V.top ] ; then
+if [ ! -f $ITERATION/${PDB}_V.top ] ; then
     CMD=" strip :WAT \n"
-    CMD="$CMD parmout $ITER/${PDB}_V.top \n"
+    CMD="$CMD parmout $ITERATION/${PDB}_V.top \n"
     CMD="$CMD go"
-    echo -e "$CMD" > $ITER/parmed.in
-    parmed -p $ITER/${PDB}.top -i $ITER/parmed.in > $ITER/parmed.out
+    echo -e "$CMD" > $ITERATION/parmed.in
+    parmed -p $ITERATION/${PDB}.top -i $ITERATION/parmed.in > $ITERATION/parmed.out
 fi
  
 # clean up previous run topology file
-if [[ -f $ITER/${PDB}_V.top. && -f $ITER/resp.out ]] ; then
+if [[ -f $ITERATION/${PDB}_V.top. && -f $ITERATION/resp.out ]] ; then
     echo -e "\nCleaning up previous run files:"
-    rm -v $ITER/{${PDB}_V.top.,resp.out}
+    rm -v $ITERATION/{${PDB}_V.top.,resp.out}
     echo ""
 fi
 
 # begin head of resp input file
 echo "
 &files
-  -o    $ITER/resp.out
+  -o    $ITERATION/resp.out
 &end
 
 &fitq" > $RESP
@@ -35,8 +35,8 @@ echo "
 # input vacuum and solvent reacion field potential quantum calculations from IPolQ
 # COLUMNS: ipolq_command | vacu_grid_file | solv_grid_file | topology | conf_weight 
 for CONF in {1..20} ; do
-    GRID_PATH=$ITER/GenConformers/Conf$CONF
-    echo "  ipolq  $GRID_PATH/grid_output.vacu  $GRID_PATH/grid_output.solv   $ITER/${PDB}_V.top   1.0" >> $RESP
+    GRID_PATH=$ITERATION/GenConformers/Conf$CONF
+    echo "  ipolq  $GRID_PATH/grid_output.vacu  $GRID_PATH/grid_output.solv   $ITERATION/${PDB}_V.top   1.0" >> $RESP
 done
 
 echo "
@@ -88,6 +88,6 @@ mdgx -i $RESP &&
 
 # check the output resp file for self-consistent charge convergence
 # args: 1 = library file, 2 = resp output file
-echo -e "\nRUNNING: python 3.check_converge.py $ITER/$LIB $ITER/resp.out"
-python 3.1.check_converge.py $ITER/$LIB $ITER/resp.out
+echo -e "\nRUNNING: python 3.check_converge.py $ITERATION/$LIB $ITERATION/resp.out"
+python 3.1.check_converge.py $ITERATION/$LIB $ITERATION/resp.out
 

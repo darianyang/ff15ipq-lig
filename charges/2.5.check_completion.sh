@@ -2,11 +2,11 @@
 # check that all conformations finished grid file generation successfully
 # takes 1 optional arg 1 - can be "resub" to resubmit failed runs
 
-ITER=gaff_00
+ITERATION=gaff_00
 PDB=mon
 
 FAIL=0
-cd $ITER/GenConformers
+cd $ITERATION/GenConformers
 for CONF in {1..20} ; do
     cd Conf$CONF
 

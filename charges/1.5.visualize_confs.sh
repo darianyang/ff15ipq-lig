@@ -7,12 +7,12 @@
 # if you figure out a script to use a different program
 # please submit a PR and I can add it in!
 
-ITER=gaff_00
+ITERATION=gaff_00
 PDB=mon
 
 function chimera_view {
     # go to where the conformer pdbs are
-    cd $ITER/GenConformers
+    cd $ITERATIONATION/GenConformers
 
     # write a chimera cmd script for pdb visualization
     CMD="open */*.pdb \n"
@@ -30,7 +30,7 @@ function chimera_view {
 
 function chimerax_view {
     # go to where the conformer pdbs are
-    cd $ITER/GenConformers
+    cd $ITERATION/GenConformers
 
     # write a chimera cmd script for pdb visualization
     CMD="open */*.pdb \n"
@@ -55,7 +55,7 @@ function chimerax_view {
 # TODO: this currently does not work too well
 function vmd_view {
     # go to where the conformer pdbs are
-    cd $ITER/GenConformers
+    cd $ITERATION/GenConformers
 
     # build tcl script
     CMD="for {set a 1} {\$a < 21} {incr a} { \n"
