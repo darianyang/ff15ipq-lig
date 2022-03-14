@@ -31,6 +31,9 @@
         * note that you should have chimera and/or chimerax as part of you PATH for this to run
             * e.g. for mac : `export PATH="$PATH:/Applications/Chimera.app/Contents/MacOS"`
             * for linux : `export PATH="$PATH:/home/USER/.local/UCSF-Chimera64-1.15rc/bin"`
+    * You can also try running script 1.6, which generates an RMSD matrix of all of the conformations
+        * `$ python 1.6.conformer_matrix.py`
+        * note that you'll need MDAnalysis and seaborn in your Python environment to run this
 
 #### Script 2 
 * Now it's time to use script 2 to get the ESP grids in both explicit solvent and in vacuum for each conformation
