@@ -101,9 +101,11 @@ cat << EOF > tleap_lib.in
 #source leaprc.protein.ff15ipq
 source leaprc.gaff
 loadAmberParams ${PDB}.frcmod
-${PDB} = loadmol2 ${PDB}.mol2
-check ${PDB}
-saveOff ${PDB} ${PDB}.lib
+${PDB^^} = loadmol2 ${PDB}.mol2
+check ${PDB^^}
+# note that the unit name must be capitalized
+# or at least match the PDB file restype
+saveOff ${PDB^^} ${PDB}.lib
 quit
 EOF
 
