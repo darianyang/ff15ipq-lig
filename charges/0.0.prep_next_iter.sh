@@ -24,3 +24,6 @@ sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.5.visualize_confs.sh
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 2.0.ipq_qm_multi_conf_run.sh
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 2.5.check_completion.sh
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 3.0.resp_fitting.sh
+
+echo -e "\n\tThe next iteration directory is ready to go and scripts 1-3 are updated!"
+echo -e "\tYou should be able to just run scripts 1-3 as is, but check them just in case.\n"

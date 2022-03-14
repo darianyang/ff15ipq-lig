@@ -2,7 +2,7 @@
 # check that all conformations finished grid file generation successfully
 # takes 1 optional arg 1 - can be "resub" to resubmit failed runs
 
-ITERATION=gaff_00
+ITERATION=gaff_01
 PDB=mon
 
 FAIL=0

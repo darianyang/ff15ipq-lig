@@ -1,7 +1,7 @@
 #!/bin/bash
 # set up REsP charge fitting file for 19F after grid files generation
 
-ITERATION=gaff_00
+ITERATION=gaff_01
 PDB=mon
 LIB=${PDB}.lib
 # name of the input file to be generated

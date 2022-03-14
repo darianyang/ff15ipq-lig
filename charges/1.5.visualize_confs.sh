@@ -7,7 +7,7 @@
 # if you figure out a script to use a different program
 # please submit a PR and I can add it in!
 
-ITERATION=gaff_00
+ITERATION=gaff_01
 PDB=mon
 
 function chimera_view {
