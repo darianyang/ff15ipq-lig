@@ -20,13 +20,13 @@ mkdir -v $NEXT_ITER
 cp -v $PREV_ITER/${PDB}.frcmod $NEXT_ITER/
 
 # change the iteration variables to new values
-# need this extented sed for MacOSX
-sed -i '' "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.0.ipq_gen_conf_highT_equil.slurm
-sed -i '' "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.0.ipq_gen_conf_mdgx_equil.slurm
-sed -i '' "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.5.visualize_confs.sh
-sed -i '' "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 2.0.ipq_qm_multi_conf_run.sh
-sed -i '' "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 2.5.check_completion.sh
-sed -i '' "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 3.0.resp_fitting.sh
+# need extented ('') sed for MacOSX (sed -i '' "s//" file)
+sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.0.ipq_gen_conf_highT_equil.slurm
+sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.0.ipq_gen_conf_mdgx_equil.slurm
+sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.5.visualize_confs.sh
+sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 2.0.ipq_qm_multi_conf_run.sh
+sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 2.5.check_completion.sh
+sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 3.0.resp_fitting.sh
 
 # make a pdb file and a mol2 file with updated charges for NEXT_ITER
 cat << EOF > $NEXT_ITER/tleap_mol2.in
