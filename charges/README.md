@@ -76,8 +76,7 @@
             * feel free to roll with this one, but double check that the values look okay first
             * keep this file name to maintain compatibility with script `0.0.prep_next_iter.sh`
 * After this, you may have to ITERATE and run this process again from script 0 with your updated charges
-    * If you do, only run the first function for stage1_file_setup since you already have the other files
-        * this can be adjusted by commenting out the other functions at the bottom of script 0
+    * Fill out and run `0.0.prep_next_iter.sh`
 * Once they're converged, take this self-consistent set of ipq charges and move on to the bonded parameter derivation stage (`../bonded/`)
 
 <br>

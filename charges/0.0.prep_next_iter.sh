@@ -17,4 +17,6 @@ cp -v $LIB $NEXT_ITER/${PDB}.lib
 mkdir -v $NEXT_ITER
 cp -v $PREV_ITER/{${PDB}.pdb,${PDB}.frcmod} $NEXT_ITER/
 
-
+# change the iteration variables to new values
+sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" *.sh
+sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" *.slurm
