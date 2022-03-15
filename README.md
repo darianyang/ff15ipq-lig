@@ -8,6 +8,7 @@ This directory provides an example of how to derive ff15ipq compatible parameter
 
 ### Dependencies:
 * AmberTools
+* Amber (pmemd)
 * ORCA
 
 ### The workflow is as follows:

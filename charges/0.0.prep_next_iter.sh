@@ -24,6 +24,7 @@ cp -v $PREV_ITER/${PDB}.frcmod $NEXT_ITER/
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.0.ipq_gen_conf_highT_equil.slurm
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.0.ipq_gen_conf_mdgx_equil.slurm
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 1.5.visualize_confs.sh
+sed -i "s/ITERATION = '$PREV_ITER'/ITERATION = '$NEXT_ITER'/" 1.6.conformer_matrix.sh
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 2.0.ipq_qm_multi_conf_run.sh
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 2.5.check_completion.sh
 sed -i "s/ITERATION=$PREV_ITER/ITERATION=$NEXT_ITER/" 3.0.resp_fitting.sh
