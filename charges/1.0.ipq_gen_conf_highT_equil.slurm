@@ -25,7 +25,7 @@ set -x
 ######################################################################
 # set variables
 PDB=mon
-ITERATION=gaff_01
+ITERATION=gaff_02
 LIB=${PDB}.lib
 FRCMOD=${PDB}.frcmod
 

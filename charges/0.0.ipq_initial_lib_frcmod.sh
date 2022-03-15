@@ -3,13 +3,18 @@
 # this script is best run locally or with a crc-interactive session
 
 ######################################################################
-# set variables: your PDB file from Avogadro should be $PDB.pdb
+### set variables: your PDB file from Avogadro should be: $PDB.pdb ###
+######################################################################
 
-PDB=mon             # this should be your 3 letter PDB residue name
-ITERATION=gaff_00   # this can be anything: all files will go here
+# this should be your 3 letter PDB residue name
+# note that this will dictate the library UNIT name
+PDB=mon
+# this can be anything: all files will go here
+ITERATION=gaff_00 
 
-# remember to adjust antechamber and parmchk2 arguments if needed
-# currently, this workflow uses gaff atom types and parameter files
+######################################################################
+### remember to adjust antechamber and parmchk arguments if needed ###
+## currently this workflow uses gaff atom types and parameter files ##
 ######################################################################
 
 function progress_check {
