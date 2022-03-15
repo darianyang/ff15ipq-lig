@@ -165,6 +165,8 @@ if __name__ == "__main__":
     deviation = calc_percent_deviation(lib, resp)
     print("\nOriginal charge set (eV): ", lib)
     print("\nNew charge set (eV): ", resp)
+    print(f"Making a new library file with updated charges from {resp_out}:")
+    build_new_lib_file(library, resp_out, "NEW_LIB_FILE.lib")
     print(f"\nThe final percent deviation between the {library} \n" +
           f"and {resp_out} charge sets is {deviation:0.2f}%\n")
     if deviation < 10:
@@ -173,6 +175,4 @@ if __name__ == "__main__":
         print(f"charges from the {resp_out} file to use for bonded parameter derivation.\n")
     elif deviation >= 10:
         print("\tI would recommend running another iteration until this value is < 10%\n")
-    print(f"Making a new library file with updated charges from {resp_out}:")
-    build_new_lib_file(library, resp_out, "NEW_LIB_FILE.lib")
 
