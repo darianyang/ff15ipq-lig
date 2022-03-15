@@ -120,11 +120,10 @@ progress_check
 cd ../
 }
 
-# for every iteration, run this function
-stage1_file_setup
 
 # only run these functions for the first iteration
-# with subsequent iterations, you will have the updated files already
+# with subsequent iterations, you will instead run 0.0.prep_next_iter.sh
+stage1_file_setup
 mol2_gen
 frcmod_gen
 lib_gen

@@ -52,24 +52,28 @@ function chimerax_view {
     chimerax chimerax.cxc
 }
 
-# TODO: this currently does not work too well
 function vmd_view {
     # go to where the conformer pdbs are
     cd $ITERATION/GenConformers
 
     # build tcl script
+    # begin loop for all other confs
     CMD="for {set a 1} {\$a < 21} {incr a} { \n"
     CMD="$CMD mol new Conf\${a}/Conf\${a}.pdb \n"
-    #CMD="$CMD set mol_index [ expr \$a -1 ] \n"
-    #CMD="$CMD mol modselect 0 \$mol_index all not water \n"
-    #CMD="$CMD mol modselect 0 \$mol_index Licorice 0.2 50 50 \n"
-    #CMD="$CMD set sel0 [atomselect 0 'all not water'] \n"
-    #CMD="$CMD set sel1 [atomselect \$mol_index 'all not water'] \n"
-    #CMD="$CMD set M [measure fit \$sel0 \$sel1] \n"
-    #CMD="$CMD \$sel0 move \$M \n"
-    CMD="$CMD mol selection {not water} \n"
-    CMD="$CMD mol representation Licorice 0.2 50 50 \n"
+    # delete default rep
+    CMD="$CMD mol delrep 0 top \n"
+    # build new licorice rep at a + 1 molecule index
+    CMD="$CMD set index [ expr \$a -1 ] \n"
+    CMD="$CMD mol selection all not water \n"
+    CMD="$CMD mol rep Licorice 0.2 50 50 \n"
+    CMD="$CMD mol addrep \$index \n"
+    # align to conf 1 at index 0 
+    CMD="$CMD set sel0 [atomselect 0 \"all not water\"] \n"
+    CMD="$CMD set sel1 [atomselect \$index \"all not water\"] \n"
+    CMD="$CMD set M [measure fit \$sel1 \$sel0] \n"
+    CMD="$CMD \$sel1 move \$M \n"
     CMD="$CMD } \n"
+    # some display settings
     CMD="$CMD axes location off \n"
     CMD="$CMD color Display Background white \n"
     CMD="$CMD display antialias on"
@@ -80,8 +84,7 @@ function vmd_view {
     vmd -e vmd.tcl
 }
 
-#chimera_view
-chimerax_view
-#vmd_view
 
-# TODO: add a conformer RMSD matrix option using MDAnalysis?
+#chimera_view
+#chimerax_view
+vmd_view

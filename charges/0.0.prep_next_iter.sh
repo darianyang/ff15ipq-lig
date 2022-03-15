@@ -46,4 +46,8 @@ tleap -f $NEXT_ITER/tleap_mol2.in > $NEXT_ITER/tleap_mol2.out
 
 echo -e "\n\tThe next iteration directory is ready to go and scripts 1-3 are updated!"
 echo -e "\tYou should be able to just run scripts 1-3 as is, but check them just in case.\n"
+echo -e "\tIf your mol2 file dosen't have the appropritate atom types or charges, you may need"
+echo -e "\tto make sure the UNIT naming in the library file and the restype naming in the"
+echo -e "\tPDB and MOL2 files are all consistent, i.e if your PDB restype is MON (for monastrol)"
+echo -e "\tthe MOL2 restype should be MON and all UNIT entries in the library file are MON."
 
