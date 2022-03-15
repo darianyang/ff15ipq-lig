@@ -158,6 +158,8 @@ def build_new_lib_file(library, resp_out, new_lib_name):
     
     print(f"\n\tNew library file: {new_lib_name} was created.\n")
 
+    #TODO: make vac charge lib file as well
+
 if __name__ == "__main__":
     np.set_printoptions(formatter={'float': lambda x: "{0:0.2f}".format(x)})
     lib = grab_lib_charges(library)
@@ -165,9 +167,9 @@ if __name__ == "__main__":
     deviation = calc_percent_deviation(lib, resp)
     print("\nOriginal charge set (eV): ", lib)
     print("\nNew charge set (eV): ", resp)
-    print(f"Making a new library file with updated charges from {resp_out}:")
+    print(f"\nMaking a new library file with updated charges from {resp_out}:")
     build_new_lib_file(library, resp_out, "NEW_LIB_FILE.lib")
-    print(f"\nThe final percent deviation between the {library} \n" +
+    print(f"The final percent deviation between the {library} \n" +
           f"and {resp_out} charge sets is {deviation:0.2f}%\n")
     if deviation < 10:
         print("\tNice! Now move on to bonded parameter derivation\n")

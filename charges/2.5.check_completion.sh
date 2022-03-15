@@ -40,3 +40,7 @@ for CONF in {1..20} ; do
     cd ..
 done
 echo "TOTAL FAILED CONFS = $FAIL"
+
+if [[ $FAIL -ge 1 && $1 != "resub" ]] ; then
+    echo -e "\n\tTo resubmit the failed runs, run this script with arg \$1 = resub\n"
+fi

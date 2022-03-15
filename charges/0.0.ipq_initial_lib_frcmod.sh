@@ -36,6 +36,8 @@ sed -i 's/HETATM/ATOM  /g' ${PDB}.pdb
 
 # set the 3 letter id and name of the molecule (if not already set)
 # with raw avogadro output, the values need to be set
+echo -e "\nThis script will change the restype in your PDB file to \$PDB = ${PDB^^}"
+echo -e "This is assuming that the original restype from avogadro is called UNL"
 sed -i "s/UNL/${PDB^^}/g" ${PDB}.pdb
 sed -i "s/UNNAMED/${PDB}.pdb/" ${PDB}.pdb
 
@@ -91,6 +93,7 @@ echo "Fill these out with initial guess values based on similar atoms."
 echo "Later on, these parameters will also be optimized." 
 echo "Note that this is less of an issue with GAFF"
 progress_check
+cp -v ${PDB}.frcmod ../
 cd ../
 }
 
