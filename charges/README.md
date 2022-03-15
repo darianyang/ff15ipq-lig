@@ -78,9 +78,10 @@
         * it should generate an updated library file called NEW_LIB_FILE.lib
             * feel free to roll with this one, but double check that the values look okay first
             * keep this file name to maintain compatibility with script `0.0.prep_next_iter.sh`
+        * if you're charges values look good (< 10%), this script will also generate a vacuum phase library file for use with the bonded parameter derivation stage
 * After this, you may have to ITERATE and run this process again from script 0 with your updated charges
     * Fill out and run `0.0.prep_next_iter.sh`
-* Once they're converged, take this self-consistent set of ipq charges and move on to the bonded parameter derivation stage (`../bonded/`)
+* Once they're converged, take this self-consistent set of ipq charges and you could roll with then and the gaff-based frcmod file, or you could optimize the bonded parameters yourself (see `../bonded`)
 
 <br>
   

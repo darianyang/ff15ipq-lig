@@ -59,9 +59,9 @@ def grab_lib_charges(library, string=False):
         # return a float ndarray
         return np.loadtxt(charges, dtype=float)
 
-def grab_resp_charges(resp_out, string=False):
+def grab_resp_charges(resp_out, string=False, vac=False):
     """
-    Extract the IPolQ charge values from the mdgx &fitq resp fitting output.
+    Extract the IPolQ (or vacuum) charge values from the mdgx &fitq resp fitting output.
     """
     # open and read file
     with open(str(resp_out)) as f:
@@ -80,8 +80,12 @@ def grab_resp_charges(resp_out, string=False):
         # stop at end of charge table
         if line.startswith("<++>"):
             break
-        # grab the rightmost IPolQ,pert column
-        charges.append(line[len(line)-9:-1])
+        if vac is False:
+            # grab the rightmost IPolQ,pert column
+            charges.append(line[len(line)-9:-1])
+        elif vac is True:
+            # grab the VacuumQ column
+            charges.append(line[len(line)-33:-25])
     
     # optionally return the string list
     if string is True:
@@ -117,7 +121,7 @@ def calc_percent_deviation(lib, resp):
 #b = np.array([-0.47978, 0.30403, -0.07841])
 #c = calc_percent_deviation(a, b)
 
-def build_new_lib_file(library, resp_out, new_lib_name):
+def build_new_lib_file(library, resp_out, new_lib_name, vac=False):
     """
     Take the RESP &fitq mdgx output and fill out new library file.
 
@@ -129,12 +133,21 @@ def build_new_lib_file(library, resp_out, new_lib_name):
         Path to the resp output file.
     new_lib_name : str
         Name of new library file with resp fitted charges.
+    vac : bool
+        If this is True, generate a library file with the vacuum charges.
     """
     # lib and resp file charge arrays as strings
     lib = grab_lib_charges(library, string=True)
-    resp = grab_resp_charges(resp_out, string=True)
-    # make both arrays have the same char per string
-    resp = [i + "0" for i in resp]
+
+    if vac is False:
+        resp = grab_resp_charges(resp_out, string=True)
+        # make both arrays have the same char per string
+        resp = [i + "0" for i in resp]
+    elif vac is True:
+        # grab the vacuum phase charges
+        resp = grab_resp_charges(resp_out, string=True, vac=True)
+        # make both arrays have the same char per string
+        resp = [i + "0" for i in resp]
 
     # open and read in old library file
     with open(str(library)) as f:
@@ -158,8 +171,7 @@ def build_new_lib_file(library, resp_out, new_lib_name):
     
     print(f"\n\tNew library file: {new_lib_name} was created.\n")
 
-    #TODO: make vac charge lib file as well
-
+#TODO: test vac file gen
 if __name__ == "__main__":
     np.set_printoptions(formatter={'float': lambda x: "{0:0.2f}".format(x)})
     lib = grab_lib_charges(library)
@@ -172,9 +184,10 @@ if __name__ == "__main__":
     print(f"The final percent deviation between the {library} \n" +
           f"and {resp_out} charge sets is {deviation:0.2f}%\n")
     if deviation < 10:
-        print("\tNice! Now move on to bonded parameter derivation\n")
-        print("Note that you will need to make a seperate library file of the vacuum phase")
-        print(f"charges from the {resp_out} file to use for bonded parameter derivation.\n")
+        print("\tNice! Now you could move on to the bonded parameter derivation process\n")
+        print(f"The vacuum charges from the {resp_out} file must be used for bonded parameter derivation.")
+        print(f"\nMaking a new library file with vacuum charges from {resp_out}:")
+        build_new_lib_file(library, resp_out, "NEW_VAC_LIB_FILE.lib", vac=True)
     elif deviation >= 10:
         print("\tI would recommend running another iteration until this value is < 10%\n")
 
