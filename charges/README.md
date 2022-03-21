@@ -77,6 +77,8 @@
     * I also wrote a python function in script 3.1 to do this:
         * it should generate an updated library file called NEW_LIB_FILE.lib
             * feel free to roll with this one, but double check that the values look okay first
+                * you may run into errors down the line if the charges aren't properly spaced
+                * you should also check that they all sum to zero (or whatever is the charge value of the system)
             * keep this file name to maintain compatibility with script `0.0.prep_next_iter.sh`
         * if you're charges values look good (< 10%), this script will also generate a vacuum phase library file for use with the bonded parameter derivation stage
 * After this, you may have to ITERATE and run this process again from script 0 with your updated charges
@@ -98,3 +100,20 @@
     * e.g. `HF/STO-3G`; or something like `RI-MP2 def2-TZVP def2-TZVP/C RIJK def2/JK`, which has density fitting approximations for MP2 and for the HF SCF Coulomb and HF exchange integrals
     * An example of my tests are available in `v00/GenConformers/conf1-test`
         * adjust the `ipq_qm_mp2_grid_gen_test.mdgx` or the `2.0.ipq_qm_single_conf_setup` script and run the `conf_1_mdgx_grid_gen.slurm` file (I usually test this on an interactive session)
+
+
+#### Possible Bugs and Fixes
+* The mol2 file that is made in `0.0.prep_next_iter.sh` does not have the proper atom types or charge values
+    * This may lead to errors in the tleap_solv.out file, check it to make sure
+    * Solution: check your library and resp output file
+        * Does the UNIT in the library file match the restype of your PDB and MOL2 files?
+            * the UNIT entry may need to be updated at all instances (e.g. in vim `%s/PREVIOUS_ENTRY/NEW_ENTRY/g`)
+        * Do the charges in the library file all sum to to the intended system charge value?
+            * if not, do they match the resp output charges?
+                * do the resp output ipq charges sum to the intended system charge value?
+                    * if not, you may need to access the library files precluding the resp fitting step
+                    * where did it go wrong and stop summing to the correct value?
+        * Does the formatting of the library file look okay?
+            * compare it to the lib file generated from gaff and tleap
+            * are all the column seperated by spaces?
+

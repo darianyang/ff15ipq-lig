@@ -171,7 +171,6 @@ def build_new_lib_file(library, resp_out, new_lib_name, vac=False):
     
     print(f"\n\tNew library file: {new_lib_name} was created.\n")
 
-#TODO: test vac file gen
 if __name__ == "__main__":
     np.set_printoptions(formatter={'float': lambda x: "{0:0.2f}".format(x)})
     lib = grab_lib_charges(library)
