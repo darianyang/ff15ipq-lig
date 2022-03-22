@@ -89,5 +89,6 @@ mdgx -i $RESP &&
 # check the output resp file for self-consistent charge convergence
 # args: 1 = library file, 2 = resp output file
 echo -e "\nRUNNING: python 3.check_converge.py $ITERATION/$LIB $ITERATION/resp.out"
-python 3.1.check_converge.py $ITERATION/$LIB $ITERATION/resp.out
+python 3.1.check_converge.py $ITERATION/$LIB $ITERATION/resp.out > ${ITERATION}_check.out
+echo -e "\tSee the ${ITERATION}_check.out file for convergence checking and lib file creation info."
 
