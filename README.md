@@ -6,6 +6,10 @@
 
 This directory provides an example of how to derive ff15ipq compatible parameters for a monastrol small molecule using slurm based HPC resources.
 
+### Branches
+* Use the main branch if you're deriving parameters for a new molecule
+* For an example of what that output files look like, see the monastrol branch
+
 ### Dependencies:
 * AmberTools
 * Amber (pmemd)
