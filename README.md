@@ -26,6 +26,7 @@ This directory provides an example of how to derive ff15ipq compatible parameter
     * in Avogadro, the molecule can also be energy minimized (recommended)
 * derive a set of implicitly polarized (ipq) atomic partial charges for your molecule
     * see the /charges directory
+    * note that this directory is currently set up to handle neutral molecules, if your molecule is charged, some adjustments are needed, as detailed in the charges directory
 * optimize the initial set of bonded force field parameters that were roughly estimated in the charge derivation step
     * this is done *in vacuo* and uses the finalized vacuum phase atomic charges
     * see the /bonded directory
