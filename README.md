@@ -9,6 +9,7 @@ This directory provides an example of how to derive ff15ipq compatible parameter
 ### Branches
 * Use the main branch if you're deriving parameters for a new molecule
 * For an example of what that output files look like, see the monastrol branch
+    * This is currently the most up-to-date version of the files
 
 ### Dependencies:
 * AmberTools
