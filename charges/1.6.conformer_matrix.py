@@ -20,7 +20,7 @@ from pathlib import Path
 from MDAnalysis.analysis import rms
 from matplotlib import pyplot as plt
 
-ITERATION = 'gaff_02'
+ITERATION = 'gaff_03'
 
 # make list of target pdb paths, then load these on the fly for rmsd calc
 pdb_paths = []
