@@ -12,20 +12,11 @@ ITER=V01
 LIB_VAC=19F_FF15IPQ_V03_VAC.lib
 FRCMOD=19F_FF15IPQ_FIT_V00_GEN2.frcmod
 
-RES_CLASSES=(W4F W5F W6F W7F Y3F YDF F4F FTF)
-
 mkdir $ITER
 cd $ITER &&
 
-###############################################################################
-#######################       BEGIN LOOP         ##############################
-###############################################################################
-for RES in ${RES_CLASSES[@]} ; do
-
 
 # 1) make directory for each res class and create vac top and crd files
-mkdir $RES
-cd $RES &&
 cat << EOF > tleap_vacuo.in
 source leaprc.protein.ff15ipq
 loadoff ../../$LIB_VAC
@@ -75,8 +66,8 @@ cat << EOF > ${RES}_GEN_CONFS.mdgx
   verbose 1
 
   % Controls on the quantum mechanical operations
-  qmlev    'MP2',
-  basis    'cc-pvTZ',
+  qmlev    'RI-MP2',
+  basis    'cc-pVTZ cc-pVTZ/c',
 
   % Calc settings
   ncpu '1'
@@ -92,9 +83,6 @@ EOF
 
 mdgx -i ${RES}_GEN_CONFS.mdgx -O
 echo -e "Finished generating ${N_CONFS} conformations of ${RES}."
-
-# return to main $RES dir
-cd .. &&
 
 # make ramachandran plot
 cat << EOF > RAMA.sh
@@ -143,10 +131,16 @@ module load orca/4.2.0
 set -x 
 
 NJOB=0
+SKIP=0
 for I in {1..${N_CONFS}} ; do
 
-# TODO: add some error checking conditional to skip Confs where
-# Conf*.oout: last line is COMPLETED TIME ETC.
+    # skip confs where SPE calculations are completed
+    CONF_OOUT=\$(tail -1 CONFS_OOUT/Conf\${I}.oout)
+    if [[ "\$CONF_OOUT" == "TOTAL RUN TIME:"* ]] ; then
+        echo "FOR RES = $RES : ITER = $ITER : CONF = \$I : RUN COMPLETED: SKIPPING" >> skip.log
+        let "SKIP+=1"
+        continue
+    fi
 
   orca CONFS/Conf\${I}.orca > CONFS_OOUT/Conf\${I}.oout &
   let "NJOB+=1"
@@ -155,6 +149,8 @@ for I in {1..${N_CONFS}} ; do
     wait
   fi
 done
+
+echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}" >> skip.log
 
 # finish any unevenly ran jobs
 wait
@@ -184,7 +180,3 @@ sbatch ${RES}_RUN_ORCA.slurm
 echo -e "FINISHED $N_CONFS CONFSGEN AND SPE CALC SUBMISSION FOR $RES ITER:$ITER \n"
 cd ..
 
-done
-###############################################################################
-#######################         END LOOP         ##############################
-###############################################################################
