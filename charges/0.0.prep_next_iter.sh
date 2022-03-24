@@ -7,9 +7,9 @@
 # this should be your 3 letter PDB residue name
 PDB=mon   
 # this is the $ITERATION variable from the previous run
-PREV_ITER=gaff_01
+PREV_ITER=gaff_02
 # put your desired $ITERATION variable for the next run
-NEXT_ITER=gaff_02
+NEXT_ITER=gaff_03
 # optional variable to check the mol2 charges in chimerax
 CHECK=false
 #####################################################################
