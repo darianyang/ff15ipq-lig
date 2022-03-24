@@ -1,48 +1,45 @@
 #!/bin/bash
-# RUN AS: $ bash scripts/0.gen_conformers.sh
-# generate conformations and calculate SPE of each RES_CLASS
-
-# load env
-source ~/.setup.sh
+# RUN AS: $ bash 0.gen_conformers.sh
+# generate conformations and calculate SPE of PDB.pdb
 
 CPUS=32
 N_CONFS=1000
 
-ITER=V01
-LIB_VAC=19F_FF15IPQ_V03_VAC.lib
-FRCMOD=19F_FF15IPQ_FIT_V00_GEN2.frcmod
+ITERATION=v00
+PDB=mon
+LIB_VAC=mon_gaff_02_vac.lib
+FRCMOD=mon.frcmod
 
-mkdir $ITER
-cd $ITER &&
-
+mkdir $ITERATION
+cd $ITERATION &&
 
 # 1) make directory for each res class and create vac top and crd files
 cat << EOF > tleap_vacuo.in
 source leaprc.protein.ff15ipq
-loadoff ../../$LIB_VAC
-loadAmberParams ../../$FRCMOD
-${RES} = sequence { ACE ${RES} NME }
-check ${RES}
-set ${RES} box {32.006 32.006 32.006}
-saveAmberParm ${RES} ${RES}_V.top ${RES}_V.crd
-savepdb ${RES} ${RES}_V.pdb
+loadoff ../$LIB_VAC
+loadAmberParams ../$FRCMOD
+${PDB} = loadpdb ../${PDB}
+check ${PDB}
+set ${PDB} box {32.006 32.006 32.006}
+saveAmberParm ${PDB} ${PDB}_V.top ${PDB}_V.crd
+savepdb ${PDB} ${PDB}_V.pdb
 quit
 EOF
 
 tleap -f tleap_vacuo.in > tleap_vacuo.out &&
-echo -e "\nFinished creating in vacuo $RES file."
+echo -e "\nFinished creating in vacuo $PDB file."
 
 # set RES_CLASS dependent phi psi angle definitions
-if [ $RES = "W4F" ] || [ $RES = "W5F" ] || [ $RES = "W6F" ] || [ $RES = "W7F" ] ; then
+if [ $PDB = "W4F" ] || [ $PDB = "W5F" ] || [ $PDB = "W6F" ] || [ $PDB = "W7F" ] ; then
     PHI=(5 7 9 29)
     PSI=(7 9 29 31)
-elif [ $RES = "Y3F" ] || [ $RES = "YDF" ] ; then
+elif [ $PDB = "Y3F" ] || [ $PDB = "YDF" ] ; then
     PHI=(5 7 9 26)
     PSI=(7 9 26 28)
-elif [ $RES = "F4F" ] ; then
+elif [ $PDB = "F4F" ] ; then
     PHI=(5 7 9 25)
     PSI=(7 9 25 27)
-elif [ $RES = "FTF" ] ; then
+elif [ $PDB = "FTF" ] ; then
     PHI=(5 7 9 28)
     PSI=(7 9 28 30)
 fi
@@ -51,10 +48,10 @@ mkdir CONFS
 cd CONFS &&
 
 # 2) run mdgx to generate 1000 conformations and orca input for each res class
-cat << EOF > ${RES}_GEN_CONFS.mdgx
+cat << EOF > ${PDB}_GEN_CONFS.mdgx
 &files
-  -p    ../${RES}_V.top
-  -c    ../${RES}_V.crd
+  -p    ../${PDB}_V.top
+  -c    ../${PDB}_V.crd
   -o    GenConformers.out
 &end
 
@@ -81,15 +78,15 @@ cat << EOF > ${RES}_GEN_CONFS.mdgx
 &end
 EOF
 
-mdgx -i ${RES}_GEN_CONFS.mdgx -O
-echo -e "Finished generating ${N_CONFS} conformations of ${RES}."
+mdgx -i ${PDB}_GEN_CONFS.mdgx -O
+echo -e "Finished generating ${N_CONFS} conformations of ${PDB}."
 
 # make ramachandran plot
 cat << EOF > RAMA.sh
 #!/bin/bash
-echo "#$RES $ITER PHI PSI Angles" > rama.dat
+echo "#$PDB $ITERATION PHI PSI Angles" > rama.dat
 for i in {1..${N_CONFS}}; do
-  COMMAND="           parm ${RES}_V.top \n"
+  COMMAND="           parm ${PDB}_V.top \n"
   COMMAND="\${COMMAND} trajin CONFS/Conf\${i}.pdb \n"
   COMMAND="\${COMMAND} dihedral phi @${PHI[0]} @${PHI[1]} @${PHI[2]}  @${PHI[3]} out phipsi.dat \n"
   COMMAND="\${COMMAND} dihedral psi @${PSI[0]} @${PSI[1]} @${PSI[2]}  @${PSI[3]} out phipsi.dat \n"
@@ -104,14 +101,14 @@ rm phipsi.dat
 EOF
 
 bash RAMA.sh &&
-echo -e "Finished generating Ramachandran plot for ${RES}."
+echo -e "Finished generating Ramachandran plot for ${PDB}."
 
 mkdir CONFS_OOUT
 
 # 3) run orca single-point energy calcs in vacuo for each conformation
-cat << EOF > ${RES}_RUN_ORCA.slurm
+cat << EOF > ${PDB}_RUN_ORCA.slurm
 #!/bin/bash
-#SBATCH --job-name=${RES}_${ITER}_SPE_CALC
+#SBATCH --job-name=${PDB}_${ITER}_SPE_CALC
 #SBATCH --cluster=smp
 #SBATCH --partition=smp
 #SBATCH --nodes=1
@@ -137,7 +134,7 @@ for I in {1..${N_CONFS}} ; do
     # skip confs where SPE calculations are completed
     CONF_OOUT=\$(tail -1 CONFS_OOUT/Conf\${I}.oout)
     if [[ "\$CONF_OOUT" == "TOTAL RUN TIME:"* ]] ; then
-        echo "FOR RES = $RES : ITER = $ITER : CONF = \$I : RUN COMPLETED: SKIPPING" >> skip.log
+        echo "FOR RES = $PDB : ITER = $ITERATION : CONF = \$I : RUN COMPLETED: SKIPPING" >> skip.log
         let "SKIP+=1"
         continue
     fi
@@ -156,16 +153,16 @@ echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}" >> skip.log
 wait
 
 # run EXTRACT ENERGIES script
-mdgx -i ${RES}_concat.mdgx -O &&
+mdgx -i ${PDB}_concat.mdgx -O &&
 
 # gives stats of job, wall time, etc.
 crc-job-stats.py 
 EOF
  
 # 4) extract the energies from each conformation SPE QM calc
-cat << EOF > ${RES}_concat.mdgx
+cat << EOF > ${PDB}_concat.mdgx
 &files
-  -p      ${RES}_V.top
+  -p      ${PDB}_V.top
   -o      concat.out
   -d      energies.dat
   -x      concat_coords.cdf
@@ -176,7 +173,7 @@ cat << EOF > ${RES}_concat.mdgx
 &end
 EOF
 
-sbatch ${RES}_RUN_ORCA.slurm
-echo -e "FINISHED $N_CONFS CONFSGEN AND SPE CALC SUBMISSION FOR $RES ITER:$ITER \n"
+sbatch ${PDB}_RUN_ORCA.slurm
+echo -e "FINISHED $N_CONFS CONFSGEN AND SPE CALC SUBMISSION FOR $PDB ITER:$ITERATION \n"
 cd ..
 
