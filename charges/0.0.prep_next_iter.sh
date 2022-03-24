@@ -11,7 +11,7 @@ PREV_ITER=gaff_02
 # put your desired $ITERATION variable for the next run
 NEXT_ITER=gaff_03
 # optional variable to check the mol2 charges in chimerax
-CHECK=false
+CHECK=true
 #####################################################################
 #####################################################################
 #####################################################################
