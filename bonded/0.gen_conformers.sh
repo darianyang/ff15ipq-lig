@@ -2,23 +2,40 @@
 # RUN AS: $ bash 0.gen_conformers.sh
 # generate conformations and calculate SPE of PDB.pdb
 
+###########################################################
+####################### VARIABLES #########################
+###########################################################
+# CPUs per node to use for the slurm script
 CPUS=32
+# number of conformations to generate
 N_CONFS=1000
 
+# arbitrary name of the iteration directory
 ITERATION=v00
+# 3 letter restype identifier for your molecule
 PDB=mon
+# name of the library file with vacuum phase atomic charges
 LIB_VAC=mon_gaff_02_vac.lib
+# name of the frcmod file from gaff and charges directory
 FRCMOD=mon.frcmod
+
+###########################################################
+# NOTE: you must fill out the &configs settings for       #
+#       sampling your desired molecule conformations      #
+#       See (2) under &configs - line 60                  #
+###########################################################
+###########################################################
+###########################################################
 
 mkdir $ITERATION
 cd $ITERATION &&
 
 # 1) make directory for each res class and create vac top and crd files
 cat << EOF > tleap_vacuo.in
-source leaprc.protein.ff15ipq
+source leaprc.gaff
 loadoff ../$LIB_VAC
 loadAmberParams ../$FRCMOD
-${PDB} = loadpdb ../${PDB}
+${PDB} = loadpdb ../${PDB}.pdb
 check ${PDB}
 set ${PDB} box {32.006 32.006 32.006}
 saveAmberParm ${PDB} ${PDB}_V.top ${PDB}_V.crd
@@ -28,21 +45,6 @@ EOF
 
 tleap -f tleap_vacuo.in > tleap_vacuo.out &&
 echo -e "\nFinished creating in vacuo $PDB file."
-
-# set RES_CLASS dependent phi psi angle definitions
-if [ $PDB = "W4F" ] || [ $PDB = "W5F" ] || [ $PDB = "W6F" ] || [ $PDB = "W7F" ] ; then
-    PHI=(5 7 9 29)
-    PSI=(7 9 29 31)
-elif [ $PDB = "Y3F" ] || [ $PDB = "YDF" ] ; then
-    PHI=(5 7 9 26)
-    PSI=(7 9 26 28)
-elif [ $PDB = "F4F" ] ; then
-    PHI=(5 7 9 25)
-    PSI=(7 9 25 27)
-elif [ $PDB = "FTF" ] ; then
-    PHI=(5 7 9 28)
-    PSI=(7 9 28 30)
-fi
 
 mkdir CONFS
 cd CONFS &&
@@ -56,8 +58,13 @@ cat << EOF > ${PDB}_GEN_CONFS.mdgx
 &end
 
 &configs
-  GridSample    @${PHI[0]} @${PHI[1]} @${PHI[2]}  @${PHI[3]}    { -180.0 180.0 }  Krst 32.0
-  GridSample    @${PSI[0]} @${PSI[1]} @${PSI[2]}  @${PSI[3]}    { -180.0 180.0 }  Krst 32.0
+  % See the amber manual for more information and examples
+  % Here I am sampling on the flexible dihedrals available in monastrol
+  % from -180 to 180 degrees using a force constant of 32 kcal/mol
+  % To visualize the atom numbers, I like to use Avogadro
+  % You can also use VMD but note the indexing is by 0 and not 1
+  GridSample    @1  @2  @3  @4  { -180.0 180.0 }    Krst 32.0
+  GridSample    @2  @3  @4  @6  { -180.0 180.0 }    Krst 32.0
   combine 1 2
   count ${N_CONFS}
   verbose 1
@@ -82,33 +89,34 @@ mdgx -i ${PDB}_GEN_CONFS.mdgx -O
 echo -e "Finished generating ${N_CONFS} conformations of ${PDB}."
 
 # make ramachandran plot
-cat << EOF > RAMA.sh
-#!/bin/bash
-echo "#$PDB $ITERATION PHI PSI Angles" > rama.dat
-for i in {1..${N_CONFS}}; do
-  COMMAND="           parm ${PDB}_V.top \n"
-  COMMAND="\${COMMAND} trajin CONFS/Conf\${i}.pdb \n"
-  COMMAND="\${COMMAND} dihedral phi @${PHI[0]} @${PHI[1]} @${PHI[2]}  @${PHI[3]} out phipsi.dat \n"
-  COMMAND="\${COMMAND} dihedral psi @${PSI[0]} @${PSI[1]} @${PSI[2]}  @${PSI[3]} out phipsi.dat \n"
-  COMMAND="\${COMMAND} go"
-  echo -e \${COMMAND} | cpptraj >> cpp_rama.out
-  cat phipsi.dat | tail -n +2 >> rama.dat
-done
-
-python ../../scripts/plot_rama.py
-
-rm phipsi.dat
-EOF
-
-bash RAMA.sh &&
-echo -e "Finished generating Ramachandran plot for ${PDB}."
+# TODO: hist of each dihedral?
+#cat << EOF > RAMA.sh
+##!/bin/bash
+#echo "#$PDB $ITERATION PHI PSI Angles" > rama.dat
+#for i in {1..${N_CONFS}}; do
+#  COMMAND="           parm ${PDB}_V.top \n"
+#  COMMAND="\${COMMAND} trajin CONFS/Conf\${i}.pdb \n"
+#  COMMAND="\${COMMAND} dihedral phi @${PHI[0]} @${PHI[1]} @${PHI[2]}  @${PHI[3]} out phipsi.dat \n"
+#  COMMAND="\${COMMAND} dihedral psi @${PSI[0]} @${PSI[1]} @${PSI[2]}  @${PSI[3]} out phipsi.dat \n"
+#  COMMAND="\${COMMAND} go"
+#  echo -e \${COMMAND} | cpptraj >> cpp_rama.out
+#  cat phipsi.dat | tail -n +2 >> rama.dat
+#done
+#
+#python ../../scripts/plot_rama.py
+#
+#rm phipsi.dat
+#EOF
+#
+#bash RAMA.sh &&
+#echo -e "Finished generating Ramachandran plot for ${PDB}."
 
 mkdir CONFS_OOUT
 
 # 3) run orca single-point energy calcs in vacuo for each conformation
 cat << EOF > ${PDB}_RUN_ORCA.slurm
 #!/bin/bash
-#SBATCH --job-name=${PDB}_${ITER}_SPE_CALC
+#SBATCH --job-name=${PDB}_${ITERATION}_SPE_CALC
 #SBATCH --cluster=smp
 #SBATCH --partition=smp
 #SBATCH --nodes=1
@@ -121,33 +129,22 @@ cat << EOF > ${PDB}_RUN_ORCA.slurm
 #SBATCH --error=slurm_spe.err
 
 # load ORCA and prereqs
-module load openmpi/3.1.4
-module load orca/4.2.0
+module load gcc/4.8.5
+module load openmpi/4.1.1
+module load orca/5.0.0
 
 # echo commands to stdout
 set -x 
 
 NJOB=0
-SKIP=0
 for I in {1..${N_CONFS}} ; do
-
-    # skip confs where SPE calculations are completed
-    CONF_OOUT=\$(tail -1 CONFS_OOUT/Conf\${I}.oout)
-    if [[ "\$CONF_OOUT" == "TOTAL RUN TIME:"* ]] ; then
-        echo "FOR RES = $PDB : ITER = $ITERATION : CONF = \$I : RUN COMPLETED: SKIPPING" >> skip.log
-        let "SKIP+=1"
-        continue
+    orca CONFS/Conf\${I}.orca > CONFS_OOUT/Conf\${I}.oout &
+    let "NJOB+=1"
+    if [ \${NJOB} -eq ${CPUS} ] ; then
+        NJOB=0
+        wait
     fi
-
-  orca CONFS/Conf\${I}.orca > CONFS_OOUT/Conf\${I}.oout &
-  let "NJOB+=1"
-  if [ \${NJOB} -eq ${CPUS} ] ; then
-    NJOB=0
-    wait
-  fi
 done
-
-echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}" >> skip.log
 
 # finish any unevenly ran jobs
 wait
@@ -159,7 +156,7 @@ mdgx -i ${PDB}_concat.mdgx -O &&
 crc-job-stats.py 
 EOF
  
-# 4) extract the energies from each conformation SPE QM calc
+# 4) write file to extract the energies from each conformation SPE QM calc
 cat << EOF > ${PDB}_concat.mdgx
 &files
   -p      ${PDB}_V.top
