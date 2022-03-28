@@ -2,34 +2,35 @@
 # 2.fit_param.sh
 # Execute ipq parameter fitting protocols
 
-ITER=V01
-FRCMOD=19F_FF15IPQ_FIT_V00_GEN2.frcmod
+ITER=v01
+FRCMOD=mon.frcmod
 
 cd $ITER &&
 
 # make parameter fitting script for all RES_CLASSES
-echo "
+cat << EOF > FIT_${ITER}.in
 &files
   %-parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/parm15ipq_10.3.dat
   -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
   -fmod ../$FRCMOD
-  -d 19F_FF15IPQ_FIT_${ITER}.frcmod
+  -d FIT_${ITER}.frcmod
   -o FIT_${ITER}.out
 &end
 
 &param
-" > FIT_${ITER}.in
-
-echo "  System    ${RES}/${RES}_V.top     ${RES}/concat_coords.cdf    ${RES}/energies.dat" >> FIT_${ITER}.in
-
-echo "
+  System    ${RES}/${RES}_V.top     ${RES}/concat_coords.cdf    ${RES}/energies.dat
   ParmOutput    frcmod
+  verbose       1,
   eunits        hartree,
   accrep        report.m
+  % eliminate conformations far outside of the norm for the system
+  % default 0 (do not remove outliers)
   elimsig       1,
-  esigtol       4,
-  verbose       1,
-  %repall        2,
+  % tolerance for deviation from mean energy value in sigmas (default 5)
+  ctol          5,
+
+  % 0 for file akin to frcmod file, default 1 (write all parameters)
+  %repall        0,
   
   % Torsion fitting input
   fith          F  3C CA CA
@@ -39,6 +40,6 @@ echo "
   %fith          3C CA CA CA
   hrst          0.0002,
 &end
-" >> FIT_${ITER}.in
+EOF
 
 mdgx -i FIT_${ITER}.in -O
