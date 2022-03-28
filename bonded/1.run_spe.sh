@@ -1,14 +1,18 @@
 #!/bin/bash
-# RUN AS: $ bash 1.resubmit.sh
+# RUN AS: $ bash 1.run_spe.sh
 # submit new or resubmit failed or incomplete runs for SPE calculations
+#   I can't get this to work on multiple nodes, but I instead will run
+#   multiple jobs to split up the conformations
+#       e.g. run 1-500 and 501-1000 on two slurm submissions
 
 ###########################################################
 ####################### VARIABLES #########################
 ###########################################################
 # CPUs per node to use for the slurm script
 CPUS=24
-# number of conformations to generate
-N_CONFS=1000
+# what range of N_CONFS to run
+CONFS_START=1
+CONFS_END=1000
 # arbitrary name of the iteration directory
 ITERATION=v00
 # 3 letter restype identifier for your molecule
@@ -21,9 +25,9 @@ mkdir $ITERATION
 cd $ITERATION &&
 
 # run orca single-point energy calcs in vacuo for each conformation
-cat << EOF > ${PDB}_RUN_ORCA.slurm
+cat << EOF > ${PDB}_RUN_ORCA_${CONFS_START}-${CONFS_END}.slurm
 #!/bin/bash
-#SBATCH --job-name=${PDB}_${ITERATION}_SPE_CALC
+#SBATCH --job-name=${PDB}_${ITERATION}_SPE_CALC_${CONFS_START}_${CONFS_END}
 #SBATCH --cluster=smp
 #SBATCH --partition=smp
 #SBATCH --nodes=1
@@ -46,7 +50,7 @@ set -x
 NJOB=0
 SKIP=0
 echo "\$(date)" >> skip.log
-for I in {1..${N_CONFS}} ; do
+for I in {${CONFS_START}..${CONFS_END}} ; do
 
     # skip confs where SPE calculations are completed
     CONF_OOUT=\$(tail -1 CONFS_OOUT/Conf\${I}.oout)
@@ -78,7 +82,7 @@ mdgx -i ${PDB}_concat.mdgx -O
 crc-job-stats.py 
 EOF
  
-# 4) extract the energies from each conformation SPE QM calc
+# extract the energies from each conformation SPE QM calc
 cat << EOF > ${PDB}_concat.mdgx
 &files
   -p      ${PDB}_V.top
@@ -92,6 +96,6 @@ cat << EOF > ${PDB}_concat.mdgx
 &end
 EOF
 
-sbatch ${PDB}_RUN_ORCA.slurm
-echo -e "FINISHED $N_CONFS CONFSGEN AND SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
+sbatch ${PDB}_RUN_ORCA_${CONFS_START}-${CONFS_END}.slurm
+echo -e "FINISHED $CONFS_START to $CONFS_END SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
 

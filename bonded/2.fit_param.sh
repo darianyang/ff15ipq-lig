@@ -3,7 +3,6 @@
 # Execute ipq parameter fitting protocols
 
 ITER=V01
-LIB_VAC=19F_FF15IPQ_V03_VAC.lib
 FRCMOD=19F_FF15IPQ_FIT_V00_GEN2.frcmod
 
 cd $ITER &&
@@ -11,7 +10,8 @@ cd $ITER &&
 # make parameter fitting script for all RES_CLASSES
 echo "
 &files
-  -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/parm15ipq_10.3.dat
+  %-parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/parm15ipq_10.3.dat
+  -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
   -fmod ../$FRCMOD
   -d 19F_FF15IPQ_FIT_${ITER}.frcmod
   -o FIT_${ITER}.out

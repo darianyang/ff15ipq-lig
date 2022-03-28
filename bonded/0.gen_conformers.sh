@@ -13,6 +13,8 @@ PDB=mon
 LIB_VAC=mon_gaff_02_vac.lib
 # name of the frcmod file from gaff and charges directory
 FRCMOD=mon.frcmod
+# number of conformations to generate with mdgx
+N_CONFS=1000
 
 ###########################################################
 # NOTE: you must fill out the &configs settings for       #
