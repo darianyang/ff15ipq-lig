@@ -9,31 +9,33 @@
 ####################### VARIABLES #########################
 ###########################################################
 # CPUs per node to use for the slurm script
-CPUS=24
-# what range of N_CONFS to run
-CONFS_START=1
-CONFS_END=1000
+CPUS=20
 # arbitrary name of the iteration directory
 ITERATION=v00
 # 3 letter restype identifier for your molecule
 PDB=mon
 ###########################################################
+# NOTE: go to the end of file and change the conf ranges  #
+#       to match the amount of conformations generated    #
 ###########################################################
 ###########################################################
 
-mkdir $ITERATION
 cd $ITERATION &&
 
+# function to submit a range of conformations
+# arg $1 = conf range start
+# arg $2 = cond range end  
+function submit_spe_of_confs {
 # run orca single-point energy calcs in vacuo for each conformation
-cat << EOF > ${PDB}_RUN_ORCA_${CONFS_START}-${CONFS_END}.slurm
+cat << EOF > ${PDB}_RUN_ORCA_${1}-${2}.slurm
 #!/bin/bash
-#SBATCH --job-name=${PDB}_${ITERATION}_SPE_CALC_${CONFS_START}_${CONFS_END}
+#SBATCH --job-name=${PDB}_${ITERATION}_SPE_CALC_${1}_${2}
 #SBATCH --cluster=smp
 #SBATCH --partition=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=$CPUS
 #SBATCH --mem=16g
-#SBATCH --time=143:59:59  
+#SBATCH --time=23:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=slurm_spe.out
@@ -49,13 +51,13 @@ set -x
 
 NJOB=0
 SKIP=0
-echo "\$(date)" >> skip.log
-for I in {${CONFS_START}..${CONFS_END}} ; do
+echo "\$(date)" >> skip_${1}-${2}.log
+for I in {${1}..${2}} ; do
 
     # skip confs where SPE calculations are completed
     CONF_OOUT=\$(tail -1 CONFS_OOUT/Conf\${I}.oout)
     if [[ "\$CONF_OOUT" == "TOTAL RUN TIME:"* ]] ; then
-        echo "FOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN COMPLETED: SKIPPING" >> skip.log
+        echo "FOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN COMPLETED: SKIPPING" >> skip_${1}-${2}.log
         let "SKIP+=1"
         continue
     fi
@@ -70,7 +72,7 @@ for I in {${CONFS_START}..${CONFS_END}} ; do
 
 done
 
-echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}" >> skip.log
+echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}" >> skip_${1}-${2}.log
 
 # finish any unevenly ran jobs
 wait
@@ -96,6 +98,19 @@ cat << EOF > ${PDB}_concat.mdgx
 &end
 EOF
 
-sbatch ${PDB}_RUN_ORCA_${CONFS_START}-${CONFS_END}.slurm
-echo -e "FINISHED $CONFS_START to $CONFS_END SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
+sbatch ${PDB}_RUN_ORCA_${1}-${2}.slurm
+echo -e "FINISHED $1 to $2 SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
+}
+
+###########################################################
+############# ADJUST THE FOLLOWING IF NEEDED ##############
+###########################################################
+# Here, I am splitting my total confs (1000) into 10 jobs #
+###########################################################
+for CONF in {100..1000..100} ; do
+    submit_spe_of_confs $((CONF - 99)) $CONF
+done
+
+# or run this line if you want to run all on one job/node
+#submit_spe_of_confs 1 1000
 
