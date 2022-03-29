@@ -11,9 +11,10 @@
 # CPUs per node to use for the slurm script
 # note that this number should evenly divide into the number
 # of CONFS per slurm job for max efficiency
-CPUS=20
+CPUS=10
 # arbitrary name of the iteration directory
-ITERATION=v00
+#ITERATION=v00
+ITERATION=orca420test
 # 3 letter restype identifier for your molecule
 PDB=mon
 ###########################################################
@@ -22,9 +23,13 @@ PDB=mon
 ###########################################################
 ###########################################################
 
+# go to and set up ITERATION directory
 cd $ITERATION &&
 if [ ! -d logs ]; then
     mkdir logs
+fi
+if [ ! -d CONFS_OOUT ]; then
+    mkdir CONFS_OOUT
 fi
 
 # function to submit a range of conformations
@@ -35,8 +40,8 @@ function submit_spe_of_confs {
 cat << EOF > ${PDB}_RUN_ORCA_${1}-${2}.slurm
 #!/bin/bash
 #SBATCH --job-name=${PDB}_${ITERATION}_SPE_CALC_${1}_${2}
-#SBATCH --cluster=smp
-#SBATCH --partition=smp
+#SBATCH --cluster=invest
+#SBATCH --partition=lchong
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=$CPUS
 #SBATCH --mem=16g
@@ -47,9 +52,13 @@ cat << EOF > ${PDB}_RUN_ORCA_${1}-${2}.slurm
 #SBATCH --error=logs/slurm_spe_${1}_${2}.err
 
 # load ORCA and prereqs
-module load gcc/4.8.5
-module load openmpi/4.1.1
-module load orca/5.0.0
+#module load gcc/4.8.5
+#module load openmpi/4.1.1
+#module load orca/5.0.0
+
+# testing older orca version
+module load openmpi/3.1.4
+module load orca/4.2.0
 
 # echo commands to stdout
 set -x 
@@ -86,7 +95,8 @@ for I in {${1}..${2}} ; do
 
 done
 
-echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}" >> logs/skip_${1}-${2}.log
+echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}\n" >> logs/skip_${1}-${2}.log
+echo -e "------------------------------------------\n" >> logs/skip_${1}-${2}.log
 
 # finish any unevenly ran jobs
 wait
@@ -111,5 +121,6 @@ echo -e "FINISHED $1 to $2 SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
 # or run this line if you want to run all on one job/node
 # I like to run this as a way of checking if everything ran
 # and it will also run the failed jobs
-submit_spe_of_confs 1 1000
+#submit_spe_of_confs 1 1000
+submit_spe_of_confs 1 10
 

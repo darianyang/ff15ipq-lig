@@ -1,7 +1,8 @@
 #!/bin/bash
 
 PDB=mon
-ITERATION=v00
+#ITERATION=v00
+ITERATION=orca420test
 
 cd $ITERATION
 
