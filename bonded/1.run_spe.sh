@@ -67,7 +67,7 @@ for I in {${1}..${2}} ; do
         continue
     fi
 
-    echo -e "\tFOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN FAILED: RERUNNING" >> logs/skip_${1}-${2}.log
+    echo -e "\tFOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN NOT COMPLETE: RERUNNING" >> logs/skip_${1}-${2}.log
 
     orca CONFS/Conf\${I}.orca > CONFS_OOUT/Conf\${I}.oout &
     let "NJOB+=1"

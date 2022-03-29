@@ -34,11 +34,12 @@ cat << EOF > FIT_${ITER}.in
   %repall        0,
   
   % Torsion fitting input
-  fith          F  3C CA CA
-  %fith          F  CA CA CA
-  %fith          F  CA CB CA
-  %fith          F  CA CN CA
-  %fith          3C CA CA CA
+  fith          n   c3  ce  c
+  fith          ca  c3  ce  c
+  fith          h1  c3  ce  c
+  fith          n   c3  ce  c2
+  fith          ca  c3  ce  c2
+  fith          h1  c3  ce  c2
   hrst          0.0002,
 &end
 EOF
