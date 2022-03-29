@@ -14,7 +14,7 @@
 CPUS=10
 # arbitrary name of the iteration directory
 #ITERATION=v00
-ITERATION=orca420test
+ITERATION=orca500test
 # 3 letter restype identifier for your molecule
 PDB=mon
 ###########################################################
