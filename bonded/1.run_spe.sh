@@ -67,11 +67,18 @@ for I in {${1}..${2}} ; do
         continue
     fi
 
-    echo -e "\tFOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN NOT COMPLETE: RERUNNING" >> logs/skip_${1}-${2}.log
+    # skip if the initial conformation generation failed
+    if [ ! -f CONFS/Conf\${I}.pdb ] ; then
+        echo "FOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : INITIAL CONF NOT GENERATED: SKIPPING" >> logs/skip_${1}-${2}.log
+        continue
+    fi
 
+    # run orca spe calc
+    echo -e "\tFOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN NOT COMPLETE: RERUNNING" >> logs/skip_${1}-${2}.log
     orca CONFS/Conf\${I}.orca > CONFS_OOUT/Conf\${I}.oout &
     let "NJOB+=1"
 
+    # run on multiple CPUs
     if [ \${NJOB} -eq ${CPUS} ] ; then
         NJOB=0
         wait
