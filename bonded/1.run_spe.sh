@@ -23,6 +23,9 @@ PDB=mon
 ###########################################################
 
 cd $ITERATION &&
+if [ ! -d logs ]; then
+    mkdir logs
+fi
 
 # function to submit a range of conformations
 # arg $1 = conf range start
@@ -40,8 +43,8 @@ cat << EOF > ${PDB}_RUN_ORCA_${1}-${2}.slurm
 #SBATCH --time=23:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
-#SBATCH --output=slurm_spe.out
-#SBATCH --error=slurm_spe.err
+#SBATCH --output=logs/slurm_spe_${1}_${2}.out
+#SBATCH --error=logs/slurm_spe_${1}_${2}.err
 
 # load ORCA and prereqs
 module load gcc/4.8.5
@@ -53,16 +56,18 @@ set -x
 
 NJOB=0
 SKIP=0
-echo "\$(date)" >> skip_${1}-${2}.log
+echo "\$(date)" >> logs/skip_${1}-${2}.log
 for I in {${1}..${2}} ; do
 
     # skip confs where SPE calculations are completed
     CONF_OOUT=\$(tail -1 CONFS_OOUT/Conf\${I}.oout)
     if [[ "\$CONF_OOUT" == "TOTAL RUN TIME:"* ]] ; then
-        echo "FOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN COMPLETED: SKIPPING" >> skip_${1}-${2}.log
+        echo "FOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN COMPLETED: SKIPPING" >> logs/skip_${1}-${2}.log
         let "SKIP+=1"
         continue
     fi
+
+    echo -e "\tFOR PDB = $PDB : ITERATION = $ITERATION : CONF = \$I : RUN FAILED: RERUNNING" >> logs/skip_${1}-${2}.log
 
     orca CONFS/Conf\${I}.orca > CONFS_OOUT/Conf\${I}.oout &
     let "NJOB+=1"
@@ -74,32 +79,15 @@ for I in {${1}..${2}} ; do
 
 done
 
-echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}" >> skip_${1}-${2}.log
+echo -e "\nTOTAL SKIPPED CONFORMATIONS = \${SKIP}" >> logs/skip_${1}-${2}.log
 
 # finish any unevenly ran jobs
 wait
-
-# run EXTRACT ENERGIES script
-mdgx -i ${PDB}_concat.mdgx -O
 
 # gives stats of job, wall time, etc.
 crc-job-stats.py 
 EOF
  
-# extract the energies from each conformation SPE QM calc
-cat << EOF > ${PDB}_concat.mdgx
-&files
-  -p      ${PDB}_V.top
-  -o      concat.out
-  -d      energies.dat
-  -x      concat_coords.cdf
-&end
-
-&speval
-  data    CONFS_OOUT/Conf*.oout
-&end
-EOF
-
 sbatch ${PDB}_RUN_ORCA_${1}-${2}.slurm
 echo -e "FINISHED $1 to $2 SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
 }
