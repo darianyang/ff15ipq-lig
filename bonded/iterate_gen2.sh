@@ -2,13 +2,10 @@
 # RUN AS: $ bash 4.iterate_gen2.sh
 # generate conformations and calculate SPE of each RES_CLASS
 
-# load env
-source ~/.setup.sh
-
 CPUS=8
 N_CONFS=1000
 
-ITER=V01
+ITER=v01
 LIB_VAC=19F_FF15IPQ_V03_VAC.lib
 FRCMOD=19F_FF15IPQ_FIT_V01.frcmod
 
