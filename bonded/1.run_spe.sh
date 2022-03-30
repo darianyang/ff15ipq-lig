@@ -39,12 +39,12 @@ function submit_spe_of_confs {
 cat << EOF > ${PDB}_RUN_ORCA_${1}-${2}.slurm
 #!/bin/bash
 #SBATCH --job-name=${PDB}_${ITERATION}_SPE_CALC_${1}_${2}
-#SBATCH --cluster=invest
-#SBATCH --partition=lchong
+#SBATCH --cluster=smp
+#SBATCH --partition=smp
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=$CPUS
 #SBATCH --mem=16g
-#SBATCH --time=23:59:59  
+#SBATCH --time=17:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=logs/slurm_spe_${1}_${2}.out
@@ -121,6 +121,6 @@ done
 # or run this line if you want to run all on one job/node
 # I like to run this as a way of checking if everything ran
 # and it will also run the failed jobs
+#CPUS=1
 #submit_spe_of_confs 1 1000
-#submit_spe_of_confs 1 10
 

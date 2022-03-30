@@ -2,22 +2,23 @@
 # 3.fit_param.sh
 # Execute ipq parameter fitting protocols
 
-ITER=v00
+PDB=mon
+ITERATION=v00
 FRCMOD=mon.frcmod
 
-cd $ITER &&
+cd $ITERATION &&
 
 # make parameter fitting script for all RES_CLASSES
-cat << EOF > FIT_${ITER}.in
+cat << EOF > FIT_${ITERATION}.in
 &files
   -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
   -fmod ../$FRCMOD
-  -d FIT_${ITER}.frcmod
-  -o FIT_${ITER}.out
+  -d FIT_${ITERATION}.frcmod
+  -o FIT_${ITERATION}.out
 &end
 
 &param
-  System    ${RES}/${RES}_V.top     ${RES}/concat_coords.cdf    ${RES}/energies.dat
+  System    ${PDB}_V.top     concat_coords.cdf    energies.dat
   ParmOutput    frcmod
   verbose       1,
   eunits        hartree,
@@ -28,6 +29,7 @@ cat << EOF > FIT_${ITER}.in
   elimsig       1,
   % tolerance for deviation from mean energy value in sigmas (default 5)
   ctol          5,
+  %esigtol       5
 
   % 0 for file akin to frcmod file, default 1 (write all parameters)
   %repall        0,
@@ -43,4 +45,4 @@ cat << EOF > FIT_${ITER}.in
 &end
 EOF
 
-mdgx -i FIT_${ITER}.in -O
+mdgx -i FIT_${ITERATION}.in -O
