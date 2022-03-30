@@ -2,7 +2,8 @@
 
 PDB=mon
 #ITERATION=v00
-ITERATION=orca420test
+#ITERATION=orca420test
+ITERATION=orca500test
 
 cd $ITERATION
 

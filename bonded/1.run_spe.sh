@@ -52,13 +52,13 @@ cat << EOF > ${PDB}_RUN_ORCA_${1}-${2}.slurm
 #SBATCH --error=logs/slurm_spe_${1}_${2}.err
 
 # load ORCA and prereqs
-#module load gcc/4.8.5
-#module load openmpi/4.1.1
-#module load orca/5.0.0
+module load gcc/4.8.5
+module load openmpi/4.1.1
+module load orca/5.0.0
 
 # testing older orca version
-module load openmpi/3.1.4
-module load orca/4.2.0
+#module load openmpi/3.1.4
+#module load orca/4.2.0
 
 # echo commands to stdout
 set -x 
