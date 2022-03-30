@@ -9,7 +9,7 @@
 # CPUs per node to use for the slurm script
 # note that this number should evenly divide into the number
 # of CONFS per slurm job for max efficiency
-CPUS=20
+CPUS=8
 # arbitrary name of the iteration directory
 ITERATION=v00
 # 3 letter restype identifier for your molecule
@@ -37,12 +37,12 @@ function submit_spe_of_confs {
 cat << EOF > ${PDB}_RUN_ORCA_${1}-${2}_G2.slurm
 #!/bin/bash
 #SBATCH --job-name=${PDB}_${ITERATION}_SPE_CALC_G2_${1}_${2}
-#SBATCH --cluster=smp
-#SBATCH --partition=smp
+#SBATCH --cluster=invest
+#SBATCH --partition=lchong
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=$CPUS
 #SBATCH --mem=16g
-#SBATCH --time=17:59:59  
+#SBATCH --time=23:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=logs/slurm_spe_${1}_${2}_G2.out
@@ -112,5 +112,5 @@ echo -e "FINISHED $1 to $2 SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
 ###########################################################
 # with G2, there won't be too many conformations
 # just 1 run should be fine
-#submit_spe_of_confs 1 1000
+submit_spe_of_confs 1 1000
 
