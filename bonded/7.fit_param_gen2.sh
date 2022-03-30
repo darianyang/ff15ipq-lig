@@ -34,6 +34,12 @@ cat << EOF > FIT_${ITERATION}_G2.in
 
   % 0 for file akin to frcmod file, default 1 (write all parameters)
   %repall        0,
+
+  % Angle fitting input
+  fita          ce  c2  n
+  FitAnglEq     1,
+  arst          0.0002,
+  arstcpl       1.0,  
   
   % Torsion fitting input
   fith          n   c3  ce  c
