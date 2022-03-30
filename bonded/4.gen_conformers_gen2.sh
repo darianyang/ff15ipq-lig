@@ -52,7 +52,7 @@ cd G2_CONFS &&
 cat << EOF > ${PDB}_GEN_CONFS_G2.mdgx
 &files
   -p    ../${PDB}_V_G2.top
-  -c    concat_coords.cdf
+  -c    ../concat_coords.cdf
   -o    ../GenConformers_G2.out
 &end
 
