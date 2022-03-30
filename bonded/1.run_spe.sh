@@ -11,10 +11,9 @@
 # CPUs per node to use for the slurm script
 # note that this number should evenly divide into the number
 # of CONFS per slurm job for max efficiency
-CPUS=10
+CPUS=20
 # arbitrary name of the iteration directory
-#ITERATION=v00
-ITERATION=orca500test
+ITERATION=v00
 # 3 letter restype identifier for your molecule
 PDB=mon
 ###########################################################
@@ -52,13 +51,14 @@ cat << EOF > ${PDB}_RUN_ORCA_${1}-${2}.slurm
 #SBATCH --error=logs/slurm_spe_${1}_${2}.err
 
 # load ORCA and prereqs
-module load gcc/4.8.5
-module load openmpi/4.1.1
-module load orca/5.0.0
+# ORCA 5.0.0 isn't compatible with mdgx functions for energy extraction
+#module load gcc/4.8.5
+#module load openmpi/4.1.1
+#module load orca/5.0.0
 
-# testing older orca version
-#module load openmpi/3.1.4
-#module load orca/4.2.0
+# need ORCA 4.2.0 for mdgx compatibility
+module load openmpi/3.1.4
+module load orca/4.2.0
 
 # echo commands to stdout
 set -x 
@@ -114,13 +114,13 @@ echo -e "FINISHED $1 to $2 SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
 ###########################################################
 # Here, I am splitting my total confs (1000) into 10 jobs #
 ###########################################################
-#for CONF in {100..1000..100} ; do
-#    submit_spe_of_confs $((CONF - 99)) $CONF
-#done
+for CONF in {100..1000..100} ; do
+    submit_spe_of_confs $((CONF - 99)) $CONF
+done
 
 # or run this line if you want to run all on one job/node
 # I like to run this as a way of checking if everything ran
 # and it will also run the failed jobs
 #submit_spe_of_confs 1 1000
-submit_spe_of_confs 1 10
+#submit_spe_of_confs 1 10
 

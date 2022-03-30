@@ -1,5 +1,5 @@
 #!/bin/bash
-# RUN AS: $ bash 3.iterate_gen2.sh
+# RUN AS: $ bash 4.iterate_gen2.sh
 # generate conformations and calculate SPE of each RES_CLASS
 
 # load env

@@ -1,8 +1,8 @@
 #!/bin/bash
-# 2.fit_param.sh
+# 3.fit_param.sh
 # Execute ipq parameter fitting protocols
 
-ITER=v01
+ITER=v00
 FRCMOD=mon.frcmod
 
 cd $ITER &&
@@ -10,7 +10,6 @@ cd $ITER &&
 # make parameter fitting script for all RES_CLASSES
 cat << EOF > FIT_${ITER}.in
 &files
-  %-parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/parm15ipq_10.3.dat
   -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
   -fmod ../$FRCMOD
   -d FIT_${ITER}.frcmod

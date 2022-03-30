@@ -1,5 +1,5 @@
 #!/bin/bash
-# 3.fit_param_gen2.sh
+# RUN AS: $ bash 5.fit_param_gen2.sh
 # Execute ipq parameter fitting protocols
 
 ITER=V01

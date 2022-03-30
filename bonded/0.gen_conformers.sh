@@ -6,7 +6,7 @@
 ####################### VARIABLES #########################
 ###########################################################
 # arbitrary name of the iteration directory
-ITERATION=orca500test
+ITERATION=v00
 # 3 letter restype identifier for your molecule
 PDB=mon
 # name of the library file with vacuum phase atomic charges
@@ -14,7 +14,7 @@ LIB_VAC=mon_gaff_02_vac.lib
 # name of the frcmod file from gaff and charges directory
 FRCMOD=mon.frcmod
 # number of conformations to generate with mdgx
-N_CONFS=10
+N_CONFS=1000
 
 ###########################################################
 # NOTE: you must fill out the &configs settings for       #
@@ -84,6 +84,8 @@ EOF
 
 mdgx -i ${PDB}_GEN_CONFS.mdgx -O
 echo -e "Finished generating ${N_CONFS} conformations of ${PDB}."
+
+
 ## exit CONFS directory
 #cd ..
 #

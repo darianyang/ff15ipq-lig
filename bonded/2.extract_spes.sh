@@ -1,9 +1,8 @@
 #!/bin/bash
+# RUN AS: $ bash 2.extract_spes.dat
 
 PDB=mon
-#ITERATION=v00
-#ITERATION=orca420test
-ITERATION=orca500test
+ITERATION=v00
 
 cd $ITERATION
 
