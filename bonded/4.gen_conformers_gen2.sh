@@ -30,7 +30,7 @@ mkdir $ITERATION
 cd $ITERATION &&
 
 # 1) make directory for each res class and create vac top and crd files
-cat << EOF > tleap_vacuo.in
+cat << EOF > tleap_vacuo_G2.in
 source leaprc.gaff
 loadoff ../$LIB_VAC
 loadAmberParams $FRCMOD
