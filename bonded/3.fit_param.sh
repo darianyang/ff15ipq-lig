@@ -3,7 +3,7 @@
 # Execute ipq parameter fitting protocols
 
 PDB=mon
-ITERATION=v00
+ITERATION=v01
 FRCMOD=mon.frcmod
 
 cd $ITERATION &&

@@ -6,13 +6,12 @@
 ####################### VARIABLES #########################
 ###########################################################
 # arbitrary name of the iteration directory
-ITERATION=v00
+ITERATION=v01
 # 3 letter restype identifier for your molecule
 PDB=mon
 # name of the library file with vacuum phase atomic charges
 LIB_VAC=mon_gaff_02_vac.lib
-# name of the frcmod file from gaff and charges directory
-# this should be in the main /bonded directory
+# name of the frcmod file
 FRCMOD=mon.frcmod
 # number of conformations to generate with mdgx
 N_CONFS=1000

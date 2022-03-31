@@ -13,7 +13,7 @@
 # of CONFS per slurm job for max efficiency
 CPUS=20
 # arbitrary name of the iteration directory
-ITERATION=v00
+ITERATION=v01
 # 3 letter restype identifier for your molecule
 PDB=mon
 ###########################################################

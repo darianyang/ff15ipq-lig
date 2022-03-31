@@ -8,7 +8,7 @@
 ####################### VARIABLES #########################
 ###########################################################
 # arbitrary name of the iteration directory
-ITERATION=v00
+ITERATION=v01
 # 3 letter restype identifier for your molecule
 PDB=mon
 # name of the library file with vacuum phase atomic charges

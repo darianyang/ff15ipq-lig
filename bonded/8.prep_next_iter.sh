@@ -17,6 +17,9 @@ GEN2=true
 #####################################################################
 #####################################################################
 
+# make new iteration directory
+mkdir -v $NEXT_ITER
+
 # copy the finished frcmod files to main and next_iter directories
 cp -v $PREV_ITER/FIT_${PREV_ITER}.frcmod ${PDB}_${PREV_ITER}.frcmod
 cp -v $PREV_ITER/FIT_${PREV_ITER}.frcmod $NEXT_ITER/${PDB}.frcmod
@@ -24,9 +27,6 @@ if [ "$GEN2" = true ] ; then
     cp -v $PREV_ITER/FIT_${PREV_ITER}_G2.frcmod ${PDB}_${PREV_ITER}_G2.frcmod
     cp -v $PREV_ITER/FIT_${PREV_ITER}_G2.frcmod $NEXT_ITER/${PDB}.frcmod
 fi
-
-# make new iteration directory
-mkdir -v $NEXT_ITER
 
 # change the iteration variables to new values
 # need extented ('') sed for MacOSX (sed -i '' "s//" file)
