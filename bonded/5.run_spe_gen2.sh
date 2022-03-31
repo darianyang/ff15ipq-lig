@@ -11,7 +11,7 @@
 # of CONFS per slurm job for max efficiency
 CPUS=5
 # arbitrary name of the iteration directory
-ITERATION=v01
+ITERATION=v00
 # 3 letter restype identifier for your molecule
 PDB=mon
 ###########################################################
@@ -110,7 +110,6 @@ echo -e "FINISHED $1 to $2 SPE CALC SUBMISSION FOR $PDB ITERATION:$ITERATION \n"
 ###########################################################
 ############# ADJUST THE FOLLOWING IF NEEDED ##############
 ###########################################################
-# with G2, there won't be too many conformations
-# just 1 run should be fine
+# there probably won't be too many confs so just 1 run can work
 submit_spe_of_confs 1 1000
 

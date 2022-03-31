@@ -3,7 +3,7 @@
 # Execute ipq parameter fitting protocols
 
 PDB=mon
-ITERATION=v01
+ITERATION=v00
 FRCMOD=mon.frcmod
 
 cd $ITERATION &&
@@ -37,8 +37,8 @@ cat << EOF > FIT_${ITERATION}.in
   % Angle fitting input
   fita          ce  c2  n
   FitAnglEq     1,
-  arst          0.0002,
-  arstcpl       10,  
+  arst          0.002,
+  arstcpl       1,  
 
   % Torsion fitting input
   fith          n   c3  ce  c
@@ -47,7 +47,8 @@ cat << EOF > FIT_${ITERATION}.in
   fith          n   c3  ce  c2
   fith          ca  c3  ce  c2
   fith          h1  c3  ce  c2
-  hrst          0.0002,
+  %hrst          0.0002,
+  hrst          0.002,
 &end
 EOF
 

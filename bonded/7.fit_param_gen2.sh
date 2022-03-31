@@ -3,7 +3,7 @@
 # Execute ipq parameter fitting protocols
 
 PDB=mon
-ITERATION=v01
+ITERATION=v00
 FRCMOD=mon.frcmod
 
 cd $ITERATION &&
@@ -12,7 +12,8 @@ cd $ITERATION &&
 cat << EOF > FIT_${ITERATION}_G2.in
 &files
   -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
-  -fmod $FRCMOD
+  %-fmod $FRCMOD
+  -fmod FIT_${ITERATION}.frcmod
   -d FIT_${ITERATION}_G2.frcmod
   -o FIT_${ITERATION}_G2.out
 &end
@@ -38,8 +39,8 @@ cat << EOF > FIT_${ITERATION}_G2.in
   % Angle fitting input
   fita          ce  c2  n
   FitAnglEq     1,
-  arst          0.0002,
-  arstcpl       10,  
+  arst          0.002,
+  arstcpl       1,  
   
   % Torsion fitting input
   fith          n   c3  ce  c
@@ -48,7 +49,8 @@ cat << EOF > FIT_${ITERATION}_G2.in
   fith          n   c3  ce  c2
   fith          ca  c3  ce  c2
   fith          h1  c3  ce  c2
-  hrst          0.0002,
+  %hrst          0.0002,
+  hrst          0.002,
 &end
 EOF
 

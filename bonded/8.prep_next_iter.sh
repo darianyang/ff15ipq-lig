@@ -12,7 +12,8 @@ PREV_ITER=v00
 # put your desired $ITERATION variable for the next run
 NEXT_ITER=v01
 # set this to true if you ran gen2 scripts
-GEN2=true
+#GEN2=true
+GEN2=false
 #####################################################################
 #####################################################################
 #####################################################################

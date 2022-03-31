@@ -2,7 +2,7 @@
 # RUN AS: $ bash 6.extract_spes_gen2.dat
 
 PDB=mon
-ITERATION=v01
+ITERATION=v00
 
 cd $ITERATION
 

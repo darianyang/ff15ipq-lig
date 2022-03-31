@@ -40,7 +40,7 @@ loadoff ../$LIB_VAC
 loadAmberParams $FRCMOD
 ${PDB} = loadpdb ../${PDB}.pdb
 check ${PDB}
-set ${PDB} box {32.006 32.006 32.006}
+setBox ${PDB} vdw 12.0
 saveAmberParm ${PDB} ${PDB}_V.top ${PDB}_V.crd
 savepdb ${PDB} ${PDB}_V.pdb
 quit

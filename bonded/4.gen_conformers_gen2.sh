@@ -8,15 +8,13 @@
 ####################### VARIABLES #########################
 ###########################################################
 # arbitrary name of the iteration directory
-ITERATION=v01
+ITERATION=v00
 # 3 letter restype identifier for your molecule
 PDB=mon
 # name of the library file with vacuum phase atomic charges
 LIB_VAC=mon_gaff_02_vac.lib
 # name of the NEW frcmod file from gen 1 fitting
 FRCMOD=FIT_${ITERATION}.frcmod
-# number of conformations to generate with mdgx
-N_CONFS=1000
 
 ###########################################################
 # NOTE: you must fill out the &configs settings for       #
@@ -36,7 +34,8 @@ loadoff ../$LIB_VAC
 loadAmberParams $FRCMOD
 ${PDB} = loadpdb ../${PDB}.pdb
 check ${PDB}
-set ${PDB} box {32.006 32.006 32.006}
+setBox ${PDB} vdw 12.0
+#set ${PDB} box {32.006 32.006 32.006}
 saveAmberParm ${PDB} ${PDB}_V_G2.top ${PDB}_V_G2.crd
 savepdb ${PDB} ${PDB}_V_G2.pdb
 quit
@@ -57,15 +56,6 @@ cat << EOF > ${PDB}_GEN_CONFS_G2.mdgx
 &end
 
 &configs
-  % See the amber manual for more information and examples
-  % Here I am sampling on the flexible dihedrals available in monastrol
-  % from -180 to 180 degrees using a force constant of 32 kcal/mol
-  % To visualize the atom numbers, I like to use Avogadro
-  % You can also use VMD but note the indexing is by 0 and not 1
-  GridSample    @1  @2  @3  @4  { -180.0 180.0 }    Krst 32.0
-  GridSample    @2  @3  @4  @6  { -180.0 180.0 }    Krst 32.0
-  combine 1 2
-  count ${N_CONFS}
   verbose 1
 
   % Cull results at a tight energy convergence criterion

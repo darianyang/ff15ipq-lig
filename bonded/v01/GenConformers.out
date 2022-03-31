@@ -1,0 +1,220 @@
+<++>-----------------------------------------------------------------------<++>
+<++> mdgx: A molecular dynamics engine in the AMBER suite of programs      <++>
+<++>                                                                       <++>
+<++> Written by David S. Cerutti, Case Group (2009 - 2020)                 <++>
+<++>-----------------------------------------------------------------------<++>
+
+Run on Thu Mar 31 11:29:39 2022
+<++>-----------------------------------------------------------------------<++>
+
+INPUT LINE TEXT:
+
+mdgx -i mon_GEN_CONFS.mdgx -O 
+
+
+INPUT FILE TEXT:
+
+&files
+  -p    ../mon_V.top
+  -c    ../mon_V.crd
+  -o    ../GenConformers.out
+&end
+
+&configs
+  % See the amber manual for more information and examples
+  % Here I am sampling on the flexible dihedrals available in monastrol
+  % from -180 to 180 degrees using a force constant of 32 kcal/mol
+  % To visualize the atom numbers, I like to use Avogadro
+  % You can also use VMD but note the indexing is by 0 and not 1
+  GridSample    @1  @2  @3  @4  { -180.0 180.0 }    Krst 32.0
+  GridSample    @2  @3  @4  @6  { -180.0 180.0 }    Krst 32.0
+  combine 1 2
+  count 1000
+  verbose 1
+
+  % Controls on the quantum mechanical operations
+  qmlev    'RI-MP2',
+  basis    'cc-pVTZ cc-pVTZ/c',
+
+  % Calc settings
+  ncpu '1'
+  maxcore '4096'
+
+  % Output controls: TAKE NOTE, this will generate a lot of files so
+  % do this in a clean directory that you won't ls very often.
+  outbase  'Conf', 'Conf'
+  write    'pdb',  'orca'
+  outsuff  'pdb',  'orca'
+&end
+<++>-----------------------------------------------------------------------<++>
+
+<++>-----------------------------------------------------------------------<++>
+(1.) Energies of the initial and final states.  Units are kcal/mol.  A number 
+     of statistics could be of interest here: this table tries to anticipate 
+     them.
+
+ Statistic                Mean Value    Std. Dev.   Min. Value   Max. Value  
+                           (kcal/mol)   (kcal/mol)   (kcal/mol)   (kcal/mol) 
+ ------------------------ ------------ ------------ ------------ ------------
+ Initial E(Model) (a)         -90.1488       0.0000     -90.1488     -90.1488
+ Initial E(Restraint) (b)     139.4843      67.7197       0.0478     314.0915
+ Final E(Model) (c)          -118.9473      12.0382    -133.3440     -43.8635
+ Final E(Restraint) (d)         1.1174       4.1995       0.0001      43.5274
+ Delta E(Model) (e)           -28.7985      12.0382     -43.1951      46.2853
+ Delta E(Restraint) (f)      -138.3669      66.4795    -285.4475      -0.0077
+
+  (a) The energies of the initial models, without the restraint energy (this 
+      is an indicator of how strained the configurations were before mdgx 
+      began to manipulate them).
+  (b) When restraints were first applied to the initial models, these were the 
+      restraint energies.
+  (c) The energies of the final models, again excluding restraint energy. 
+      This is an indicator of how strained the molecular configurations became 
+      after manipulation.
+  (d) Restraint energy needed to get the final configurations into place.
+  (e) This is an indicator of the change in molecular mechanics energy. 
+      E(model) will typically rise, indicating that structures became 
+      distorted in response to pressure from external restraints.
+  (f) The change in restraint energy.  E(restraint) will typically fall as 
+      restraints force the structures into new configurations.
+<++>-----------------------------------------------------------------------<++>
+
+<++>-----------------------------------------------------------------------<++>
+(2.) Convergence statistics for the run.  This block of information describes 
+     the energy minimization of ALL configurations, regardless of whether they 
+     were printed.  The next section presents counts of configurations passing 
+     the basic sanity checks.
+
+ - Average steps to convergence:     758 +/-  197
+ - Total converged configurations:   804
+ - Unconverged configurations:       196
+
+ - Average of the maximal residual force
+   on NON-converged configurations:        1.487711e-01 kcal/mol-A
+ - Average residual forces on frequently strained atoms:
+     Atom    4, C2   (30 configs):         7.438819e-04 kcal/mol-A
+     Atom    7, C4   (18 configs):         2.880809e+00 kcal/mol-A
+     Atom    6, C3   (15 configs):         6.379544e-03 kcal/mol-A
+     Atom    9, N    (15 configs):         2.497527e-03 kcal/mol-A
+     Atom   18, C12  (13 configs):         5.274105e-03 kcal/mol-A
+
+<++>-----------------------------------------------------------------------<++>
+
+<++>-----------------------------------------------------------------------<++>
+(3.) Basic sanity checks.  If a configuration fails these tests, it was not 
+     printed out for further consideration but the reasons it failed will be 
+     summarized here.  The tests are that, first, no bond of a configuration 
+     may be strained more than 10.00 kcal/mol.  Furthermore, no angle may be 
+     strained more than 10.00 kcal/mol.  Finally, the maximum tolerated 
+     restraint energy (summed over all restraints) is 200.00 kcal/mol. If any 
+     of these tests seem too stringent or not tight enough, the thresholds may 
+     be changed in the &configs namelist.
+
+ - Configurations passing all sanity checks:        975
+ - Configurations failing bond sanity check:          0
+ - Configurations failing angle sanity check:        25
+ - Configurations failing restraint sanity check:     0
+
+ Descriptions of each problematic configuration follow, along with the 
+ names and numbers of atoms involved in each feature creating the problem.
+ - Configuration 25:
+     Strain is   18.9110 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  147.2968
+     Restraint binding atoms C   -C1  -O   -C2  (1, 2, 3, 4) strained to    0.3286
+ - Configuration 26:
+     Strain is   17.9992 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  146.5326
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to    0.5332
+ - Configuration 27:
+     Strain is   17.2054 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.8513
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to    3.4577
+ - Configuration 28:
+     Strain is   16.9715 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.6475
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to    8.8578
+ - Configuration 29:
+     Strain is   16.9715 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.6475
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   15.3436
+ - Configuration 30:
+     Strain is   16.9715 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.6475
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   21.8295
+ - Configuration 31:
+     Strain is   16.9715 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.6475
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   28.3154
+ - Configuration 57:
+     Strain is   17.2852 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.9205
+     Restraint binding atoms C   -C1  -O   -C2  (1, 2, 3, 4) strained to    2.9578
+ - Configuration 58:
+     Strain is   17.2931 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.9273
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to    3.1514
+ - Configuration 59:
+     Strain is   17.0517 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.7175
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to    8.3252
+ - Configuration 60:
+     Strain is   17.0517 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.7175
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   14.8110
+ - Configuration 61:
+     Strain is   17.0517 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.7175
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   21.2969
+ - Configuration 62:
+     Strain is   17.0517 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.7175
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   27.7828
+ - Configuration 89:
+     Strain is   14.8760 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  143.7557
+     Restraint binding atoms C   -C1  -O   -C2  (1, 2, 3, 4) strained to    8.2147
+ - Configuration 90:
+     Strain is   16.2669 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.0252
+     Restraint binding atoms C   -C1  -O   -C2  (1, 2, 3, 4) strained to    8.2147
+ - Configuration 91:
+     Strain is   16.2782 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.0352
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   13.7015
+ - Configuration 92:
+     Strain is   16.2782 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.0352
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   20.1874
+ - Configuration 93:
+     Strain is   16.2782 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  145.0352
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   26.6733
+ - Configuration 121:
+     Strain is   13.7453 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  142.6792
+     Restraint binding atoms C   -C1  -O   -C2  (1, 2, 3, 4) strained to   14.7005
+ - Configuration 122:
+     Strain is   13.8035 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  142.7356
+     Restraint binding atoms C   -C1  -O   -C2  (1, 2, 3, 4) strained to   14.7005
+ - Configuration 123:
+     Strain is   13.8035 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  142.7356
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   18.3255
+ - Configuration 124:
+     Strain is   13.8035 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  142.7356
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   24.8113
+ - Configuration 153:
+     Strain is   10.1945 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  138.9734
+     Restraint binding atoms C   -C1  -O   -C2  (1, 2, 3, 4) strained to   21.1864
+ - Configuration 154:
+     Strain is   10.1945 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  138.9734
+     Restraint binding atoms C   -C1  -O   -C2  (1, 2, 3, 4) strained to   21.1864
+ - Configuration 155:
+     Strain is   10.1945 for angle C1  -O   -C2   (2, 3, 4)
+     Types c3   os   c   , K =  63.3000, Teq =  115.9800, Actual =  138.9734
+     Restraint binding atoms C1  -O   -C2  -C3  (2, 3, 4, 6) strained to   22.3410
+<++>-----------------------------------------------------------------------<++>
