@@ -12,7 +12,7 @@ cd $ITERATION &&
 cat << EOF > FIT_${ITERATION}_G2.in
 &files
   -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
-  -fmod ../$FRCMOD
+  -fmod $FRCMOD
   -d FIT_${ITERATION}_G2.frcmod
   -o FIT_${ITERATION}_G2.out
 &end
@@ -23,7 +23,7 @@ cat << EOF > FIT_${ITERATION}_G2.in
   ParmOutput    frcmod
   verbose       1,
   eunits        hartree,
-  accrep        report.m
+  accrep        report_G2.m
 
   % eliminate conformations far outside of the norm for the system
   % default 0 (do not remove outliers)

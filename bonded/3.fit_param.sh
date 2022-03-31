@@ -12,7 +12,7 @@ cd $ITERATION &&
 cat << EOF > FIT_${ITERATION}.in
 &files
   -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
-  -fmod ../$FRCMOD
+  -fmod $FRCMOD
   -d FIT_${ITERATION}.frcmod
   -o FIT_${ITERATION}.out
 &end
@@ -53,4 +53,3 @@ EOF
 
 mdgx -i FIT_${ITERATION}.in -O
 
-# TODO: fill out improper dihedrals from parmchk frcmod

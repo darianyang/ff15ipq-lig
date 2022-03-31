@@ -12,6 +12,7 @@ PDB=mon
 # name of the library file with vacuum phase atomic charges
 LIB_VAC=mon_gaff_02_vac.lib
 # name of the frcmod file from gaff and charges directory
+# this should be in the main /bonded directory
 FRCMOD=mon.frcmod
 # number of conformations to generate with mdgx
 N_CONFS=1000
@@ -24,14 +25,20 @@ N_CONFS=1000
 ###########################################################
 ###########################################################
 
-mkdir $ITERATION
+# make and prep iteration directory
+if [ ! -d $ITERATION ] ; then
+    mkdir $ITERATION
+fi
+if [ ! -f $ITERATION/$FRCMOD ] ; then
+    cp -v $FRCMOD $ITERATION/
+fi
 cd $ITERATION &&
 
 # 1) make directory for each res class and create vac top and crd files
 cat << EOF > tleap_vacuo.in
 source leaprc.gaff
 loadoff ../$LIB_VAC
-loadAmberParams ../$FRCMOD
+loadAmberParams $FRCMOD
 ${PDB} = loadpdb ../${PDB}.pdb
 check ${PDB}
 set ${PDB} box {32.006 32.006 32.006}
