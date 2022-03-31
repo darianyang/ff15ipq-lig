@@ -1,742 +1,745 @@
 % Model accuracy report for fitting ordered by
-% FIT_v00.in.
-% Written on Wed Mar 30 23:53:53 2022
+% FIT_v00_G2.in.
+% Written on Thu Mar 31 07:32:57 2022
 
 % System mon_V.top
 data0 = [
 % Target  Original    Model     Error
- -97.5583  -99.6897  -98.5021    0.9438   % concat_coords.cdf, Frame 1
- -93.5782  -97.5477  -95.2629    1.6846   % concat_coords.cdf, Frame 2
- -90.7167  -88.0356  -89.6004   -1.1163   % concat_coords.cdf, Frame 4
- -95.8812  -99.4098  -97.3942    1.5130   % concat_coords.cdf, Frame 7
- -93.2953  -90.2288  -92.2657   -1.0296   % concat_coords.cdf, Frame 8
- -97.2426 -101.5390 -100.2209    2.9783   % concat_coords.cdf, Frame 10
- -95.5587  -96.3471  -94.5716   -0.9871   % concat_coords.cdf, Frame 11
- -92.0782  -91.6826  -89.5590   -2.5192   % concat_coords.cdf, Frame 12
- -95.4027 -100.0964  -97.8459    2.4431   % concat_coords.cdf, Frame 13
--101.9637 -102.0464  -98.9381   -3.0256   % concat_coords.cdf, Frame 14
- -92.7299  -92.2971  -90.1502   -2.5797   % concat_coords.cdf, Frame 15
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 16
- -86.5609  -82.0822  -86.0628   -0.4981   % concat_coords.cdf, Frame 17
- -91.3628  -88.1959  -89.5684   -1.7944   % concat_coords.cdf, Frame 20
--101.3466 -103.8623 -101.0758   -0.2708   % concat_coords.cdf, Frame 22
- -84.7802  -83.9357  -86.8176    2.0375   % concat_coords.cdf, Frame 23
- -90.5008  -95.3214  -93.4602    2.9593   % concat_coords.cdf, Frame 24
- -92.7061  -97.9563  -96.2184    3.5123   % concat_coords.cdf, Frame 25
--103.5785 -106.5246 -104.0919    0.5133   % concat_coords.cdf, Frame 26
--101.1503 -104.9771 -102.6883    1.5380   % concat_coords.cdf, Frame 28
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 29
- -93.4355  -89.0727  -90.9508   -2.4847   % concat_coords.cdf, Frame 30
- -96.1607  -97.0880  -93.2113   -2.9494   % concat_coords.cdf, Frame 31
- -91.0600  -87.1377  -90.1955   -0.8645   % concat_coords.cdf, Frame 33
- -90.5761  -84.8680  -90.0223   -0.5538   % concat_coords.cdf, Frame 35
- -89.0022  -85.2008  -87.4829   -1.5193   % concat_coords.cdf, Frame 38
- -99.2071 -103.3097 -101.2502    2.0431   % concat_coords.cdf, Frame 40
- -87.2016  -86.1096  -87.3160    0.1144   % concat_coords.cdf, Frame 41
- -89.2308  -86.6298  -89.2085   -0.0224   % concat_coords.cdf, Frame 42
- -86.6835  -85.4283  -88.0383    1.3549   % concat_coords.cdf, Frame 44
- -92.1538  -88.3981  -91.9609   -0.1929   % concat_coords.cdf, Frame 45
- -89.5553  -94.6748  -94.5215    4.9662   % concat_coords.cdf, Frame 46
- -87.2533  -82.6580  -87.3656    0.1123   % concat_coords.cdf, Frame 47
- -90.5229  -97.3470  -95.7297    5.2068   % concat_coords.cdf, Frame 48
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 51
- -97.9761 -102.4367 -100.3732    2.3971   % concat_coords.cdf, Frame 52
- -79.8715  -81.6902  -84.7288    4.8574   % concat_coords.cdf, Frame 53
- -95.8810 -100.6698  -98.5475    2.6665   % concat_coords.cdf, Frame 54
- -84.7490  -83.7027  -87.0101    2.2611   % concat_coords.cdf, Frame 56
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 58
- -94.4385  -94.1827  -91.1746   -3.2638   % concat_coords.cdf, Frame 59
- -88.2149  -83.5005  -88.9976    0.7827   % concat_coords.cdf, Frame 61
- -97.2607  -99.6026  -97.4438    0.1831   % concat_coords.cdf, Frame 63
--100.0405 -102.8947 -101.0955    1.0550   % concat_coords.cdf, Frame 64
- -89.8186  -85.8093  -87.8131   -2.0054   % concat_coords.cdf, Frame 65
--102.6632 -104.9775 -102.5375   -0.1257   % concat_coords.cdf, Frame 67
--101.2711 -101.4399  -98.4270   -2.8441   % concat_coords.cdf, Frame 68
- -96.3708  -98.3235  -96.2064   -0.1645   % concat_coords.cdf, Frame 70
- -91.1834  -97.6220  -95.9231    4.7397   % concat_coords.cdf, Frame 71
- -89.7508  -94.8376  -93.2381    3.4873   % concat_coords.cdf, Frame 72
- -98.5844 -101.9389  -99.2699    0.6855   % concat_coords.cdf, Frame 73
--103.9137 -106.3408 -104.4109    0.4973   % concat_coords.cdf, Frame 75
- -89.4277  -84.8473  -89.0858   -0.3418   % concat_coords.cdf, Frame 76
--101.8878 -103.8649 -101.1518   -0.7360   % concat_coords.cdf, Frame 77
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 78
- -93.8002  -98.8501  -97.0335    3.2334   % concat_coords.cdf, Frame 79
--103.3823 -105.9295 -103.9737    0.5913   % concat_coords.cdf, Frame 80
--104.1300 -105.3986 -103.5545   -0.5755   % concat_coords.cdf, Frame 81
--101.5724 -105.3535 -103.1710    1.5986   % concat_coords.cdf, Frame 82
- -87.9473  -84.8332  -89.9765    2.0293   % concat_coords.cdf, Frame 84
- -89.0210  -85.6887  -88.7106   -0.3104   % concat_coords.cdf, Frame 85
- -94.8696  -96.0821  -97.5872    2.7176   % concat_coords.cdf, Frame 88
- -89.5803  -87.3815  -89.8606    0.2803   % concat_coords.cdf, Frame 89
- -97.4281 -100.3815  -98.2420    0.8139   % concat_coords.cdf, Frame 90
- -94.8778  -97.2818  -95.7225    0.8446   % concat_coords.cdf, Frame 91
--103.1375 -105.8680 -103.4441    0.3066   % concat_coords.cdf, Frame 92
- -84.9104  -80.1418  -84.0141   -0.8964   % concat_coords.cdf, Frame 93
- -89.4096  -85.0609  -89.9674    0.5578   % concat_coords.cdf, Frame 94
- -89.4328  -83.7669  -92.3300    2.8972   % concat_coords.cdf, Frame 95
- -89.9500  -85.2032  -87.7613   -2.1887   % concat_coords.cdf, Frame 96
--102.0121 -103.9576 -101.1787   -0.8334   % concat_coords.cdf, Frame 97
- -89.4861  -95.4749  -93.8886    4.4025   % concat_coords.cdf, Frame 98
- -98.0835 -101.5148 -100.0666    1.9831   % concat_coords.cdf, Frame 99
--103.9499 -106.9900 -104.8128    0.8629   % concat_coords.cdf, Frame 100
- -90.0253  -94.6567  -93.0461    3.0208   % concat_coords.cdf, Frame 101
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 104
- -88.8644  -83.4104  -86.3860   -2.4785   % concat_coords.cdf, Frame 105
- -97.0604  -98.9001  -96.7741   -0.2864   % concat_coords.cdf, Frame 106
- -92.5073  -90.3722  -90.8057   -1.7015   % concat_coords.cdf, Frame 107
- -90.2392  -95.2412  -93.6291    3.3899   % concat_coords.cdf, Frame 108
- -92.1706  -87.5807  -89.3079   -2.8627   % concat_coords.cdf, Frame 110
- -93.5035  -90.6053  -92.6681   -0.8354   % concat_coords.cdf, Frame 111
- -91.2786  -86.7554  -89.1875   -2.0911   % concat_coords.cdf, Frame 113
- -87.4435  -81.0629  -86.1582   -1.2852   % concat_coords.cdf, Frame 114
- -93.2785  -89.6146  -91.5931   -1.6854   % concat_coords.cdf, Frame 115
- -89.5086  -83.5698  -89.8207    0.3121   % concat_coords.cdf, Frame 117
- -94.9845  -99.3075  -96.9984    2.0139   % concat_coords.cdf, Frame 118
--102.5900 -104.5075 -102.5408   -0.0491   % concat_coords.cdf, Frame 121
- -89.0005  -84.6621  -90.1453    1.1447   % concat_coords.cdf, Frame 122
- -92.2773  -94.9767  -92.5628    0.2855   % concat_coords.cdf, Frame 123
- -89.9626  -87.8982  -90.1259    0.1633   % concat_coords.cdf, Frame 124
--100.2013 -102.4978 -100.0146   -0.1866   % concat_coords.cdf, Frame 126
--103.3051 -104.7711 -102.4884   -0.8168   % concat_coords.cdf, Frame 127
--102.9916 -104.5046 -101.1889   -1.8027   % concat_coords.cdf, Frame 129
- -93.7103  -87.9790  -91.5627   -2.1476   % concat_coords.cdf, Frame 130
- -94.7519  -98.6724  -96.7708    2.0189   % concat_coords.cdf, Frame 131
- -91.8342  -91.7450  -92.1727    0.3384   % concat_coords.cdf, Frame 132
- -92.9108  -97.8271  -95.7153    2.8045   % concat_coords.cdf, Frame 133
- -87.9674  -87.4096  -89.4812    1.5137   % concat_coords.cdf, Frame 134
--102.8621 -103.8813 -100.7423   -2.1198   % concat_coords.cdf, Frame 135
- -90.5020  -87.1480  -90.5887    0.0867   % concat_coords.cdf, Frame 136
- -93.4372  -88.0503  -92.5407   -0.8965   % concat_coords.cdf, Frame 137
--104.5579 -106.8318 -104.9112    0.3533   % concat_coords.cdf, Frame 138
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 139
- -93.5916  -98.0876  -96.2664    2.6748   % concat_coords.cdf, Frame 141
- -88.1480  -86.9135  -90.2804    2.1323   % concat_coords.cdf, Frame 143
- -91.8880  -86.0619  -88.0453   -3.8427   % concat_coords.cdf, Frame 146
--103.4679 -104.8225 -101.6103   -1.8576   % concat_coords.cdf, Frame 147
- -97.2472  -97.6772  -95.9438   -1.3035   % concat_coords.cdf, Frame 148
- -89.4742  -86.6767  -88.0581   -1.4161   % concat_coords.cdf, Frame 149
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 151
- -94.5317  -92.3418  -94.0814   -0.4503   % concat_coords.cdf, Frame 152
- -82.2116  -81.4961  -84.2664    2.0547   % concat_coords.cdf, Frame 153
--102.4809 -102.9583  -99.7612   -2.7197   % concat_coords.cdf, Frame 154
--102.0599 -104.0048 -100.5155   -1.5444   % concat_coords.cdf, Frame 155
--101.4522 -103.6793 -101.6700    0.2179   % concat_coords.cdf, Frame 156
- -91.6455  -84.3943  -89.8116   -1.8338   % concat_coords.cdf, Frame 158
- -94.7178  -99.2393  -97.6650    2.9472   % concat_coords.cdf, Frame 159
--100.5510 -103.0723 -100.5217   -0.0294   % concat_coords.cdf, Frame 160
- -94.6321  -97.6311  -95.5261    0.8939   % concat_coords.cdf, Frame 161
- -84.8621  -82.8952  -85.0272    0.1651   % concat_coords.cdf, Frame 162
--100.9854 -101.9858  -99.9723   -1.0131   % concat_coords.cdf, Frame 163
- -90.5285  -85.3347  -88.0186   -2.5099   % concat_coords.cdf, Frame 164
- -86.3398  -86.5703  -87.8198    1.4800   % concat_coords.cdf, Frame 165
--101.0214 -104.7124 -102.5298    1.5083   % concat_coords.cdf, Frame 166
- -99.9013 -103.6753 -101.4773    1.5761   % concat_coords.cdf, Frame 167
--103.3885 -104.7798 -102.5245   -0.8640   % concat_coords.cdf, Frame 169
- -96.0350  -98.8817  -96.7320    0.6970   % concat_coords.cdf, Frame 171
- -99.3772 -101.4193  -99.6801    0.3029   % concat_coords.cdf, Frame 172
--101.0549 -101.6748 -102.6108    1.5560   % concat_coords.cdf, Frame 173
- -93.4653  -97.1639  -95.3308    1.8654   % concat_coords.cdf, Frame 174
--103.1255 -104.0312 -101.7712   -1.3543   % concat_coords.cdf, Frame 175
- -89.5066  -83.4889  -86.9338   -2.5728   % concat_coords.cdf, Frame 176
- -93.1954  -98.6353  -96.2456    3.0502   % concat_coords.cdf, Frame 177
- -93.7405  -93.4928  -91.6588   -2.0817   % concat_coords.cdf, Frame 179
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 180
--102.1814 -102.1212  -98.7908   -3.3906   % concat_coords.cdf, Frame 182
--102.8440 -103.2806  -99.8043   -3.0397   % concat_coords.cdf, Frame 183
- -94.6343  -92.2605  -93.4699   -1.1644   % concat_coords.cdf, Frame 184
- -94.6494  -99.2946  -98.1046    3.4552   % concat_coords.cdf, Frame 185
- -93.8563  -90.8130  -92.5557   -1.3007   % concat_coords.cdf, Frame 187
- -84.6547  -83.6831  -86.5267    1.8720   % concat_coords.cdf, Frame 188
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 189
- -92.5017  -97.4757  -95.0120    2.5103   % concat_coords.cdf, Frame 190
- -91.2757  -87.4928  -89.0430   -2.2327   % concat_coords.cdf, Frame 192
- -96.7463  -99.2423  -96.9704    0.2241   % concat_coords.cdf, Frame 194
- -94.7975  -95.1214  -92.7500   -2.0475   % concat_coords.cdf, Frame 195
- -90.5647  -95.7261  -94.0056    3.4409   % concat_coords.cdf, Frame 196
- -92.5939  -88.2134  -90.4475   -2.1464   % concat_coords.cdf, Frame 197
- -94.1387  -99.3982  -97.5883    3.4496   % concat_coords.cdf, Frame 198
- -92.6751  -86.7774  -89.8302   -2.8449   % concat_coords.cdf, Frame 199
- -91.3801  -87.7042  -91.6692    0.2891   % concat_coords.cdf, Frame 200
- -94.5903  -88.7262  -90.1556   -4.4348   % concat_coords.cdf, Frame 201
- -97.3755  -99.4869  -97.8131    0.4376   % concat_coords.cdf, Frame 203
- -97.7090  -98.9477  -95.5662   -2.1428   % concat_coords.cdf, Frame 204
- -94.3788  -89.1091  -90.7638   -3.6150   % concat_coords.cdf, Frame 207
- -89.5101  -84.7253  -87.4834   -2.0267   % concat_coords.cdf, Frame 208
- -84.6085  -82.9423  -86.0902    1.4817   % concat_coords.cdf, Frame 209
- -86.4183  -84.4351  -88.1441    1.7259   % concat_coords.cdf, Frame 211
--101.9294 -104.9498 -102.7811    0.8516   % concat_coords.cdf, Frame 213
- -92.9043  -89.5267  -92.0273   -0.8771   % concat_coords.cdf, Frame 214
--100.5239 -102.4698  -99.4028   -1.1211   % concat_coords.cdf, Frame 215
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 217
- -96.7738  -98.8862  -97.2468    0.4730   % concat_coords.cdf, Frame 218
- -93.4682  -93.6211  -91.7705   -1.6977   % concat_coords.cdf, Frame 219
- -94.8209  -96.0314  -92.8656   -1.9552   % concat_coords.cdf, Frame 220
- -96.7846 -101.1044  -99.0493    2.2647   % concat_coords.cdf, Frame 221
--102.4816 -104.0018 -101.8659   -0.6157   % concat_coords.cdf, Frame 222
- -93.8438  -97.9604  -96.3118    2.4680   % concat_coords.cdf, Frame 223
- -96.3784  -97.2619  -95.3480   -1.0304   % concat_coords.cdf, Frame 224
- -91.8741  -90.8750  -91.3293   -0.5448   % concat_coords.cdf, Frame 225
- -92.6987  -87.7820  -92.2363   -0.4624   % concat_coords.cdf, Frame 226
- -82.4209  -82.2871  -85.8711    3.4502   % concat_coords.cdf, Frame 227
- -94.1526  -90.4918  -92.4886   -1.6640   % concat_coords.cdf, Frame 229
- -98.0298 -101.9417 -100.0532    2.0234   % concat_coords.cdf, Frame 230
--102.4019 -104.6819 -102.5323    0.1303   % concat_coords.cdf, Frame 231
- -95.5048 -100.1704  -98.2810    2.7763   % concat_coords.cdf, Frame 232
- -81.5689  -80.7863  -85.4060    3.8371   % concat_coords.cdf, Frame 234
- -88.7323  -95.9358  -94.3696    5.6373   % concat_coords.cdf, Frame 235
- -92.6543  -87.8859  -89.3991   -3.2552   % concat_coords.cdf, Frame 236
- -93.1741  -95.5160  -92.9972   -0.1769   % concat_coords.cdf, Frame 238
- -96.8342  -99.2403  -97.1863    0.3521   % concat_coords.cdf, Frame 239
- -97.2720  -99.3834  -95.0629   -2.2091   % concat_coords.cdf, Frame 241
--103.0163 -104.4310 -101.2517   -1.7647   % concat_coords.cdf, Frame 243
- -80.0751  -80.5717  -82.8895    2.8144   % concat_coords.cdf, Frame 244
--102.1575 -103.6915 -100.8206   -1.3369   % concat_coords.cdf, Frame 245
--102.4267 -103.9267 -101.7493   -0.6774   % concat_coords.cdf, Frame 246
- -88.7115  -84.5917  -89.8376    1.1261   % concat_coords.cdf, Frame 247
- -88.2016  -87.0874  -88.9074    0.7059   % concat_coords.cdf, Frame 249
- -89.9161  -85.2915  -89.2119   -0.7042   % concat_coords.cdf, Frame 251
--103.3401 -104.2124 -100.6000   -2.7401   % concat_coords.cdf, Frame 252
- -93.2074  -91.2237  -92.6110   -0.5964   % concat_coords.cdf, Frame 253
- -92.3795  -86.5906  -90.7943   -1.5852   % concat_coords.cdf, Frame 255
- -97.9590 -100.9867  -98.8220    0.8630   % concat_coords.cdf, Frame 256
--104.5014 -106.5234 -104.4100   -0.0914   % concat_coords.cdf, Frame 257
- -81.6718  -83.8908  -84.9099    3.2381   % concat_coords.cdf, Frame 258
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 259
- -90.3561  -96.1262  -94.5168    4.1607   % concat_coords.cdf, Frame 261
--104.4470 -107.0004 -104.8447    0.3976   % concat_coords.cdf, Frame 264
- -91.6105  -87.9387  -91.2118   -0.3988   % concat_coords.cdf, Frame 265
- -94.4798  -89.3995  -93.1564   -1.3234   % concat_coords.cdf, Frame 266
- -79.0087  -81.0813  -83.0182    4.0095   % concat_coords.cdf, Frame 267
- -95.9551  -96.4013  -94.3872   -1.5680   % concat_coords.cdf, Frame 269
- -91.0765  -87.6436  -89.0430   -2.0335   % concat_coords.cdf, Frame 270
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 272
- -91.8178  -86.7318  -86.6892   -5.1286   % concat_coords.cdf, Frame 274
--102.1830 -104.0001 -101.1776   -1.0054   % concat_coords.cdf, Frame 275
- -90.5417  -96.3011  -94.9909    4.4491   % concat_coords.cdf, Frame 276
--102.1381 -103.9964 -101.0739   -1.0641   % concat_coords.cdf, Frame 277
- -88.8796  -84.2620  -90.1396    1.2600   % concat_coords.cdf, Frame 279
--101.3202 -102.2093  -99.4719   -1.8483   % concat_coords.cdf, Frame 280
--101.4328 -103.4406 -100.5676   -0.8652   % concat_coords.cdf, Frame 281
--102.8168 -104.8987 -102.7603   -0.0565   % concat_coords.cdf, Frame 282
--100.6797 -103.7675 -101.7984    1.1188   % concat_coords.cdf, Frame 283
--102.2466 -103.1552 -100.9882   -1.2584   % concat_coords.cdf, Frame 285
- -89.5655  -84.1763  -87.9412   -1.6244   % concat_coords.cdf, Frame 286
--102.3712 -105.6994 -103.4190    1.0478   % concat_coords.cdf, Frame 288
- -81.5531  -81.4814  -83.4963    1.9432   % concat_coords.cdf, Frame 289
- -90.8897  -95.0033  -93.1192    2.2294   % concat_coords.cdf, Frame 290
- -99.8758 -101.9787 -101.4874    1.6116   % concat_coords.cdf, Frame 291
- -96.3809  -99.0174  -96.9189    0.5380   % concat_coords.cdf, Frame 292
--102.3325 -103.2508 -101.1099   -1.2226   % concat_coords.cdf, Frame 293
- -90.2327  -84.8558  -86.9320   -3.3007   % concat_coords.cdf, Frame 294
- -96.7389  -99.9226  -97.6227    0.8838   % concat_coords.cdf, Frame 295
- -98.9310 -101.6437  -99.6405    0.7095   % concat_coords.cdf, Frame 296
- -95.1006  -91.6121  -94.0357   -1.0649   % concat_coords.cdf, Frame 298
- -98.1919 -101.8470 -100.1843    1.9924   % concat_coords.cdf, Frame 299
- -94.8696  -96.0821  -97.5872    2.7176   % concat_coords.cdf, Frame 302
- -95.2122  -94.8124  -93.1075   -2.1047   % concat_coords.cdf, Frame 305
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 306
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 307
- -93.6879  -96.8668  -95.0816    1.3937   % concat_coords.cdf, Frame 309
- -86.7856  -84.4193  -87.9182    1.1326   % concat_coords.cdf, Frame 311
- -93.3610  -88.8176  -92.8095   -0.5515   % concat_coords.cdf, Frame 313
- -94.8769  -89.1373  -90.4001   -4.4769   % concat_coords.cdf, Frame 314
- -91.0984  -85.3782  -88.9312   -2.1672   % concat_coords.cdf, Frame 315
- -91.7225  -87.4684  -89.9156   -1.8069   % concat_coords.cdf, Frame 317
- -90.5175  -97.4691  -95.8548    5.3373   % concat_coords.cdf, Frame 318
- -88.7917  -87.7286  -88.7743   -0.0173   % concat_coords.cdf, Frame 319
- -82.0533  -82.6143  -84.2387    2.1854   % concat_coords.cdf, Frame 320
- -97.3300  -99.3125  -97.2465   -0.0836   % concat_coords.cdf, Frame 321
- -95.7224  -96.0054  -93.0708   -2.6516   % concat_coords.cdf, Frame 322
- -91.3336  -86.1341  -88.5316   -2.8020   % concat_coords.cdf, Frame 323
- -93.6651  -88.5790  -90.1533   -3.5118   % concat_coords.cdf, Frame 324
- -97.1144  -98.2336  -95.4714   -1.6429   % concat_coords.cdf, Frame 325
- -90.3912  -97.2549  -95.6604    5.2692   % concat_coords.cdf, Frame 328
- -94.9437  -97.5726  -96.0376    1.0940   % concat_coords.cdf, Frame 329
- -91.7773  -88.8549  -91.1342   -0.6431   % concat_coords.cdf, Frame 330
- -99.3785 -101.6468  -99.3115   -0.0670   % concat_coords.cdf, Frame 331
--100.1812 -103.6253 -101.5803    1.3991   % concat_coords.cdf, Frame 333
- -88.1139  -85.6983  -89.2468    1.1329   % concat_coords.cdf, Frame 334
- -81.9898  -82.4015  -84.7866    2.7969   % concat_coords.cdf, Frame 335
- -94.3318  -94.9680  -93.2899   -1.0418   % concat_coords.cdf, Frame 337
- -94.1699  -95.1176  -92.1017   -2.0682   % concat_coords.cdf, Frame 338
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 340
- -94.1609  -96.9709  -95.4116    1.2507   % concat_coords.cdf, Frame 341
--100.2172 -101.0932  -99.1398   -1.0774   % concat_coords.cdf, Frame 342
- -90.2661  -86.5958  -90.7019    0.4358   % concat_coords.cdf, Frame 343
- -96.2331  -99.9586  -98.2549    2.0218   % concat_coords.cdf, Frame 345
- -96.2282  -97.6690  -95.5129   -0.7153   % concat_coords.cdf, Frame 346
- -93.8625  -90.4368  -91.7482   -2.1143   % concat_coords.cdf, Frame 347
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 348
- -95.4750  -99.3307  -97.4699    1.9949   % concat_coords.cdf, Frame 349
--101.0102 -102.8080 -100.8080   -0.2022   % concat_coords.cdf, Frame 350
- -84.3976  -82.8841  -86.9745    2.5769   % concat_coords.cdf, Frame 351
- -91.9832  -98.0617  -96.3614    4.3782   % concat_coords.cdf, Frame 352
--103.4408 -105.5448 -103.2905   -0.1503   % concat_coords.cdf, Frame 353
- -93.1208  -98.4964  -96.3085    3.1877   % concat_coords.cdf, Frame 354
- -95.3721  -98.5227  -96.9449    1.5728   % concat_coords.cdf, Frame 355
- -93.4827  -90.9631  -92.3393   -1.1434   % concat_coords.cdf, Frame 356
- -95.7608  -99.9949  -98.2583    2.4975   % concat_coords.cdf, Frame 357
- -94.5032  -96.8804  -95.3489    0.8457   % concat_coords.cdf, Frame 358
- -97.7333  -99.3514  -95.4604   -2.2729   % concat_coords.cdf, Frame 359
- -95.8380  -99.5346  -97.7903    1.9522   % concat_coords.cdf, Frame 360
--101.9341 -103.7644 -101.1410   -0.7931   % concat_coords.cdf, Frame 361
- -94.3852  -96.9750  -94.3153   -0.0700   % concat_coords.cdf, Frame 362
- -98.3883 -100.1864  -97.6328   -0.7555   % concat_coords.cdf, Frame 363
- -79.9660  -76.8333  -82.4921    2.5261   % concat_coords.cdf, Frame 364
- -91.3171  -86.9915  -88.6213   -2.6958   % concat_coords.cdf, Frame 365
- -96.9604 -100.8679  -98.6779    1.7175   % concat_coords.cdf, Frame 366
- -92.0838  -88.7754  -90.7108   -1.3731   % concat_coords.cdf, Frame 367
--100.2563 -101.8793 -100.0189   -0.2374   % concat_coords.cdf, Frame 371
- -91.9443  -95.6879  -93.5391    1.5947   % concat_coords.cdf, Frame 372
--102.5046 -102.4666  -99.0131   -3.4914   % concat_coords.cdf, Frame 373
--103.5931 -106.1067 -104.0918    0.4987   % concat_coords.cdf, Frame 374
- -95.7983  -97.2806  -95.2326   -0.5657   % concat_coords.cdf, Frame 375
- -91.4373  -90.8702  -88.9782   -2.4590   % concat_coords.cdf, Frame 376
- -93.0168  -98.2687  -95.7140    2.6972   % concat_coords.cdf, Frame 377
- -93.2466  -90.8120  -92.1927   -1.0539   % concat_coords.cdf, Frame 378
--102.4114 -104.4187 -101.2494   -1.1619   % concat_coords.cdf, Frame 380
- -93.7632  -89.7824  -89.9225   -3.8407   % concat_coords.cdf, Frame 381
- -93.7063  -93.2431  -90.7258   -2.9805   % concat_coords.cdf, Frame 385
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 386
- -86.3761  -80.0057  -85.0585   -1.3176   % concat_coords.cdf, Frame 387
--102.0831 -105.6046 -103.2353    1.1522   % concat_coords.cdf, Frame 389
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 390
- -92.3741  -88.4300  -90.0421   -2.3320   % concat_coords.cdf, Frame 391
- -96.1582  -96.6990  -93.2426   -2.9156   % concat_coords.cdf, Frame 392
--104.5817 -107.0383 -104.7246    0.1429   % concat_coords.cdf, Frame 393
- -92.3088  -97.4396  -95.4500    3.1412   % concat_coords.cdf, Frame 394
- -96.0984  -99.8618  -97.8650    1.7666   % concat_coords.cdf, Frame 395
- -82.5271  -82.8721  -85.6978    3.1707   % concat_coords.cdf, Frame 396
- -93.9155  -94.7319  -92.7872   -1.1282   % concat_coords.cdf, Frame 398
- -92.0378  -85.6155  -89.4555   -2.5823   % concat_coords.cdf, Frame 399
- -88.5007  -83.1201  -90.2327    1.7320   % concat_coords.cdf, Frame 402
- -91.9174  -87.8332  -90.4204   -1.4971   % concat_coords.cdf, Frame 403
- -92.4005  -90.1185  -90.5347   -1.8658   % concat_coords.cdf, Frame 404
- -93.6600  -89.4203  -92.6511   -1.0088   % concat_coords.cdf, Frame 405
- -89.4629  -84.2867  -87.8326   -1.6304   % concat_coords.cdf, Frame 407
- -88.3989  -86.4673  -90.0298    1.6309   % concat_coords.cdf, Frame 408
- -87.0216  -84.5167  -88.4939    1.4724   % concat_coords.cdf, Frame 409
- -97.1430 -101.5345  -99.6347    2.4917   % concat_coords.cdf, Frame 410
- -89.1237  -87.1596  -88.4545   -0.6693   % concat_coords.cdf, Frame 411
- -93.1871  -98.8118  -96.8997    3.7126   % concat_coords.cdf, Frame 414
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 416
- -99.7266 -103.9140 -101.7232    1.9966   % concat_coords.cdf, Frame 417
- -86.7009  -82.9066  -86.9199    0.2190   % concat_coords.cdf, Frame 418
- -94.0099  -99.2991  -97.4844    3.4745   % concat_coords.cdf, Frame 419
- -89.1573  -85.2555  -89.6430    0.4857   % concat_coords.cdf, Frame 421
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 423
- -94.8547  -94.9557  -91.5857   -3.2690   % concat_coords.cdf, Frame 424
- -97.9319 -100.4750  -98.1328    0.2009   % concat_coords.cdf, Frame 426
- -86.6791  -84.9149  -88.2032    1.5241   % concat_coords.cdf, Frame 427
- -98.7774  -99.8856  -97.4680   -1.3093   % concat_coords.cdf, Frame 430
- -94.2890  -99.7181  -97.8304    3.5415   % concat_coords.cdf, Frame 431
--103.7158 -105.5616 -103.2969   -0.4189   % concat_coords.cdf, Frame 433
--102.2648 -102.1759  -98.7456   -3.5193   % concat_coords.cdf, Frame 434
- -87.7838  -81.1162  -85.6566   -2.1272   % concat_coords.cdf, Frame 435
- -93.8834  -97.8763  -96.1014    2.2181   % concat_coords.cdf, Frame 436
--101.8076 -104.4445 -102.5040    0.6964   % concat_coords.cdf, Frame 437
- -88.6992  -85.2699  -87.2885   -1.4107   % concat_coords.cdf, Frame 438
- -96.9375 -100.7156  -98.6268    1.6893   % concat_coords.cdf, Frame 439
- -88.2791  -85.0553  -88.1080   -0.1711   % concat_coords.cdf, Frame 440
--100.1759 -102.9271 -100.8734    0.6975   % concat_coords.cdf, Frame 441
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 442
--104.2511 -106.8779 -104.9171    0.6660   % concat_coords.cdf, Frame 443
- -99.8914 -102.6137  -99.6336   -0.2578   % concat_coords.cdf, Frame 444
- -86.9873  -85.6384  -89.6693    2.6819   % concat_coords.cdf, Frame 446
- -89.7190  -84.7049  -89.5748   -0.1442   % concat_coords.cdf, Frame 447
- -93.4604  -94.7770  -93.0217   -0.4387   % concat_coords.cdf, Frame 448
--104.2331 -105.6797 -103.6055   -0.6276   % concat_coords.cdf, Frame 449
- -98.2624 -100.9140  -97.9196   -0.3428   % concat_coords.cdf, Frame 450
--102.4859 -105.0052 -102.8927    0.4069   % concat_coords.cdf, Frame 451
- -97.7780  -99.7334  -97.8679    0.0899   % concat_coords.cdf, Frame 452
- -91.0329  -88.1701  -90.8345   -0.1984   % concat_coords.cdf, Frame 453
--100.0735 -101.8951  -99.3685   -0.7051   % concat_coords.cdf, Frame 454
- -93.7089  -93.0595  -91.1153   -2.5936   % concat_coords.cdf, Frame 455
- -91.0197  -87.5050  -86.8252   -4.1945   % concat_coords.cdf, Frame 456
--102.6526 -102.9792  -99.5687   -3.0839   % concat_coords.cdf, Frame 457
--100.8560 -103.6056 -101.7197    0.8637   % concat_coords.cdf, Frame 458
--101.3451 -103.7983 -100.7588   -0.5863   % concat_coords.cdf, Frame 459
- -93.1568  -97.4107  -95.6273    2.4705   % concat_coords.cdf, Frame 460
- -88.6402  -83.0991  -90.6499    2.0097   % concat_coords.cdf, Frame 461
- -90.4412  -84.3463  -87.9436   -2.4975   % concat_coords.cdf, Frame 462
- -89.0882  -93.5683  -98.2854    9.1972   % concat_coords.cdf, Frame 463
--101.1933 -102.8369 -100.1211   -1.0722   % concat_coords.cdf, Frame 464
- -89.1141  -84.8357  -89.5037    0.3896   % concat_coords.cdf, Frame 466
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 467
- -89.2530  -85.3008  -86.6061   -2.6469   % concat_coords.cdf, Frame 468
- -99.5610 -100.3312  -97.7547   -1.8063   % concat_coords.cdf, Frame 469
- -86.8355  -80.0265  -85.8871   -0.9484   % concat_coords.cdf, Frame 470
- -93.4096  -96.5257  -94.6862    1.2766   % concat_coords.cdf, Frame 472
- -91.8397  -87.3801  -89.0094   -2.8303   % concat_coords.cdf, Frame 473
- -86.2484  -80.7081  -85.4210   -0.8274   % concat_coords.cdf, Frame 474
- -86.9907  -86.3161  -90.4266    3.4358   % concat_coords.cdf, Frame 475
- -92.0234  -87.3356  -89.3177   -2.7057   % concat_coords.cdf, Frame 476
- -93.2844  -90.0101  -92.4889   -0.7956   % concat_coords.cdf, Frame 477
- -87.5280  -84.9225  -86.9879   -0.5400   % concat_coords.cdf, Frame 478
--100.5871 -102.8951 -101.0493    0.4622   % concat_coords.cdf, Frame 482
- -97.3657 -100.8532  -98.8400    1.4743   % concat_coords.cdf, Frame 483
- -92.7428  -88.9431  -91.3233   -1.4196   % concat_coords.cdf, Frame 485
- -90.8858  -83.5900  -90.0078   -0.8780   % concat_coords.cdf, Frame 487
- -94.6695  -89.0960  -91.8684   -2.8011   % concat_coords.cdf, Frame 488
- -90.7432  -95.8743  -94.1975    3.4543   % concat_coords.cdf, Frame 489
--101.6831 -103.1675 -100.5361   -1.1470   % concat_coords.cdf, Frame 491
- -95.2614  -99.3992  -97.4992    2.2378   % concat_coords.cdf, Frame 493
- -89.7019  -84.8220  -90.1421    0.4401   % concat_coords.cdf, Frame 494
- -94.8696  -96.0821  -97.5872    2.7176   % concat_coords.cdf, Frame 495
- -99.4538 -101.2110  -99.3648   -0.0890   % concat_coords.cdf, Frame 496
- -90.4026  -85.9187  -89.0973   -1.3052   % concat_coords.cdf, Frame 497
- -82.7087  -78.0982  -84.2336    1.5249   % concat_coords.cdf, Frame 499
- -87.2051  -83.1472  -86.0163   -1.1887   % concat_coords.cdf, Frame 500
- -87.4649  -85.4741  -86.9754   -0.4895   % concat_coords.cdf, Frame 501
- -97.7609  -98.5457  -97.0210   -0.7399   % concat_coords.cdf, Frame 502
- -89.0108  -85.7715  -88.2769   -0.7339   % concat_coords.cdf, Frame 505
- -96.8365  -98.2117  -95.9420   -0.8945   % concat_coords.cdf, Frame 506
- -94.8696  -96.0821  -97.5872    2.7176   % concat_coords.cdf, Frame 507
- -85.7990  -82.1799  -85.5078   -0.2912   % concat_coords.cdf, Frame 508
- -94.8804  -91.5238  -94.4829   -0.3975   % concat_coords.cdf, Frame 509
- -93.5355  -89.5540  -91.7408   -1.7947   % concat_coords.cdf, Frame 510
- -95.2059  -91.2274  -92.9426   -2.2634   % concat_coords.cdf, Frame 511
- -90.9052  -85.4443  -88.7610   -2.1441   % concat_coords.cdf, Frame 512
- -86.7340  -86.3305  -87.5452    0.8112   % concat_coords.cdf, Frame 513
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 514
- -89.0987  -85.5501  -90.3462    1.2474   % concat_coords.cdf, Frame 515
- -92.2803  -94.4994  -92.1718   -0.1086   % concat_coords.cdf, Frame 517
--100.7465 -102.7196 -100.6694   -0.0771   % concat_coords.cdf, Frame 519
- -94.8290  -98.0943  -96.0333    1.2043   % concat_coords.cdf, Frame 520
- -88.8721  -84.6906  -87.7398   -1.1323   % concat_coords.cdf, Frame 521
--103.3764 -104.3896 -102.0096   -1.3668   % concat_coords.cdf, Frame 522
--103.3549 -104.7156 -101.0264   -2.3285   % concat_coords.cdf, Frame 524
- -97.0647  -97.6089  -98.7690    1.7043   % concat_coords.cdf, Frame 526
--101.9470 -104.1899 -100.1588   -1.7882   % concat_coords.cdf, Frame 527
- -99.7505 -102.1519 -100.3085    0.5580   % concat_coords.cdf, Frame 528
--102.4360 -103.6302 -100.5880   -1.8480   % concat_coords.cdf, Frame 529
- -98.1550 -101.6782  -99.7536    1.5987   % concat_coords.cdf, Frame 530
- -98.2569 -101.7476  -99.5333    1.2764   % concat_coords.cdf, Frame 531
- -90.4505  -96.8841  -95.2720    4.8215   % concat_coords.cdf, Frame 532
--103.3688 -104.8099 -102.5616   -0.8073   % concat_coords.cdf, Frame 534
- -96.3398  -96.6222  -95.0159   -1.3239   % concat_coords.cdf, Frame 535
- -94.2308  -89.3787  -93.7602   -0.4706   % concat_coords.cdf, Frame 537
--102.8225 -105.3485 -103.3073    0.4848   % concat_coords.cdf, Frame 538
--101.8278 -101.9821  -98.9215   -2.9063   % concat_coords.cdf, Frame 541
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 542
--103.3949 -104.4132 -102.0516   -1.3433   % concat_coords.cdf, Frame 543
- -95.4474  -97.6032  -95.6839    0.2365   % concat_coords.cdf, Frame 544
--104.2280 -106.4954 -104.3158    0.0879   % concat_coords.cdf, Frame 545
- -99.3498 -100.8065  -99.0127   -0.3371   % concat_coords.cdf, Frame 546
- -93.7226  -97.3252  -95.6443    1.9217   % concat_coords.cdf, Frame 547
- -93.0364  -88.7631  -90.5846   -2.4519   % concat_coords.cdf, Frame 548
- -97.4533 -101.2258  -99.1181    1.6648   % concat_coords.cdf, Frame 550
- -95.0489  -95.7076  -91.8772   -3.1717   % concat_coords.cdf, Frame 551
- -93.5088  -94.1414  -91.8230   -1.6858   % concat_coords.cdf, Frame 553
- -89.9201  -86.8736  -90.6909    0.7708   % concat_coords.cdf, Frame 554
- -93.8988  -87.9084  -90.3325   -3.5663   % concat_coords.cdf, Frame 555
- -94.2238  -90.7221  -90.8861   -3.3377   % concat_coords.cdf, Frame 556
- -91.7408  -86.4178  -91.0163   -0.7245   % concat_coords.cdf, Frame 558
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 559
- -96.2015 -100.6203  -98.7271    2.5256   % concat_coords.cdf, Frame 561
- -87.2607  -83.5496  -87.3148    0.0541   % concat_coords.cdf, Frame 564
- -83.4382  -81.1325  -86.2147    2.7765   % concat_coords.cdf, Frame 565
- -93.6345  -90.1427  -92.5780   -1.0565   % concat_coords.cdf, Frame 566
--100.8856 -102.9752  -99.3009   -1.5847   % concat_coords.cdf, Frame 568
- -89.7915  -85.1995  -89.0865   -0.7050   % concat_coords.cdf, Frame 569
- -93.7264  -97.5611  -95.7961    2.0697   % concat_coords.cdf, Frame 570
--103.1343 -105.8723 -103.6046    0.4703   % concat_coords.cdf, Frame 571
- -94.2292  -96.2807  -94.0028   -0.2264   % concat_coords.cdf, Frame 572
- -91.1538  -86.0907  -89.2914   -1.8624   % concat_coords.cdf, Frame 574
- -97.5078 -100.9576  -98.8368    1.3290   % concat_coords.cdf, Frame 575
- -89.9485  -86.2344  -89.7358   -0.2127   % concat_coords.cdf, Frame 577
- -93.8832  -88.1198  -89.7534   -4.1298   % concat_coords.cdf, Frame 578
- -94.1987  -89.5995  -91.5973   -2.6014   % concat_coords.cdf, Frame 579
- -95.8112  -97.1190  -92.9017   -2.9095   % concat_coords.cdf, Frame 580
- -93.5942  -95.9196  -94.1519    0.5577   % concat_coords.cdf, Frame 581
- -96.5521  -99.4920  -97.8255    1.2733   % concat_coords.cdf, Frame 582
- -90.0493  -93.4383  -91.7076    1.6583   % concat_coords.cdf, Frame 583
- -94.3315  -96.2242  -96.0890    1.7574   % concat_coords.cdf, Frame 584
- -86.7659  -84.9033  -88.1471    1.3812   % concat_coords.cdf, Frame 585
- -90.3852  -96.2252  -95.3442    4.9590   % concat_coords.cdf, Frame 586
- -95.1106  -89.3156  -90.5643   -4.5462   % concat_coords.cdf, Frame 587
- -91.1644  -89.1697  -89.6085   -1.5558   % concat_coords.cdf, Frame 589
- -95.4311  -96.6431  -93.3019   -2.1292   % concat_coords.cdf, Frame 590
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 592
- -99.1195 -100.6193  -98.8088   -0.3107   % concat_coords.cdf, Frame 593
--100.7953 -101.2268  -98.4622   -2.3331   % concat_coords.cdf, Frame 594
- -87.4950  -84.4178  -86.5119   -0.9831   % concat_coords.cdf, Frame 596
- -99.2405 -100.5116  -98.6935   -0.5470   % concat_coords.cdf, Frame 597
--100.2356 -103.2958 -101.5172    1.2816   % concat_coords.cdf, Frame 598
- -97.7509 -101.5828  -99.6459    1.8950   % concat_coords.cdf, Frame 599
- -96.6724  -98.8107  -95.7229   -0.9495   % concat_coords.cdf, Frame 601
- -99.3793 -101.3950  -97.5830   -1.7964   % concat_coords.cdf, Frame 602
--100.7797 -103.4247 -101.4027    0.6230   % concat_coords.cdf, Frame 603
- -97.8472 -101.4897  -99.7274    1.8801   % concat_coords.cdf, Frame 604
- -98.9698 -102.6879 -100.2996    1.3298   % concat_coords.cdf, Frame 605
- -93.9548  -89.9848  -92.2653   -1.6894   % concat_coords.cdf, Frame 607
- -90.8592  -92.3466  -90.5924   -0.2668   % concat_coords.cdf, Frame 610
- -96.2264  -98.5582  -96.1656   -0.0608   % concat_coords.cdf, Frame 611
- -92.2424  -93.8682  -91.4629   -0.7795   % concat_coords.cdf, Frame 614
- -94.0477  -98.6096  -96.8168    2.7691   % concat_coords.cdf, Frame 615
- -93.9451  -96.9207  -96.7018    2.7567   % concat_coords.cdf, Frame 616
- -95.3849  -99.0765  -96.5996    1.2146   % concat_coords.cdf, Frame 617
- -95.0638  -97.7861  -96.0002    0.9364   % concat_coords.cdf, Frame 619
- -96.7712 -100.8373  -98.4386    1.6674   % concat_coords.cdf, Frame 622
--101.0450 -102.7562 -100.0903   -0.9547   % concat_coords.cdf, Frame 623
--102.7740 -104.4815 -101.1742   -1.5998   % concat_coords.cdf, Frame 625
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 626
- -98.2806 -102.5997 -100.4038    2.1231   % concat_coords.cdf, Frame 627
- -92.8546  -92.7819  -90.2050   -2.6497   % concat_coords.cdf, Frame 628
- -91.8749  -86.6377  -90.0078   -1.8670   % concat_coords.cdf, Frame 631
- -91.7278  -91.3407  -88.9879   -2.7398   % concat_coords.cdf, Frame 632
- -86.7478  -84.3561  -87.4428    0.6951   % concat_coords.cdf, Frame 633
- -99.5842 -102.8851 -100.4469    0.8626   % concat_coords.cdf, Frame 634
- -88.6644  -87.2976  -88.7939    0.1294   % concat_coords.cdf, Frame 636
- -90.6899  -87.4456  -90.0914   -0.5985   % concat_coords.cdf, Frame 637
- -84.8210  -84.8584  -86.0962    1.2753   % concat_coords.cdf, Frame 640
- -90.9396  -87.6159  -91.2889    0.3494   % concat_coords.cdf, Frame 641
- -94.2252  -98.0271  -97.5140    3.2888   % concat_coords.cdf, Frame 642
- -92.9171  -89.2456  -90.1632   -2.7540   % concat_coords.cdf, Frame 644
- -94.6923  -89.4992  -91.0486   -3.6437   % concat_coords.cdf, Frame 645
- -91.8235  -87.7032  -87.8279   -3.9956   % concat_coords.cdf, Frame 647
- -93.1096  -91.1747  -92.5589   -0.5507   % concat_coords.cdf, Frame 648
- -91.2104  -91.4041  -89.6989   -1.5115   % concat_coords.cdf, Frame 649
- -88.0339  -81.6075  -86.9991   -1.0348   % concat_coords.cdf, Frame 651
- -93.1560  -89.5775  -89.8616   -3.2944   % concat_coords.cdf, Frame 652
- -87.4860  -81.7943  -87.0758   -0.4102   % concat_coords.cdf, Frame 654
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 656
--104.1940 -106.4135 -104.1210   -0.0730   % concat_coords.cdf, Frame 658
- -84.8255  -78.0346  -84.6528   -0.1727   % concat_coords.cdf, Frame 659
- -90.6605  -86.9359  -90.0119   -0.6485   % concat_coords.cdf, Frame 661
- -99.9594 -102.7276 -100.3041    0.3447   % concat_coords.cdf, Frame 662
- -82.2873  -82.8872  -85.2848    2.9975   % concat_coords.cdf, Frame 664
- -94.5051  -98.8718  -98.0415    3.5363   % concat_coords.cdf, Frame 665
- -89.0478  -94.5373  -92.9043    3.8565   % concat_coords.cdf, Frame 666
--103.4949 -106.4033 -104.4278    0.9329   % concat_coords.cdf, Frame 667
- -89.1228  -95.9322  -94.3590    5.2362   % concat_coords.cdf, Frame 668
--102.2997 -102.8567  -99.7494   -2.5503   % concat_coords.cdf, Frame 669
--101.6591 -103.5606 -100.8159   -0.8431   % concat_coords.cdf, Frame 670
--101.1250 -101.3720  -98.4661   -2.6589   % concat_coords.cdf, Frame 671
- -89.2718  -87.2852  -89.2223   -0.0495   % concat_coords.cdf, Frame 672
- -95.5660 -100.4023  -98.3674    2.8014   % concat_coords.cdf, Frame 673
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 674
--100.7620 -101.8953  -99.1882   -1.5738   % concat_coords.cdf, Frame 675
- -90.2459  -87.0123  -86.4199   -3.8260   % concat_coords.cdf, Frame 676
- -99.8318 -101.0800  -98.5074   -1.3244   % concat_coords.cdf, Frame 678
- -98.0165 -101.1376  -99.4293    1.4128   % concat_coords.cdf, Frame 679
- -98.9426 -101.4649  -97.1753   -1.7673   % concat_coords.cdf, Frame 680
- -90.6216  -86.1202  -88.1400   -2.4816   % concat_coords.cdf, Frame 681
- -93.3368  -96.7121  -94.8912    1.5543   % concat_coords.cdf, Frame 682
- -88.6073  -95.4269  -93.8476    5.2404   % concat_coords.cdf, Frame 683
- -92.9625  -89.5847  -92.0344   -0.9281   % concat_coords.cdf, Frame 684
--103.0731 -103.8500 -100.5087   -2.5644   % concat_coords.cdf, Frame 686
- -95.1985  -95.3098  -93.7764   -1.4221   % concat_coords.cdf, Frame 687
- -91.1313  -86.1943  -87.8101   -3.3213   % concat_coords.cdf, Frame 688
- -97.7002  -99.0793  -97.5603   -0.1399   % concat_coords.cdf, Frame 689
- -97.5313  -99.8010  -97.4916   -0.0397   % concat_coords.cdf, Frame 690
--103.4836 -104.6841 -102.8240   -0.6596   % concat_coords.cdf, Frame 691
--102.2778 -105.3766 -103.4062    1.1283   % concat_coords.cdf, Frame 692
- -88.8929  -84.3910  -90.2375    1.3445   % concat_coords.cdf, Frame 693
- -88.3541  -87.4617  -89.0086    0.6545   % concat_coords.cdf, Frame 694
- -96.9527  -99.7750  -97.8651    0.9124   % concat_coords.cdf, Frame 695
--104.2215 -106.1707 -103.8452   -0.3762   % concat_coords.cdf, Frame 696
- -89.8825  -92.9189  -93.9829    4.1005   % concat_coords.cdf, Frame 698
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 700
- -93.6667  -97.2438  -95.5520    1.8853   % concat_coords.cdf, Frame 701
- -90.5777  -85.9837  -88.8049   -1.7728   % concat_coords.cdf, Frame 702
- -88.4610  -82.5701  -87.8815   -0.5795   % concat_coords.cdf, Frame 706
- -90.1271  -85.2207  -88.4772   -1.6499   % concat_coords.cdf, Frame 707
- -96.6014  -99.9612  -97.8742    1.2728   % concat_coords.cdf, Frame 709
--104.0571 -106.2309 -104.3536    0.2966   % concat_coords.cdf, Frame 710
- -98.2524 -102.1384  -99.7569    1.5044   % concat_coords.cdf, Frame 711
- -99.1181 -100.8065  -98.4161   -0.7020   % concat_coords.cdf, Frame 712
- -89.1883  -86.1615  -89.7857    0.5974   % concat_coords.cdf, Frame 713
- -93.3580  -90.1265  -91.4544   -1.9036   % concat_coords.cdf, Frame 715
- -91.6410  -96.4876  -94.4078    2.7668   % concat_coords.cdf, Frame 716
- -88.7686  -83.6364  -89.3511    0.5826   % concat_coords.cdf, Frame 717
--101.7989 -104.1296 -101.9925    0.1935   % concat_coords.cdf, Frame 718
- -94.2765  -91.9022  -93.9532   -0.3233   % concat_coords.cdf, Frame 719
--103.8707 -105.6295 -103.7952   -0.0755   % concat_coords.cdf, Frame 720
- -90.7331  -93.4523  -94.1502    3.4171   % concat_coords.cdf, Frame 723
- -91.7275  -88.6757  -88.2634   -3.4641   % concat_coords.cdf, Frame 724
--103.7239 -105.2146 -102.8472   -0.8767   % concat_coords.cdf, Frame 725
- -89.1388  -84.8546  -90.3933    1.2545   % concat_coords.cdf, Frame 727
- -90.3642  -86.1331  -88.4146   -1.9496   % concat_coords.cdf, Frame 728
- -91.4210  -88.6520  -91.1921   -0.2289   % concat_coords.cdf, Frame 729
- -92.5504  -91.2773  -91.7430   -0.8074   % concat_coords.cdf, Frame 730
- -91.6133  -92.3651  -90.1886   -1.4246   % concat_coords.cdf, Frame 731
- -90.1446  -96.7494  -95.1844    5.0398   % concat_coords.cdf, Frame 732
- -96.0054  -98.0441  -95.7906   -0.2148   % concat_coords.cdf, Frame 733
- -86.5337  -86.6739  -89.2995    2.7658   % concat_coords.cdf, Frame 735
- -93.7644  -97.9608  -96.2506    2.4862   % concat_coords.cdf, Frame 736
- -94.3691  -96.2488  -94.5281    0.1590   % concat_coords.cdf, Frame 738
- -88.9503  -93.4773  -93.6857    4.7355   % concat_coords.cdf, Frame 739
- -97.0106 -100.2047  -97.4888    0.4782   % concat_coords.cdf, Frame 740
- -99.6266 -103.7060 -101.4088    1.7822   % concat_coords.cdf, Frame 741
--102.8997 -104.7179 -100.8742   -2.0255   % concat_coords.cdf, Frame 743
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 744
- -94.5902  -99.3232  -97.1521    2.5619   % concat_coords.cdf, Frame 745
- -98.9201 -101.4874  -99.1752    0.2551   % concat_coords.cdf, Frame 746
- -97.1877 -101.4959  -99.3597    2.1720   % concat_coords.cdf, Frame 748
- -93.5335  -93.9908  -91.1409   -2.3926   % concat_coords.cdf, Frame 751
- -89.7938  -96.0785  -94.5511    4.7572   % concat_coords.cdf, Frame 752
- -91.4427  -85.1333  -90.4244   -1.0183   % concat_coords.cdf, Frame 754
- -79.2162  -81.8018  -83.6612    4.4449   % concat_coords.cdf, Frame 755
- -89.6143  -86.7455  -90.3283    0.7140   % concat_coords.cdf, Frame 756
- -97.8318 -100.7495  -99.4607    1.6290   % concat_coords.cdf, Frame 757
- -82.0107  -83.4635  -84.7446    2.7339   % concat_coords.cdf, Frame 758
- -90.3411  -88.1242  -90.0147   -0.3264   % concat_coords.cdf, Frame 759
- -91.8867  -88.2089  -90.7907   -1.0960   % concat_coords.cdf, Frame 760
- -88.1055  -82.1099  -87.7847   -0.3208   % concat_coords.cdf, Frame 765
- -92.0803  -86.6309  -88.4344   -3.6459   % concat_coords.cdf, Frame 767
- -94.2699  -89.7983  -90.9472   -3.3227   % concat_coords.cdf, Frame 769
- -92.5238  -88.4382  -90.2873   -2.2365   % concat_coords.cdf, Frame 770
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 771
- -87.1460  -80.6974  -86.0380   -1.1079   % concat_coords.cdf, Frame 774
- -94.5981  -89.3908  -90.3043   -4.2938   % concat_coords.cdf, Frame 776
- -90.0932  -95.6617  -95.1752    5.0820   % concat_coords.cdf, Frame 777
- -90.5911  -96.6669  -94.9176    4.3265   % concat_coords.cdf, Frame 778
- -79.7041  -82.0302  -84.3386    4.6345   % concat_coords.cdf, Frame 780
- -86.7180  -84.1748  -86.6716   -0.0464   % concat_coords.cdf, Frame 781
- -97.2518 -101.1473  -99.0500    1.7982   % concat_coords.cdf, Frame 783
- -89.2358  -85.5401  -87.9491   -1.2867   % concat_coords.cdf, Frame 785
- -97.9259 -101.8045  -99.9979    2.0720   % concat_coords.cdf, Frame 786
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 787
- -99.6007 -102.3137  -99.9127    0.3120   % concat_coords.cdf, Frame 788
- -99.3850 -100.2688  -97.8246   -1.5603   % concat_coords.cdf, Frame 789
--102.9761 -106.4550 -104.2748    1.2987   % concat_coords.cdf, Frame 790
--101.0668 -102.0254  -99.2831   -1.7837   % concat_coords.cdf, Frame 792
- -96.4701  -98.4955  -96.3878   -0.0823   % concat_coords.cdf, Frame 794
--101.6155 -102.2209  -99.2274   -2.3882   % concat_coords.cdf, Frame 795
- -95.7104  -99.2368  -97.6030    1.8926   % concat_coords.cdf, Frame 796
- -97.3977 -100.6127  -98.2133    0.8156   % concat_coords.cdf, Frame 797
- -91.1222  -86.1641  -88.4212   -2.7010   % concat_coords.cdf, Frame 798
- -98.8387 -100.6261  -98.2354   -0.6034   % concat_coords.cdf, Frame 799
- -90.4979  -85.9747  -86.6904   -3.8075   % concat_coords.cdf, Frame 800
- -85.8497  -78.8968  -85.1544   -0.6953   % concat_coords.cdf, Frame 801
- -99.5725 -101.4979  -99.2027   -0.3699   % concat_coords.cdf, Frame 802
- -94.6715  -94.2244  -92.5929   -2.0786   % concat_coords.cdf, Frame 803
- -91.3424  -86.8673  -87.3741   -3.9683   % concat_coords.cdf, Frame 804
- -92.1727  -88.9066  -91.5630   -0.6097   % concat_coords.cdf, Frame 805
--101.9508 -103.0658 -100.1347   -1.8161   % concat_coords.cdf, Frame 807
- -99.4521 -101.1179  -98.8845   -0.5676   % concat_coords.cdf, Frame 808
--103.7672 -105.7395 -103.4998   -0.2674   % concat_coords.cdf, Frame 809
- -88.9957  -84.2666  -90.2514    1.2557   % concat_coords.cdf, Frame 811
--102.2111 -103.5302 -101.5073   -0.7038   % concat_coords.cdf, Frame 813
--102.4307 -104.9792 -103.0501    0.6194   % concat_coords.cdf, Frame 814
- -89.4239  -86.4234  -89.1132   -0.3107   % concat_coords.cdf, Frame 815
- -86.8778  -82.0357  -85.9960   -0.8819   % concat_coords.cdf, Frame 816
- -91.6316  -87.4649  -86.0120   -5.6195   % concat_coords.cdf, Frame 818
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 819
- -89.6837  -95.5884  -94.0451    4.3613   % concat_coords.cdf, Frame 820
- -96.4567  -99.2411  -97.1767    0.7200   % concat_coords.cdf, Frame 823
- -87.6719  -84.9219  -88.8862    1.2143   % concat_coords.cdf, Frame 824
--102.8422 -105.1683 -103.1913    0.3491   % concat_coords.cdf, Frame 825
--100.1078 -103.1837 -100.4948    0.3870   % concat_coords.cdf, Frame 826
- -99.1751 -101.5737  -99.1869    0.0118   % concat_coords.cdf, Frame 828
- -89.2249  -82.7259  -88.4643   -0.7606   % concat_coords.cdf, Frame 829
- -96.7081  -97.2431 -100.2226    3.5145   % concat_coords.cdf, Frame 830
- -89.2266  -85.3806  -87.7411   -1.4855   % concat_coords.cdf, Frame 831
- -94.5822  -90.8406  -93.8172   -0.7649   % concat_coords.cdf, Frame 832
--104.4757 -106.2968 -104.4300   -0.0457   % concat_coords.cdf, Frame 833
--100.3117 -102.8038 -100.5355    0.2238   % concat_coords.cdf, Frame 834
- -92.4824  -90.4621  -90.8916   -1.5909   % concat_coords.cdf, Frame 836
- -94.3780  -98.2263  -96.2025    1.8245   % concat_coords.cdf, Frame 837
- -87.6643  -83.9668  -88.8421    1.1778   % concat_coords.cdf, Frame 838
- -88.5063  -85.3298  -90.5242    2.0179   % concat_coords.cdf, Frame 839
- -91.3852  -86.8447  -89.0302   -2.3550   % concat_coords.cdf, Frame 840
- -92.5410  -89.3616  -92.0017   -0.5393   % concat_coords.cdf, Frame 841
- -92.0370  -87.9192  -88.5198   -3.5172   % concat_coords.cdf, Frame 842
- -94.8696  -96.0821  -97.5872    2.7176   % concat_coords.cdf, Frame 843
- -86.5489  -81.2107  -85.2352   -1.3137   % concat_coords.cdf, Frame 844
- -94.4780  -96.4959  -95.8970    1.4190   % concat_coords.cdf, Frame 846
- -97.4916 -100.6377  -98.7822    1.2906   % concat_coords.cdf, Frame 849
- -90.1994  -83.9737  -90.2948    0.0954   % concat_coords.cdf, Frame 850
- -99.7470 -102.1217 -100.0208    0.2738   % concat_coords.cdf, Frame 852
- -95.1928  -89.9266  -91.8243   -3.3685   % concat_coords.cdf, Frame 853
- -84.0448  -81.6151  -84.2772    0.2324   % concat_coords.cdf, Frame 855
--103.3664 -104.4965 -101.2240   -2.1423   % concat_coords.cdf, Frame 858
--101.1380 -102.7172 -100.6819   -0.4561   % concat_coords.cdf, Frame 859
- -89.2347  -84.7838  -88.7641   -0.4706   % concat_coords.cdf, Frame 860
- -94.6573  -90.3513  -94.2308   -0.4264   % concat_coords.cdf, Frame 861
- -89.0629  -83.7631  -87.4867   -1.5762   % concat_coords.cdf, Frame 862
- -90.5178  -86.6256  -89.1325   -1.3853   % concat_coords.cdf, Frame 864
- -94.3043  -96.2481  -94.1392   -0.1651   % concat_coords.cdf, Frame 865
--104.6703 -106.9094 -104.6318   -0.0385   % concat_coords.cdf, Frame 866
- -84.9931  -84.0682  -85.6898    0.6966   % concat_coords.cdf, Frame 867
- -97.6773  -99.0631  -97.2707   -0.4065   % concat_coords.cdf, Frame 868
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 870
- -87.5422  -86.5452  -90.5883    3.0461   % concat_coords.cdf, Frame 871
- -91.1709  -86.4076  -87.4835   -3.6874   % concat_coords.cdf, Frame 873
- -84.4267  -85.1924  -86.2618    1.8352   % concat_coords.cdf, Frame 874
- -92.5492  -88.6390  -91.4994   -1.0498   % concat_coords.cdf, Frame 875
- -95.1050  -90.4617  -93.2469   -1.8581   % concat_coords.cdf, Frame 876
--103.0434 -103.9668 -101.6820   -1.3613   % concat_coords.cdf, Frame 877
--103.1491 -106.2582 -103.8956    0.7465   % concat_coords.cdf, Frame 879
--101.0641 -103.4699 -101.6371    0.5730   % concat_coords.cdf, Frame 880
- -92.6164  -96.6397  -94.4428    1.8264   % concat_coords.cdf, Frame 881
--100.7489 -103.5960 -101.4554    0.7066   % concat_coords.cdf, Frame 885
- -95.3353 -100.0543  -98.1289    2.7936   % concat_coords.cdf, Frame 886
--103.0985 -104.0914 -100.6632   -2.4353   % concat_coords.cdf, Frame 887
--103.8665 -105.9907 -103.6448   -0.2217   % concat_coords.cdf, Frame 888
--100.6099 -104.3910 -102.0145    1.4046   % concat_coords.cdf, Frame 889
- -97.7256 -100.4213  -98.7216    0.9960   % concat_coords.cdf, Frame 890
- -91.7107  -91.4601  -91.8993    0.1887   % concat_coords.cdf, Frame 891
- -94.5371  -91.6967  -92.3246   -2.2126   % concat_coords.cdf, Frame 892
- -94.9094  -90.6527  -94.1929   -0.7165   % concat_coords.cdf, Frame 894
--100.9213 -103.8604 -101.8694    0.9482   % concat_coords.cdf, Frame 895
- -96.0656  -95.8241  -94.4112   -1.6545   % concat_coords.cdf, Frame 896
--103.6733 -105.2075 -102.8611   -0.8121   % concat_coords.cdf, Frame 900
- -94.9397  -96.2673  -94.5931   -0.3466   % concat_coords.cdf, Frame 901
--103.2451 -105.6655 -103.5961    0.3510   % concat_coords.cdf, Frame 902
- -98.5209  -99.7357  -97.6114   -0.9095   % concat_coords.cdf, Frame 903
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 904
- -94.8696  -96.0821  -97.5872    2.7176   % concat_coords.cdf, Frame 905
--100.5971 -101.1209  -98.3878   -2.2093   % concat_coords.cdf, Frame 906
- -94.7365  -88.7521  -90.5511   -4.1854   % concat_coords.cdf, Frame 907
- -88.3859  -85.9667  -89.4743    1.0884   % concat_coords.cdf, Frame 908
- -95.0278  -95.4737  -91.8423   -3.1855   % concat_coords.cdf, Frame 909
- -95.2596  -98.1891  -95.5043    0.2447   % concat_coords.cdf, Frame 910
- -91.9867  -93.0045  -90.4176   -1.5691   % concat_coords.cdf, Frame 911
- -96.8553  -98.8752  -96.9310    0.0757   % concat_coords.cdf, Frame 912
- -92.8220  -89.0852  -90.3051   -2.5169   % concat_coords.cdf, Frame 913
--100.1681 -102.7873 -100.3365    0.1683   % concat_coords.cdf, Frame 915
- -93.9697  -97.5452  -95.9484    1.9787   % concat_coords.cdf, Frame 917
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 918
- -94.7939  -98.6824  -96.9125    2.1186   % concat_coords.cdf, Frame 920
- -95.1428  -90.4655  -91.5019   -3.6409   % concat_coords.cdf, Frame 921
- -88.8552  -85.1571  -89.1848    0.3296   % concat_coords.cdf, Frame 923
- -95.2221  -99.5324  -97.7729    2.5508   % concat_coords.cdf, Frame 924
--103.7297 -106.3742 -104.0203    0.2906   % concat_coords.cdf, Frame 925
- -93.8173  -90.6973  -92.7576   -1.0597   % concat_coords.cdf, Frame 926
- -86.5979  -85.3706  -87.5975    0.9996   % concat_coords.cdf, Frame 927
--100.5682 -103.1007  -98.9076   -1.6606   % concat_coords.cdf, Frame 928
- -89.6278  -85.6039  -89.6200   -0.0077   % concat_coords.cdf, Frame 929
- -90.5362  -84.9504  -89.3179   -1.2183   % concat_coords.cdf, Frame 930
- -85.8653  -83.3341  -87.8254    1.9601   % concat_coords.cdf, Frame 931
- -88.5994  -85.0519  -89.1058    0.5064   % concat_coords.cdf, Frame 932
- -92.7885  -87.2706  -89.2476   -3.5409   % concat_coords.cdf, Frame 933
- -91.2982  -87.3874  -88.9919   -2.3063   % concat_coords.cdf, Frame 934
- -94.1470  -99.1542  -97.3529    3.2059   % concat_coords.cdf, Frame 935
- -95.9019  -97.3323  -95.0914   -0.8105   % concat_coords.cdf, Frame 937
- -88.5471  -85.7729  -89.5175    0.9704   % concat_coords.cdf, Frame 939
- -97.6614  -98.9249  -97.6363   -0.0251   % concat_coords.cdf, Frame 942
- -94.5343  -97.5547  -95.7976    1.2634   % concat_coords.cdf, Frame 943
- -98.9902 -101.2781  -99.4464    0.4562   % concat_coords.cdf, Frame 944
- -94.4604  -90.0415  -91.8713   -2.5891   % concat_coords.cdf, Frame 945
- -95.9552  -97.8046  -95.4651   -0.4902   % concat_coords.cdf, Frame 946
- -95.1254  -93.7754  -94.9848   -0.1406   % concat_coords.cdf, Frame 947
--100.9984 -102.0972 -100.1042   -0.8942   % concat_coords.cdf, Frame 948
- -98.2010 -101.5341  -99.3073    1.1063   % concat_coords.cdf, Frame 951
- -94.8808  -89.6271  -90.3814   -4.4994   % concat_coords.cdf, Frame 953
- -95.6255  -98.0911  -95.2402   -0.3853   % concat_coords.cdf, Frame 955
- -99.2279 -100.9478  -97.7037   -1.5242   % concat_coords.cdf, Frame 956
- -97.0431  -98.7946  -97.1536    0.1105   % concat_coords.cdf, Frame 957
- -98.1319 -101.4793  -99.7233    1.5914   % concat_coords.cdf, Frame 958
--100.0589 -102.7728 -100.7271    0.6682   % concat_coords.cdf, Frame 959
- -89.6145  -85.8312  -87.7022   -1.9124   % concat_coords.cdf, Frame 960
- -98.9688 -100.0287  -97.6010   -1.3678   % concat_coords.cdf, Frame 961
- -91.0197  -93.7447  -91.6953    0.6756   % concat_coords.cdf, Frame 963
- -93.2035  -89.4155  -91.6443   -1.5592   % concat_coords.cdf, Frame 966
- -98.6582 -101.8210  -99.9590    1.3008   % concat_coords.cdf, Frame 967
- -99.9745 -102.5571 -100.4041    0.4296   % concat_coords.cdf, Frame 968
- -98.0722 -101.9798  -99.6754    1.6032   % concat_coords.cdf, Frame 969
+ -97.5598  -99.6897  -98.5470    0.9872   % concat_coords.cdf, Frame 1
+ -93.5798  -97.5477  -95.0964    1.5166   % concat_coords.cdf, Frame 2
+ -90.7183  -88.0356  -89.3874   -1.3308   % concat_coords.cdf, Frame 4
+ -95.8827  -99.4098  -97.8185    1.9358   % concat_coords.cdf, Frame 7
+ -93.2968  -90.2288  -91.6910   -1.6058   % concat_coords.cdf, Frame 8
+ -97.2442 -101.5390 -101.4577    4.2135   % concat_coords.cdf, Frame 10
+ -95.5603  -96.3471  -95.0450   -0.5152   % concat_coords.cdf, Frame 11
+ -92.0798  -91.6826  -89.4670   -2.6128   % concat_coords.cdf, Frame 12
+ -95.4043 -100.0964  -97.5606    2.1563   % concat_coords.cdf, Frame 13
+-101.9653 -102.0464  -98.8731   -3.0922   % concat_coords.cdf, Frame 14
+ -92.7314  -92.2971  -90.0403   -2.6912   % concat_coords.cdf, Frame 15
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 16
+ -86.5625  -82.0822  -87.2264    0.6639   % concat_coords.cdf, Frame 17
+ -91.3644  -88.1959  -89.3077   -2.0567   % concat_coords.cdf, Frame 20
+-101.3482 -103.8623 -100.9506   -0.3975   % concat_coords.cdf, Frame 22
+ -84.7817  -83.9357  -86.8070    2.0253   % concat_coords.cdf, Frame 23
+ -90.5024  -95.3214  -93.2655    2.7631   % concat_coords.cdf, Frame 24
+ -92.7076  -97.9563  -95.9785    3.2709   % concat_coords.cdf, Frame 25
+-103.5801 -106.5246 -104.6094    1.0294   % concat_coords.cdf, Frame 26
+-101.1519 -104.9771 -103.0707    1.9188   % concat_coords.cdf, Frame 28
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 29
+ -93.4370  -89.0727  -90.5756   -2.8615   % concat_coords.cdf, Frame 30
+ -96.1623  -97.0880  -93.2704   -2.8918   % concat_coords.cdf, Frame 31
+ -91.0615  -87.1377  -90.0333   -1.0282   % concat_coords.cdf, Frame 33
+ -90.5776  -84.8680  -89.1936   -1.3840   % concat_coords.cdf, Frame 35
+ -89.0037  -85.2008  -87.1097   -1.8941   % concat_coords.cdf, Frame 38
+ -99.2086 -103.3097 -101.6045    2.3958   % concat_coords.cdf, Frame 40
+ -87.2032  -86.1096  -87.1711   -0.0320   % concat_coords.cdf, Frame 41
+ -89.2324  -86.6298  -88.8580   -0.3744   % concat_coords.cdf, Frame 42
+ -86.6850  -85.4283  -87.8269    1.1418   % concat_coords.cdf, Frame 44
+ -92.1553  -88.3981  -92.0664   -0.0889   % concat_coords.cdf, Frame 45
+ -89.5568  -94.6748  -94.7986    5.2418   % concat_coords.cdf, Frame 46
+ -87.2549  -82.6580  -87.0812   -0.1736   % concat_coords.cdf, Frame 47
+ -90.5244  -97.3470  -95.4867    4.9622   % concat_coords.cdf, Frame 48
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 51
+ -97.9777 -102.4367 -100.7420    2.7644   % concat_coords.cdf, Frame 52
+ -79.8730  -81.6902  -84.5744    4.7014   % concat_coords.cdf, Frame 53
+ -95.8826 -100.6698  -98.3429    2.4603   % concat_coords.cdf, Frame 54
+ -84.7505  -83.7027  -86.8111    2.0605   % concat_coords.cdf, Frame 56
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 58
+ -94.4400  -94.1827  -91.1380   -3.3020   % concat_coords.cdf, Frame 59
+ -88.2164  -83.5005  -89.0583    0.8419   % concat_coords.cdf, Frame 61
+ -97.2622  -99.6026  -97.2414   -0.0208   % concat_coords.cdf, Frame 63
+-100.0421 -102.8947 -101.4262    1.3841   % concat_coords.cdf, Frame 64
+ -89.8201  -85.8093  -87.5269   -2.2932   % concat_coords.cdf, Frame 65
+-102.6647 -104.9775 -103.0693    0.4045   % concat_coords.cdf, Frame 67
+-101.2727 -101.4399  -98.3300   -2.9427   % concat_coords.cdf, Frame 68
+ -96.3724  -98.3235  -96.0069   -0.3655   % concat_coords.cdf, Frame 70
+ -91.1849  -97.6220  -95.6869    4.5020   % concat_coords.cdf, Frame 71
+ -89.7523  -94.8376  -92.9979    3.2455   % concat_coords.cdf, Frame 72
+ -98.5860 -101.9389  -99.1262    0.5402   % concat_coords.cdf, Frame 73
+-103.9152 -106.3408 -104.8259    0.9107   % concat_coords.cdf, Frame 75
+ -89.4292  -84.8473  -89.1552   -0.2740   % concat_coords.cdf, Frame 76
+-101.8894 -103.8649 -101.0559   -0.8335   % concat_coords.cdf, Frame 77
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 78
+ -93.8017  -98.8501  -96.7926    2.9909   % concat_coords.cdf, Frame 79
+-103.3839 -105.9295 -104.4194    1.0355   % concat_coords.cdf, Frame 80
+-104.1316 -105.3986 -103.9802   -0.1514   % concat_coords.cdf, Frame 81
+-101.5739 -105.3535 -103.7115    2.1376   % concat_coords.cdf, Frame 82
+ -87.9488  -84.8332  -89.2134    1.2646   % concat_coords.cdf, Frame 84
+ -89.0225  -85.6887  -90.1931    1.1706   % concat_coords.cdf, Frame 85
+ -94.8712  -96.0821  -97.8040    2.9329   % concat_coords.cdf, Frame 88
+ -89.5819  -87.3815  -89.5657   -0.0162   % concat_coords.cdf, Frame 89
+ -97.4297 -100.3815  -98.0355    0.6058   % concat_coords.cdf, Frame 90
+ -94.8794  -97.2818  -95.6773    0.7979   % concat_coords.cdf, Frame 91
+-103.1391 -105.8680 -103.9699    0.8308   % concat_coords.cdf, Frame 92
+ -84.9120  -80.1418  -85.8611    0.9491   % concat_coords.cdf, Frame 93
+ -89.4112  -85.0609  -89.6649    0.2537   % concat_coords.cdf, Frame 94
+ -89.4344  -83.7669  -91.4881    2.0537   % concat_coords.cdf, Frame 95
+ -89.9516  -85.2032  -88.8162   -1.1354   % concat_coords.cdf, Frame 96
+-102.0137 -103.9576 -101.0527   -0.9609   % concat_coords.cdf, Frame 97
+ -89.4876  -95.4749  -93.6505    4.1629   % concat_coords.cdf, Frame 98
+ -98.0851 -101.5148 -100.1891    2.1041   % concat_coords.cdf, Frame 99
+-103.9515 -106.9900 -105.3251    1.3736   % concat_coords.cdf, Frame 100
+ -90.0269  -94.6567  -92.8034    2.7766   % concat_coords.cdf, Frame 101
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 104
+ -88.8660  -83.4104  -85.8867   -2.9793   % concat_coords.cdf, Frame 105
+ -97.0620  -98.9001  -96.5732   -0.4888   % concat_coords.cdf, Frame 106
+ -92.5088  -90.3722  -90.5358   -1.9730   % concat_coords.cdf, Frame 107
+ -90.2408  -95.2412  -93.3839    3.1431   % concat_coords.cdf, Frame 108
+ -92.1721  -87.5807  -88.9396   -3.2326   % concat_coords.cdf, Frame 110
+ -93.5051  -90.6053  -92.0728   -1.4322   % concat_coords.cdf, Frame 111
+ -91.2801  -86.7554  -88.9800   -2.3002   % concat_coords.cdf, Frame 113
+ -87.4450  -81.0629  -86.0543   -1.3907   % concat_coords.cdf, Frame 114
+ -93.2800  -89.6146  -91.0476   -2.2325   % concat_coords.cdf, Frame 115
+ -89.5102  -83.5698  -89.4673   -0.0429   % concat_coords.cdf, Frame 117
+ -94.9861  -99.3075  -96.7327    1.7466   % concat_coords.cdf, Frame 118
+-102.5915 -104.5075 -102.8413    0.2498   % concat_coords.cdf, Frame 121
+ -89.0021  -84.6621  -90.0498    1.0477   % concat_coords.cdf, Frame 122
+ -92.2788  -94.9767  -92.3453    0.0665   % concat_coords.cdf, Frame 123
+ -89.9641  -87.8982  -89.8696   -0.0945   % concat_coords.cdf, Frame 124
+-100.2028 -102.4978  -99.8487   -0.3541   % concat_coords.cdf, Frame 126
+-103.3067 -104.7711 -102.9025   -0.4042   % concat_coords.cdf, Frame 127
+-102.9932 -104.5046 -101.1421   -1.8511   % concat_coords.cdf, Frame 129
+ -93.7119  -87.9790  -90.7912   -2.9207   % concat_coords.cdf, Frame 130
+ -94.7534  -98.6724  -97.0526    2.2992   % concat_coords.cdf, Frame 131
+ -91.8358  -91.7450  -91.7111   -0.1246   % concat_coords.cdf, Frame 132
+ -92.9124  -97.8271  -95.4067    2.4944   % concat_coords.cdf, Frame 133
+ -87.9690  -87.4096  -90.3320    2.3630   % concat_coords.cdf, Frame 134
+-102.8637 -103.8813 -100.6694   -2.1943   % concat_coords.cdf, Frame 135
+ -90.5036  -87.1480  -90.4753   -0.0282   % concat_coords.cdf, Frame 136
+ -93.4388  -88.0503  -91.8807   -1.5580   % concat_coords.cdf, Frame 137
+-104.5595 -106.8318 -105.3656    0.8061   % concat_coords.cdf, Frame 138
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 139
+ -93.5932  -98.0876  -96.0275    2.4343   % concat_coords.cdf, Frame 141
+ -88.1496  -86.9135  -90.8235    2.6739   % concat_coords.cdf, Frame 143
+ -91.8896  -86.0619  -87.9251   -3.9645   % concat_coords.cdf, Frame 146
+-103.4695 -104.8225 -101.5441   -1.9254   % concat_coords.cdf, Frame 147
+ -97.2488  -97.6772  -96.3808   -0.8680   % concat_coords.cdf, Frame 148
+ -89.4758  -86.6767  -87.8251   -1.6506   % concat_coords.cdf, Frame 149
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 151
+ -94.5332  -92.3418  -93.4485   -1.0847   % concat_coords.cdf, Frame 152
+ -82.2132  -81.4961  -84.5315    2.3183   % concat_coords.cdf, Frame 153
+-102.4825 -102.9583  -99.6897   -2.7928   % concat_coords.cdf, Frame 154
+-102.0615 -104.0048 -100.5134   -1.5481   % concat_coords.cdf, Frame 155
+-101.4537 -103.6793 -102.0401    0.5863   % concat_coords.cdf, Frame 156
+ -91.6470  -84.3943  -91.1858   -0.4612   % concat_coords.cdf, Frame 158
+ -94.7194  -99.2393  -97.8980    3.1786   % concat_coords.cdf, Frame 159
+-100.5526 -103.0723 -100.3705   -0.1821   % concat_coords.cdf, Frame 160
+ -94.6337  -97.6311  -95.8325    1.1989   % concat_coords.cdf, Frame 161
+ -84.8636  -82.8952  -84.8234   -0.0403   % concat_coords.cdf, Frame 162
+-100.9870 -101.9858 -100.3516   -0.6354   % concat_coords.cdf, Frame 163
+ -90.5300  -85.3347  -87.6098   -2.9202   % concat_coords.cdf, Frame 164
+ -86.3414  -86.5703  -88.9363    2.5950   % concat_coords.cdf, Frame 165
+-101.0230 -104.7124 -102.8958    1.8728   % concat_coords.cdf, Frame 166
+ -99.9028 -103.6753 -102.0212    2.1184   % concat_coords.cdf, Frame 167
+-103.3901 -104.7798 -103.0263   -0.3638   % concat_coords.cdf, Frame 169
+ -96.0365  -98.8817  -97.1837    1.1472   % concat_coords.cdf, Frame 171
+ -99.3787 -101.4193 -100.2019    0.8231   % concat_coords.cdf, Frame 172
+-101.0564 -101.6748 -103.0717    2.0153   % concat_coords.cdf, Frame 173
+ -93.4669  -97.1639  -95.0962    1.6293   % concat_coords.cdf, Frame 174
+-103.1271 -104.0312 -102.1957   -0.9314   % concat_coords.cdf, Frame 175
+ -89.5081  -83.4889  -86.3847   -3.1235   % concat_coords.cdf, Frame 176
+ -93.1969  -98.6353  -95.9159    2.7190   % concat_coords.cdf, Frame 177
+ -93.7421  -93.4928  -91.9344   -1.8076   % concat_coords.cdf, Frame 179
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 180
+-102.1830 -102.1212  -98.7353   -3.4477   % concat_coords.cdf, Frame 182
+-102.8455 -103.2806  -99.7896   -3.0559   % concat_coords.cdf, Frame 183
+ -94.6359  -92.2605  -92.9537   -1.6822   % concat_coords.cdf, Frame 184
+ -94.6509  -99.2946  -98.2726    3.6216   % concat_coords.cdf, Frame 185
+ -93.8579  -90.8130  -92.2214   -1.6365   % concat_coords.cdf, Frame 187
+ -84.6562  -83.6831  -86.6953    2.0391   % concat_coords.cdf, Frame 188
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 189
+ -92.5033  -97.4757  -94.7374    2.2342   % concat_coords.cdf, Frame 190
+ -91.2773  -87.4928  -88.6778   -2.5994   % concat_coords.cdf, Frame 192
+ -96.7478  -99.2423  -97.5089    0.7610   % concat_coords.cdf, Frame 194
+ -94.7991  -95.1214  -92.6695   -2.1295   % concat_coords.cdf, Frame 195
+ -90.5663  -95.7261  -93.7915    3.2252   % concat_coords.cdf, Frame 196
+ -92.5955  -88.2134  -89.9238   -2.6717   % concat_coords.cdf, Frame 197
+ -94.1403  -99.3982  -97.3487    3.2085   % concat_coords.cdf, Frame 198
+ -92.6766  -86.7774  -89.1429   -3.5337   % concat_coords.cdf, Frame 199
+ -91.3816  -87.7042  -91.8039    0.4223   % concat_coords.cdf, Frame 200
+ -94.5919  -88.7262  -89.7962   -4.7956   % concat_coords.cdf, Frame 201
+ -97.3770  -99.4869  -98.0969    0.7199   % concat_coords.cdf, Frame 203
+ -97.7106  -98.9477  -95.5661   -2.1444   % concat_coords.cdf, Frame 204
+ -94.3804  -89.1091  -90.3640   -4.0164   % concat_coords.cdf, Frame 207
+ -89.5117  -84.7253  -87.0032   -2.5085   % concat_coords.cdf, Frame 208
+ -84.6100  -82.9423  -86.3924    1.7824   % concat_coords.cdf, Frame 209
+ -86.4198  -84.4351  -87.8456    1.4258   % concat_coords.cdf, Frame 211
+-101.9310 -104.9498 -103.1534    1.2224   % concat_coords.cdf, Frame 213
+ -92.9059  -89.5267  -91.5634   -1.3425   % concat_coords.cdf, Frame 214
+-100.5255 -102.4698  -99.3615   -1.1639   % concat_coords.cdf, Frame 215
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 217
+ -96.7753  -98.8862  -97.5340    0.7586   % concat_coords.cdf, Frame 218
+ -93.4698  -93.6211  -92.0572   -1.4125   % concat_coords.cdf, Frame 219
+ -94.8224  -96.0314  -92.8183   -2.0041   % concat_coords.cdf, Frame 220
+ -96.7862 -101.1044  -99.4427    2.6565   % concat_coords.cdf, Frame 221
+-102.4831 -104.0018 -102.2595   -0.2236   % concat_coords.cdf, Frame 222
+ -93.8454  -97.9604  -96.5408    2.6955   % concat_coords.cdf, Frame 223
+ -96.3800  -97.2619  -95.8485   -0.5315   % concat_coords.cdf, Frame 224
+ -91.8757  -90.8750  -90.8408   -1.0349   % concat_coords.cdf, Frame 225
+ -92.7002  -87.7820  -92.0664   -0.6339   % concat_coords.cdf, Frame 226
+ -82.4225  -82.2871  -85.6355    3.2131   % concat_coords.cdf, Frame 227
+ -94.1542  -90.4918  -91.9311   -2.2231   % concat_coords.cdf, Frame 229
+ -98.0314 -101.9417 -100.3895    2.3581   % concat_coords.cdf, Frame 230
+-102.4035 -104.6819 -102.9154    0.5120   % concat_coords.cdf, Frame 231
+ -95.5063 -100.1704  -98.0190    2.5127   % concat_coords.cdf, Frame 232
+ -81.5705  -80.7863  -85.2434    3.6729   % concat_coords.cdf, Frame 234
+ -88.7339  -95.9358  -94.1416    5.4077   % concat_coords.cdf, Frame 235
+ -92.6558  -87.8859  -89.0914   -3.5644   % concat_coords.cdf, Frame 236
+ -93.1756  -95.5160  -92.8762   -0.2994   % concat_coords.cdf, Frame 238
+ -96.8358  -99.2403  -97.0901    0.2543   % concat_coords.cdf, Frame 239
+ -97.2736  -99.3834  -95.1760   -2.0975   % concat_coords.cdf, Frame 241
+-103.0179 -104.4310 -101.1927   -1.8252   % concat_coords.cdf, Frame 243
+ -80.0767  -80.5717  -83.0030    2.9263   % concat_coords.cdf, Frame 244
+-102.1591 -103.6915 -100.7064   -1.4527   % concat_coords.cdf, Frame 245
+-102.4282 -103.9267 -102.1454   -0.2829   % concat_coords.cdf, Frame 246
+ -88.7130  -84.5917  -89.9958    1.2827   % concat_coords.cdf, Frame 247
+ -88.2031  -87.0874  -88.7490    0.5458   % concat_coords.cdf, Frame 249
+ -89.9177  -85.2915  -90.7171    0.7995   % concat_coords.cdf, Frame 251
+-103.3417 -104.2124 -100.5878   -2.7539   % concat_coords.cdf, Frame 252
+ -93.2090  -91.2237  -92.0627   -1.1463   % concat_coords.cdf, Frame 253
+ -92.3810  -86.5906  -90.1427   -2.2383   % concat_coords.cdf, Frame 255
+ -97.9606 -100.9867  -99.0853    1.1247   % concat_coords.cdf, Frame 256
+-104.5030 -106.5234 -104.8885    0.3855   % concat_coords.cdf, Frame 257
+ -81.6734  -83.8908  -84.7919    3.1185   % concat_coords.cdf, Frame 258
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 259
+ -90.3576  -96.1262  -94.2703    3.9127   % concat_coords.cdf, Frame 261
+-104.4486 -107.0004 -105.3392    0.8906   % concat_coords.cdf, Frame 264
+ -91.6121  -87.9387  -91.2239   -0.3882   % concat_coords.cdf, Frame 265
+ -94.4814  -89.3995  -92.3622   -2.1192   % concat_coords.cdf, Frame 266
+ -79.0103  -81.0813  -83.1409    4.1306   % concat_coords.cdf, Frame 267
+ -95.9567  -96.4013  -94.7212   -1.2355   % concat_coords.cdf, Frame 269
+ -91.0781  -87.6436  -88.8205   -2.2576   % concat_coords.cdf, Frame 270
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 272
+ -91.8193  -86.7318  -86.8377   -4.9816   % concat_coords.cdf, Frame 274
+-102.1845 -104.0001 -101.0572   -1.1273   % concat_coords.cdf, Frame 275
+ -90.5433  -96.3011  -95.3255    4.7823   % concat_coords.cdf, Frame 276
+-102.1396 -103.9964 -100.9727   -1.1669   % concat_coords.cdf, Frame 277
+ -88.8811  -84.2620  -90.3109    1.4298   % concat_coords.cdf, Frame 279
+-101.3218 -102.2093  -99.3454   -1.9764   % concat_coords.cdf, Frame 280
+-101.4343 -103.4406 -100.4984   -0.9359   % concat_coords.cdf, Frame 281
+-102.8184 -104.8987 -103.1481    0.3297   % concat_coords.cdf, Frame 282
+-100.6812 -103.7675 -102.3297    1.6485   % concat_coords.cdf, Frame 283
+-102.2481 -103.1552 -101.3903   -0.8578   % concat_coords.cdf, Frame 285
+ -89.5671  -84.1763  -87.3946   -2.1725   % concat_coords.cdf, Frame 286
+-102.3727 -105.6994 -103.8035    1.4307   % concat_coords.cdf, Frame 288
+ -81.5547  -81.4814  -83.4367    1.8821   % concat_coords.cdf, Frame 289
+ -90.8913  -95.0033  -93.5484    2.6571   % concat_coords.cdf, Frame 290
+ -99.8774 -101.9787 -102.4065    2.5292   % concat_coords.cdf, Frame 291
+ -96.3825  -99.0174  -96.7132    0.3308   % concat_coords.cdf, Frame 292
+-102.3341 -103.2508 -101.5112   -0.8229   % concat_coords.cdf, Frame 293
+ -90.2343  -84.8558  -86.4946   -3.7397   % concat_coords.cdf, Frame 294
+ -96.7405  -99.9226  -98.0692    1.3287   % concat_coords.cdf, Frame 295
+ -98.9325 -101.6437 -100.1681    1.2356   % concat_coords.cdf, Frame 296
+ -95.1022  -91.6121  -93.3321   -1.7700   % concat_coords.cdf, Frame 298
+ -98.1935 -101.8470 -100.3542    2.1608   % concat_coords.cdf, Frame 299
+ -94.8712  -96.0821  -97.8040    2.9329   % concat_coords.cdf, Frame 302
+ -95.2138  -94.8124  -93.4953   -1.7184   % concat_coords.cdf, Frame 305
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 306
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 307
+ -93.6895  -96.8668  -95.3503    1.6608   % concat_coords.cdf, Frame 309
+ -86.7872  -84.4193  -88.1753    1.3882   % concat_coords.cdf, Frame 311
+ -93.3625  -88.8176  -92.6983   -0.6642   % concat_coords.cdf, Frame 313
+ -94.8785  -89.1373  -90.0182   -4.8603   % concat_coords.cdf, Frame 314
+ -91.0999  -85.3782  -88.3383   -2.7616   % concat_coords.cdf, Frame 315
+ -91.7241  -87.4684  -89.3902   -2.3339   % concat_coords.cdf, Frame 317
+ -90.5191  -97.4691  -95.6166    5.0975   % concat_coords.cdf, Frame 318
+ -88.7932  -87.7286  -88.3565   -0.4367   % concat_coords.cdf, Frame 319
+ -82.0548  -82.6143  -84.0737    2.0189   % concat_coords.cdf, Frame 320
+ -97.3316  -99.3125  -97.7692    0.4376   % concat_coords.cdf, Frame 321
+ -95.7239  -96.0054  -93.0282   -2.6957   % concat_coords.cdf, Frame 322
+ -91.3351  -86.1341  -87.9855   -3.3496   % concat_coords.cdf, Frame 323
+ -93.6667  -88.5790  -89.8144   -3.8522   % concat_coords.cdf, Frame 324
+ -97.1159  -98.2336  -95.4141   -1.7018   % concat_coords.cdf, Frame 325
+ -90.3928  -97.2549  -95.4311    5.0383   % concat_coords.cdf, Frame 328
+ -94.9452  -97.5726  -96.2141    1.2688   % concat_coords.cdf, Frame 329
+ -91.7788  -88.8549  -90.7900   -0.9888   % concat_coords.cdf, Frame 330
+ -99.3800 -101.6468  -99.2250   -0.1551   % concat_coords.cdf, Frame 331
+-100.1827 -103.6253 -101.9334    1.7507   % concat_coords.cdf, Frame 333
+ -88.1154  -85.6983  -89.0667    0.9513   % concat_coords.cdf, Frame 334
+ -81.9913  -82.4015  -84.9737    2.9824   % concat_coords.cdf, Frame 335
+ -94.3333  -94.9680  -93.6798   -0.6536   % concat_coords.cdf, Frame 337
+ -94.1714  -95.1176  -92.0468   -2.1247   % concat_coords.cdf, Frame 338
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 340
+ -94.1625  -96.9709  -95.6161    1.4536   % concat_coords.cdf, Frame 341
+-100.2188 -101.0932  -99.2898   -0.9290   % concat_coords.cdf, Frame 342
+ -90.2677  -86.5958  -90.8792    0.6115   % concat_coords.cdf, Frame 343
+ -96.2347  -99.9586  -98.5539    2.3192   % concat_coords.cdf, Frame 345
+ -96.2297  -97.6690  -96.0254   -0.2044   % concat_coords.cdf, Frame 346
+ -93.8641  -90.4368  -91.2307   -2.6334   % concat_coords.cdf, Frame 347
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 348
+ -95.4765  -99.3307  -97.8672    2.3907   % concat_coords.cdf, Frame 349
+-101.0118 -102.8080 -101.1761    0.1644   % concat_coords.cdf, Frame 350
+ -84.3992  -82.8841  -86.6208    2.2217   % concat_coords.cdf, Frame 351
+ -91.9848  -98.0617  -96.1205    4.1357   % concat_coords.cdf, Frame 352
+-103.4423 -105.5448 -103.6991    0.2567   % concat_coords.cdf, Frame 353
+ -93.1224  -98.4964  -95.9724    2.8500   % concat_coords.cdf, Frame 354
+ -95.3736  -98.5227  -97.1212    1.7476   % concat_coords.cdf, Frame 355
+ -93.4843  -90.9631  -91.7913   -1.6930   % concat_coords.cdf, Frame 356
+ -95.7624  -99.9949  -98.5686    2.8063   % concat_coords.cdf, Frame 357
+ -94.5047  -96.8804  -95.5347    1.0299   % concat_coords.cdf, Frame 358
+ -97.7349  -99.3514  -95.5203   -2.2146   % concat_coords.cdf, Frame 359
+ -95.8396  -99.5346  -97.9241    2.0845   % concat_coords.cdf, Frame 360
+-101.9356 -103.7644 -101.0237   -0.9119   % concat_coords.cdf, Frame 361
+ -94.3868  -96.9750  -94.1985   -0.1883   % concat_coords.cdf, Frame 362
+ -98.3898 -100.1864  -97.5609   -0.8289   % concat_coords.cdf, Frame 363
+ -79.9675  -76.8333  -82.8995    2.9320   % concat_coords.cdf, Frame 364
+ -91.3187  -86.9915  -88.2709   -3.0478   % concat_coords.cdf, Frame 365
+ -96.9620 -100.8679  -99.0948    2.1328   % concat_coords.cdf, Frame 366
+ -92.0854  -88.7754  -90.3971   -1.6882   % concat_coords.cdf, Frame 367
+-100.2579 -101.8793 -100.1925   -0.0654   % concat_coords.cdf, Frame 371
+ -91.9459  -95.6879  -93.3717    1.4258   % concat_coords.cdf, Frame 372
+-102.5061 -102.4666  -98.9959   -3.5102   % concat_coords.cdf, Frame 373
+-103.5946 -106.1067 -104.4557    0.8611   % concat_coords.cdf, Frame 374
+ -95.7999  -97.2806  -95.7162   -0.0837   % concat_coords.cdf, Frame 375
+ -91.4388  -90.8702  -88.8232   -2.6157   % concat_coords.cdf, Frame 376
+ -93.0184  -98.2687  -95.4136    2.3952   % concat_coords.cdf, Frame 377
+ -93.2482  -90.8120  -91.6821   -1.5661   % concat_coords.cdf, Frame 378
+-102.4129 -104.4187 -101.1756   -1.2373   % concat_coords.cdf, Frame 380
+ -93.7647  -89.7824  -89.5775   -4.1873   % concat_coords.cdf, Frame 381
+ -93.7079  -93.2431  -90.6529   -3.0549   % concat_coords.cdf, Frame 385
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 386
+ -86.3776  -80.0057  -86.4487    0.0710   % concat_coords.cdf, Frame 387
+-102.0846 -105.6046 -103.6356    1.5509   % concat_coords.cdf, Frame 389
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 390
+ -92.3757  -88.4300  -89.7557   -2.6199   % concat_coords.cdf, Frame 391
+ -96.1598  -96.6990  -93.2530   -2.9068   % concat_coords.cdf, Frame 392
+-104.5832 -107.0383 -105.2068    0.6236   % concat_coords.cdf, Frame 393
+ -92.3104  -97.4396  -95.2481    2.9377   % concat_coords.cdf, Frame 394
+ -96.0999  -99.8618  -97.6482    1.5482   % concat_coords.cdf, Frame 395
+ -82.5287  -82.8721  -85.5838    3.0551   % concat_coords.cdf, Frame 396
+ -93.9170  -94.7319  -93.0506   -0.8664   % concat_coords.cdf, Frame 398
+ -92.0393  -85.6155  -88.8528   -3.1865   % concat_coords.cdf, Frame 399
+ -88.5022  -83.1201  -90.2011    1.6989   % concat_coords.cdf, Frame 402
+ -91.9190  -87.8332  -90.3966   -1.5224   % concat_coords.cdf, Frame 403
+ -92.4021  -90.1185  -90.0708   -2.3313   % concat_coords.cdf, Frame 404
+ -93.6615  -89.4203  -92.5879   -1.0736   % concat_coords.cdf, Frame 405
+ -89.4645  -84.2867  -88.6815   -0.7830   % concat_coords.cdf, Frame 407
+ -88.4005  -86.4673  -89.3607    0.9602   % concat_coords.cdf, Frame 408
+ -87.0231  -84.5167  -88.1180    1.0948   % concat_coords.cdf, Frame 409
+ -97.1445 -101.5345  -99.9824    2.8378   % concat_coords.cdf, Frame 410
+ -89.1253  -87.1596  -88.3103   -0.8150   % concat_coords.cdf, Frame 411
+ -93.1886  -98.8118  -96.6791    3.4904   % concat_coords.cdf, Frame 414
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 416
+ -99.7281 -103.9140 -102.0948    2.3666   % concat_coords.cdf, Frame 417
+ -86.7024  -82.9066  -86.6831   -0.0194   % concat_coords.cdf, Frame 418
+ -94.0115  -99.2991  -97.2435    3.2320   % concat_coords.cdf, Frame 419
+ -89.1589  -85.2555  -89.2124    0.0535   % concat_coords.cdf, Frame 421
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 423
+ -94.8563  -94.9557  -91.5849   -3.2714   % concat_coords.cdf, Frame 424
+ -97.9335 -100.4750  -98.3880    0.4545   % concat_coords.cdf, Frame 426
+ -86.6806  -84.9149  -88.1089    1.4282   % concat_coords.cdf, Frame 427
+ -98.7789  -99.8856  -97.3069   -1.4720   % concat_coords.cdf, Frame 430
+ -94.2905  -99.7181  -97.6016    3.3111   % concat_coords.cdf, Frame 431
+-103.7174 -105.5616 -103.7954    0.0781   % concat_coords.cdf, Frame 433
+-102.2664 -102.1759  -98.7046   -3.5618   % concat_coords.cdf, Frame 434
+ -87.7853  -81.1162  -85.2024   -2.5829   % concat_coords.cdf, Frame 435
+ -93.8849  -97.8763  -95.8746    1.9897   % concat_coords.cdf, Frame 436
+-101.8092 -104.4445 -102.8592    1.0500   % concat_coords.cdf, Frame 437
+ -88.7007  -85.2699  -87.0087   -1.6920   % concat_coords.cdf, Frame 438
+ -96.9391 -100.7156  -98.4132    1.4742   % concat_coords.cdf, Frame 439
+ -88.2806  -85.0553  -88.0977   -0.1830   % concat_coords.cdf, Frame 440
+-100.1775 -102.9271 -100.7525    0.5750   % concat_coords.cdf, Frame 441
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 442
+-104.2527 -106.8779 -105.3956    1.1429   % concat_coords.cdf, Frame 443
+ -99.8930 -102.6137  -99.5261   -0.3669   % concat_coords.cdf, Frame 444
+ -86.9889  -85.6384  -89.0859    2.0970   % concat_coords.cdf, Frame 446
+ -89.7205  -84.7049  -89.9443    0.2238   % concat_coords.cdf, Frame 447
+ -93.4620  -94.7770  -93.2956   -0.1663   % concat_coords.cdf, Frame 448
+-104.2347 -105.6797 -104.0713   -0.1633   % concat_coords.cdf, Frame 449
+ -98.2640 -100.9140  -97.8164   -0.4476   % concat_coords.cdf, Frame 450
+-102.4874 -105.0052 -103.2502    0.7628   % concat_coords.cdf, Frame 451
+ -97.7796  -99.7334  -97.9922    0.2126   % concat_coords.cdf, Frame 452
+ -91.0344  -88.1701  -90.3936   -0.6408   % concat_coords.cdf, Frame 453
+-100.0751 -101.8951  -99.2083   -0.8668   % concat_coords.cdf, Frame 454
+ -93.7105  -93.0595  -91.4277   -2.2828   % concat_coords.cdf, Frame 455
+ -91.0212  -87.5050  -86.8017   -4.2196   % concat_coords.cdf, Frame 456
+-102.6542 -102.9792  -99.5268   -3.1274   % concat_coords.cdf, Frame 457
+-100.8575 -103.6056 -101.9280    1.0704   % concat_coords.cdf, Frame 458
+-101.3467 -103.7983 -100.6615   -0.6851   % concat_coords.cdf, Frame 459
+ -93.1584  -97.4107  -95.3913    2.2329   % concat_coords.cdf, Frame 460
+ -88.6417  -83.0991  -90.6695    2.0278   % concat_coords.cdf, Frame 461
+ -90.4427  -84.3463  -89.0380   -1.4047   % concat_coords.cdf, Frame 462
+ -89.0898  -93.5683  -96.5994    7.5096   % concat_coords.cdf, Frame 463
+-101.1949 -102.8369  -99.9903   -1.2046   % concat_coords.cdf, Frame 464
+ -89.1156  -84.8357  -89.4287    0.3131   % concat_coords.cdf, Frame 466
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 467
+ -89.2545  -85.3008  -86.1777   -3.0768   % concat_coords.cdf, Frame 468
+ -99.5625 -100.3312  -97.6021   -1.9604   % concat_coords.cdf, Frame 469
+ -86.8370  -80.0265  -86.2323   -0.6047   % concat_coords.cdf, Frame 470
+ -93.4111  -96.5257  -94.4553    1.0442   % concat_coords.cdf, Frame 472
+ -91.8412  -87.3801  -88.9455   -2.8957   % concat_coords.cdf, Frame 473
+ -86.2500  -80.7081  -85.2611   -0.9889   % concat_coords.cdf, Frame 474
+ -86.9923  -86.3161  -89.6236    2.6313   % concat_coords.cdf, Frame 475
+ -92.0249  -87.3356  -88.9117   -3.1132   % concat_coords.cdf, Frame 476
+ -93.2860  -90.0101  -91.8925   -1.3935   % concat_coords.cdf, Frame 477
+ -87.5295  -84.9225  -86.5815   -0.9480   % concat_coords.cdf, Frame 478
+-100.5886 -102.8951 -101.2423    0.6536   % concat_coords.cdf, Frame 482
+ -97.3673 -100.8532  -98.6440    1.2767   % concat_coords.cdf, Frame 483
+ -92.7444  -88.9431  -90.7464   -1.9979   % concat_coords.cdf, Frame 485
+ -90.8874  -83.5900  -90.5651   -0.3223   % concat_coords.cdf, Frame 487
+ -94.6710  -89.0960  -91.1453   -3.5257   % concat_coords.cdf, Frame 488
+ -90.7447  -95.8743  -94.5879    3.8432   % concat_coords.cdf, Frame 489
+-101.6846 -103.1675 -100.4070   -1.2776   % concat_coords.cdf, Frame 491
+ -95.2629  -99.3992  -97.2767    2.0138   % concat_coords.cdf, Frame 493
+ -89.7035  -84.8220  -91.0641    1.3606   % concat_coords.cdf, Frame 494
+ -94.8712  -96.0821  -97.8040    2.9329   % concat_coords.cdf, Frame 495
+ -99.4554 -101.2110  -99.7106    0.2553   % concat_coords.cdf, Frame 496
+ -90.4041  -85.9187  -88.7316   -1.6725   % concat_coords.cdf, Frame 497
+ -82.7102  -78.0982  -85.2157    2.5054   % concat_coords.cdf, Frame 499
+ -87.2066  -83.1472  -85.7475   -1.4591   % concat_coords.cdf, Frame 500
+ -87.4665  -85.4741  -86.7115   -0.7549   % concat_coords.cdf, Frame 501
+ -97.7624  -98.5457  -97.5254   -0.2370   % concat_coords.cdf, Frame 502
+ -89.0124  -85.7715  -87.8827   -1.1297   % concat_coords.cdf, Frame 505
+ -96.8381  -98.2117  -96.2516   -0.5864   % concat_coords.cdf, Frame 506
+ -94.8712  -96.0821  -97.8040    2.9329   % concat_coords.cdf, Frame 507
+ -85.8005  -82.1799  -85.6544   -0.1462   % concat_coords.cdf, Frame 508
+ -94.8820  -91.5238  -93.7814   -1.1006   % concat_coords.cdf, Frame 509
+ -93.5370  -89.5540  -91.7135   -1.8236   % concat_coords.cdf, Frame 510
+ -95.2075  -91.2274  -92.3802   -2.8273   % concat_coords.cdf, Frame 511
+ -90.9067  -85.4443  -88.3233   -2.5834   % concat_coords.cdf, Frame 512
+ -86.7356  -86.3305  -87.4557    0.7201   % concat_coords.cdf, Frame 513
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 514
+ -89.1003  -85.5501  -89.7332    0.6329   % concat_coords.cdf, Frame 515
+ -92.2819  -94.4994  -92.0496   -0.2323   % concat_coords.cdf, Frame 517
+-100.7481 -102.7196 -101.1074    0.3594   % concat_coords.cdf, Frame 519
+ -94.8306  -98.0943  -95.8484    1.0179   % concat_coords.cdf, Frame 520
+ -88.8737  -84.6906  -88.9731    0.0995   % concat_coords.cdf, Frame 521
+-103.3780 -104.3896 -102.4516   -0.9263   % concat_coords.cdf, Frame 522
+-103.3565 -104.7156 -101.0322   -2.3243   % concat_coords.cdf, Frame 524
+ -97.0662  -97.6089  -99.0201    1.9539   % concat_coords.cdf, Frame 526
+-101.9486 -104.1899 -100.2266   -1.7219   % concat_coords.cdf, Frame 527
+ -99.7521 -102.1519 -100.6526    0.9005   % concat_coords.cdf, Frame 528
+-102.4376 -103.6302 -100.5087   -1.9289   % concat_coords.cdf, Frame 529
+ -98.1565 -101.6782  -99.9756    1.8191   % concat_coords.cdf, Frame 530
+ -98.2585 -101.7476  -99.3395    1.0810   % concat_coords.cdf, Frame 531
+ -90.4520  -96.8841  -95.0262    4.5742   % concat_coords.cdf, Frame 532
+-103.3704 -104.8099 -102.9804   -0.3900   % concat_coords.cdf, Frame 534
+ -96.3414  -96.6222  -95.5040   -0.8374   % concat_coords.cdf, Frame 535
+ -94.2323  -89.3787  -93.1316   -1.1008   % concat_coords.cdf, Frame 537
+-102.8241 -105.3485 -103.6343    0.8102   % concat_coords.cdf, Frame 538
+-101.8293 -101.9821  -98.8467   -2.9826   % concat_coords.cdf, Frame 541
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 542
+-103.3964 -104.4132 -102.4993   -0.8971   % concat_coords.cdf, Frame 543
+ -95.4489  -97.6032  -96.1385    0.6896   % concat_coords.cdf, Frame 544
+-104.2295 -106.4954 -104.7192    0.4897   % concat_coords.cdf, Frame 545
+ -99.3513 -100.8065  -99.4942    0.1429   % concat_coords.cdf, Frame 546
+ -93.7241  -97.3252  -95.4499    1.7257   % concat_coords.cdf, Frame 547
+ -93.0380  -88.7631  -90.1044   -2.9336   % concat_coords.cdf, Frame 548
+ -97.4549 -101.2258  -98.9059    1.4510   % concat_coords.cdf, Frame 550
+ -95.0504  -95.7076  -91.9189   -3.1315   % concat_coords.cdf, Frame 551
+ -93.5103  -94.1414  -91.6814   -1.8289   % concat_coords.cdf, Frame 553
+ -89.9216  -86.8736  -90.8033    0.8817   % concat_coords.cdf, Frame 554
+ -93.9003  -87.9084  -89.6997   -4.2006   % concat_coords.cdf, Frame 555
+ -94.2254  -90.7221  -90.6005   -3.6248   % concat_coords.cdf, Frame 556
+ -91.7424  -86.4178  -90.7783   -0.9641   % concat_coords.cdf, Frame 558
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 559
+ -96.2030 -100.6203  -99.0973    2.8943   % concat_coords.cdf, Frame 561
+ -87.2622  -83.5496  -87.5538    0.2915   % concat_coords.cdf, Frame 564
+ -83.4398  -81.1325  -85.8969    2.4571   % concat_coords.cdf, Frame 565
+ -93.6360  -90.1427  -92.0184   -1.6176   % concat_coords.cdf, Frame 566
+-100.8871 -102.9752  -99.3285   -1.5587   % concat_coords.cdf, Frame 568
+ -89.7931  -85.1995  -88.8448   -0.9483   % concat_coords.cdf, Frame 569
+ -93.7280  -97.5611  -96.0542    2.3262   % concat_coords.cdf, Frame 570
+-103.1359 -105.8723 -104.0002    0.8643   % concat_coords.cdf, Frame 571
+ -94.2308  -96.2807  -93.8425   -0.3883   % concat_coords.cdf, Frame 572
+ -91.1553  -86.0907  -88.7183   -2.4370   % concat_coords.cdf, Frame 574
+ -97.5094 -100.9576  -98.6270    1.1176   % concat_coords.cdf, Frame 575
+ -89.9501  -86.2344  -89.4209   -0.5292   % concat_coords.cdf, Frame 577
+ -93.8847  -88.1198  -89.3571   -4.5277   % concat_coords.cdf, Frame 578
+ -94.2002  -89.5995  -91.1472   -3.0530   % concat_coords.cdf, Frame 579
+ -95.8128  -97.1190  -93.0000   -2.8128   % concat_coords.cdf, Frame 580
+ -93.5957  -95.9196  -94.4254    0.8297   % concat_coords.cdf, Frame 581
+ -96.5537  -99.4920  -98.1177    1.5641   % concat_coords.cdf, Frame 582
+ -90.0509  -93.4383  -91.5538    1.5029   % concat_coords.cdf, Frame 583
+ -94.3331  -96.2242  -95.8887    1.5556   % concat_coords.cdf, Frame 584
+ -86.7675  -84.9033  -88.2476    1.4801   % concat_coords.cdf, Frame 585
+ -90.3867  -96.2252  -95.6299    5.2432   % concat_coords.cdf, Frame 586
+ -95.1121  -89.3156  -90.1971   -4.9150   % concat_coords.cdf, Frame 587
+ -91.1659  -89.1697  -89.2338   -1.9322   % concat_coords.cdf, Frame 589
+ -95.4326  -96.6431  -93.2653   -2.1673   % concat_coords.cdf, Frame 590
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 592
+ -99.1210 -100.6193  -99.1489    0.0279   % concat_coords.cdf, Frame 593
+-100.7969 -101.2268  -98.3497   -2.4472   % concat_coords.cdf, Frame 594
+ -87.4966  -84.4178  -86.1646   -1.3320   % concat_coords.cdf, Frame 596
+ -99.2421 -100.5116  -99.0367   -0.2053   % concat_coords.cdf, Frame 597
+-100.2371 -103.2958 -101.8230    1.5859   % concat_coords.cdf, Frame 598
+ -97.7524 -101.5828  -99.4540    1.7016   % concat_coords.cdf, Frame 599
+ -96.6740  -98.8107  -95.6396   -1.0344   % concat_coords.cdf, Frame 601
+ -99.3809 -101.3950  -97.6312   -1.7497   % concat_coords.cdf, Frame 602
+-100.7813 -103.4247 -101.7624    0.9812   % concat_coords.cdf, Frame 603
+ -97.8488 -101.4897  -99.5895    1.7407   % concat_coords.cdf, Frame 604
+ -98.9714 -102.6879 -100.7187    1.7474   % concat_coords.cdf, Frame 605
+ -93.9563  -89.9848  -91.7603   -2.1961   % concat_coords.cdf, Frame 607
+ -90.8608  -92.3466  -90.4776   -0.3832   % concat_coords.cdf, Frame 610
+ -96.2279  -98.5582  -96.6489    0.4210   % concat_coords.cdf, Frame 611
+ -92.2439  -93.8682  -91.3460   -0.8979   % concat_coords.cdf, Frame 614
+ -94.0492  -98.6096  -96.5840    2.5348   % concat_coords.cdf, Frame 615
+ -93.9466  -96.9207  -96.6924    2.7457   % concat_coords.cdf, Frame 616
+ -95.3865  -99.0765  -96.4459    1.0594   % concat_coords.cdf, Frame 617
+ -95.0654  -97.7861  -96.4224    1.3570   % concat_coords.cdf, Frame 619
+ -96.7727 -100.8373  -98.2666    1.4939   % concat_coords.cdf, Frame 622
+-101.0465 -102.7562  -99.9589   -1.0876   % concat_coords.cdf, Frame 623
+-102.7756 -104.4815 -101.1407   -1.6349   % concat_coords.cdf, Frame 625
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 626
+ -98.2822 -102.5997 -100.7934    2.5112   % concat_coords.cdf, Frame 627
+ -92.8562  -92.7819  -90.1259   -2.7303   % concat_coords.cdf, Frame 628
+ -91.8764  -86.6377  -89.5506   -2.3258   % concat_coords.cdf, Frame 631
+ -91.7293  -91.3407  -88.7944   -2.9349   % concat_coords.cdf, Frame 632
+ -86.7493  -84.3561  -87.7469    0.9976   % concat_coords.cdf, Frame 633
+ -99.5858 -102.8851 -100.2773    0.6915   % concat_coords.cdf, Frame 634
+ -88.6660  -87.2976  -88.6518   -0.0142   % concat_coords.cdf, Frame 636
+ -90.6914  -87.4456  -89.6085   -1.0829   % concat_coords.cdf, Frame 637
+ -84.8225  -84.8584  -85.9230    1.1005   % concat_coords.cdf, Frame 640
+ -90.9411  -87.6159  -91.3441    0.4030   % concat_coords.cdf, Frame 641
+ -94.2267  -98.0271  -97.5830    3.3562   % concat_coords.cdf, Frame 642
+ -92.9187  -89.2456  -90.1528   -2.7659   % concat_coords.cdf, Frame 644
+ -94.6939  -89.4992  -90.6072   -4.0867   % concat_coords.cdf, Frame 645
+ -91.8251  -87.7032  -87.7099   -4.1152   % concat_coords.cdf, Frame 647
+ -93.1111  -91.1747  -92.0291   -1.0820   % concat_coords.cdf, Frame 648
+ -91.2120  -91.4041  -89.5896   -1.6224   % concat_coords.cdf, Frame 649
+ -88.0355  -81.6075  -87.6230   -0.4125   % concat_coords.cdf, Frame 651
+ -93.1576  -89.5775  -89.4540   -3.7036   % concat_coords.cdf, Frame 652
+ -87.4876  -81.7943  -88.1803    0.6927   % concat_coords.cdf, Frame 654
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 656
+-104.1955 -106.4135 -104.6117    0.4162   % concat_coords.cdf, Frame 658
+ -84.8271  -78.0346  -85.0517    0.2246   % concat_coords.cdf, Frame 659
+ -90.6620  -86.9359  -90.0369   -0.6251   % concat_coords.cdf, Frame 661
+ -99.9609 -102.7276 -100.1308    0.1699   % concat_coords.cdf, Frame 662
+ -82.2889  -82.8872  -85.3245    3.0356   % concat_coords.cdf, Frame 664
+ -94.5067  -98.8718  -98.1528    3.6461   % concat_coords.cdf, Frame 665
+ -89.0494  -94.5373  -92.7111    3.6618   % concat_coords.cdf, Frame 666
+-103.4964 -106.4033 -104.9318    1.4354   % concat_coords.cdf, Frame 667
+ -89.1244  -95.9322  -94.1249    5.0005   % concat_coords.cdf, Frame 668
+-102.3013 -102.8567  -99.6828   -2.6185   % concat_coords.cdf, Frame 669
+-101.6606 -103.5606 -100.6869   -0.9737   % concat_coords.cdf, Frame 670
+-101.1266 -101.3720  -98.3563   -2.7703   % concat_coords.cdf, Frame 671
+ -89.2733  -87.2852  -89.8160    0.5427   % concat_coords.cdf, Frame 672
+ -95.5675 -100.4023  -98.0816    2.5141   % concat_coords.cdf, Frame 673
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 674
+-100.7635 -101.8953  -99.0604   -1.7032   % concat_coords.cdf, Frame 675
+ -90.2474  -87.0123  -86.2455   -4.0019   % concat_coords.cdf, Frame 676
+ -99.8333 -101.0800  -98.3531   -1.4803   % concat_coords.cdf, Frame 678
+ -98.0180 -101.1376  -99.7043    1.6863   % concat_coords.cdf, Frame 679
+ -98.9442 -101.4649  -97.2843   -1.6599   % concat_coords.cdf, Frame 680
+ -90.6232  -86.1202  -87.8644   -2.7588   % concat_coords.cdf, Frame 681
+ -93.3384  -96.7121  -94.6592    1.3208   % concat_coords.cdf, Frame 682
+ -88.6088  -95.4269  -93.6311    5.0223   % concat_coords.cdf, Frame 683
+ -92.9640  -89.5847  -91.4322   -1.5318   % concat_coords.cdf, Frame 684
+-103.0746 -103.8500 -100.4587   -2.6160   % concat_coords.cdf, Frame 686
+ -95.2001  -95.3098  -94.2294   -0.9707   % concat_coords.cdf, Frame 687
+ -91.1329  -86.1943  -87.5548   -3.5781   % concat_coords.cdf, Frame 688
+ -97.7017  -99.0793  -97.5951   -0.1066   % concat_coords.cdf, Frame 689
+ -97.5329  -99.8010  -97.7832    0.2503   % concat_coords.cdf, Frame 690
+-103.4851 -104.6841 -103.2039   -0.2812   % concat_coords.cdf, Frame 691
+-102.2794 -105.3766 -103.9306    1.6512   % concat_coords.cdf, Frame 692
+ -88.8945  -84.3910  -89.6322    0.7377   % concat_coords.cdf, Frame 693
+ -88.3557  -87.4617  -89.8704    1.5148   % concat_coords.cdf, Frame 694
+ -96.9543  -99.7750  -97.6766    0.7223   % concat_coords.cdf, Frame 695
+-104.2230 -106.1707 -104.2765    0.0535   % concat_coords.cdf, Frame 696
+ -89.8840  -92.9189  -93.7463    3.8623   % concat_coords.cdf, Frame 698
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 700
+ -93.6683  -97.2438  -95.3415    1.6732   % concat_coords.cdf, Frame 701
+ -90.5793  -85.9837  -88.4733   -2.1060   % concat_coords.cdf, Frame 702
+ -88.4625  -82.5701  -87.5658   -0.8968   % concat_coords.cdf, Frame 706
+ -90.1286  -85.2207  -88.3543   -1.7743   % concat_coords.cdf, Frame 707
+ -96.6029  -99.9612  -97.6630    1.0601   % concat_coords.cdf, Frame 709
+-104.0586 -106.2309 -104.7462    0.6876   % concat_coords.cdf, Frame 710
+ -98.2540 -102.1384  -99.5791    1.3251   % concat_coords.cdf, Frame 711
+ -99.1197 -100.8065  -98.2510   -0.8687   % concat_coords.cdf, Frame 712
+ -89.1899  -86.1615  -89.5316    0.3418   % concat_coords.cdf, Frame 713
+ -93.3595  -90.1265  -90.9724   -2.3871   % concat_coords.cdf, Frame 715
+ -91.6425  -96.4876  -94.1444    2.5019   % concat_coords.cdf, Frame 716
+ -88.7701  -83.6364  -88.7632   -0.0069   % concat_coords.cdf, Frame 717
+-101.8005 -104.1296 -102.3873    0.5868   % concat_coords.cdf, Frame 718
+ -94.2781  -91.9022  -93.3515   -0.9266   % concat_coords.cdf, Frame 719
+-103.8722 -105.6295 -104.1775    0.3052   % concat_coords.cdf, Frame 720
+ -90.7346  -93.4523  -93.7549    3.0202   % concat_coords.cdf, Frame 723
+ -91.7290  -88.6757  -88.2389   -3.4901   % concat_coords.cdf, Frame 724
+-103.7255 -105.2146 -103.2819   -0.4435   % concat_coords.cdf, Frame 725
+ -89.1403  -84.8546  -89.9459    0.8055   % concat_coords.cdf, Frame 727
+ -90.3657  -86.1331  -87.9972   -2.3686   % concat_coords.cdf, Frame 728
+ -91.4226  -88.6520  -90.8052   -0.6174   % concat_coords.cdf, Frame 729
+ -92.5520  -91.2773  -91.3060   -1.2459   % concat_coords.cdf, Frame 730
+ -91.6148  -92.3651  -90.0792   -1.5356   % concat_coords.cdf, Frame 731
+ -90.1461  -96.7494  -94.9717    4.8256   % concat_coords.cdf, Frame 732
+ -96.0070  -98.0441  -96.2755    0.2685   % concat_coords.cdf, Frame 733
+ -86.5353  -86.6739  -88.9334    2.3981   % concat_coords.cdf, Frame 735
+ -93.7660  -97.9608  -96.4939    2.7280   % concat_coords.cdf, Frame 736
+ -94.3706  -96.2488  -94.9061    0.5355   % concat_coords.cdf, Frame 738
+ -88.9518  -93.4773  -93.9310    4.9792   % concat_coords.cdf, Frame 739
+ -97.0121 -100.2047  -97.3567    0.3446   % concat_coords.cdf, Frame 740
+ -99.6282 -103.7060 -101.8022    2.1740   % concat_coords.cdf, Frame 741
+-102.9013 -104.7179 -100.9094   -1.9919   % concat_coords.cdf, Frame 743
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 744
+ -94.5917  -99.3232  -96.9601    2.3683   % concat_coords.cdf, Frame 745
+ -98.9217 -101.4874  -98.9968    0.0751   % concat_coords.cdf, Frame 746
+ -97.1893 -101.4959  -99.1548    1.9655   % concat_coords.cdf, Frame 748
+ -93.5350  -93.9908  -91.0772   -2.4578   % concat_coords.cdf, Frame 751
+ -89.7954  -96.0785  -94.3788    4.5835   % concat_coords.cdf, Frame 752
+ -91.4442  -85.1333  -90.0440   -1.4003   % concat_coords.cdf, Frame 754
+ -79.2178  -81.8018  -83.6838    4.4660   % concat_coords.cdf, Frame 755
+ -89.6158  -86.7455  -90.2747    0.6589   % concat_coords.cdf, Frame 756
+ -97.8333 -100.7495  -99.5510    1.7177   % concat_coords.cdf, Frame 757
+ -82.0122  -83.4635  -84.5746    2.5624   % concat_coords.cdf, Frame 758
+ -90.3426  -88.1242  -89.7817   -0.5609   % concat_coords.cdf, Frame 759
+ -91.8882  -88.2089  -90.2276   -1.6606   % concat_coords.cdf, Frame 760
+ -88.1071  -82.1099  -88.6324    0.5253   % concat_coords.cdf, Frame 765
+ -92.0819  -86.6309  -88.1338   -3.9481   % concat_coords.cdf, Frame 767
+ -94.2715  -89.7983  -90.4861   -3.7854   % concat_coords.cdf, Frame 769
+ -92.5254  -88.4382  -90.3551   -2.1703   % concat_coords.cdf, Frame 770
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 771
+ -87.1475  -80.6974  -87.0473   -0.1002   % concat_coords.cdf, Frame 774
+ -94.5996  -89.3908  -89.9065   -4.6931   % concat_coords.cdf, Frame 776
+ -90.0947  -95.6617  -95.4416    5.3468   % concat_coords.cdf, Frame 777
+ -90.5926  -96.6669  -94.6957    4.1030   % concat_coords.cdf, Frame 778
+ -79.7057  -82.0302  -84.2556    4.5500   % concat_coords.cdf, Frame 780
+ -86.7195  -84.1748  -86.6370   -0.0825   % concat_coords.cdf, Frame 781
+ -97.2533 -101.1473  -98.8364    1.5830   % concat_coords.cdf, Frame 783
+ -89.2373  -85.5401  -89.2781    0.0407   % concat_coords.cdf, Frame 785
+ -97.9275 -101.8045  -99.8281    1.9006   % concat_coords.cdf, Frame 786
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 787
+ -99.6023 -102.3137  -99.7380    0.1357   % concat_coords.cdf, Frame 788
+ -99.3865 -100.2688  -97.6619   -1.7246   % concat_coords.cdf, Frame 789
+-102.9776 -106.4550 -104.8039    1.8263   % concat_coords.cdf, Frame 790
+-101.0684 -102.0254  -99.1657   -1.9026   % concat_coords.cdf, Frame 792
+ -96.4716  -98.4955  -96.1877   -0.2839   % concat_coords.cdf, Frame 794
+-101.6171 -102.2209  -99.1283   -2.4888   % concat_coords.cdf, Frame 795
+ -95.7120  -99.2368  -97.7626    2.0506   % concat_coords.cdf, Frame 796
+ -97.3992 -100.6127  -98.6586    1.2594   % concat_coords.cdf, Frame 797
+ -91.1237  -86.1641  -88.1556   -2.9681   % concat_coords.cdf, Frame 798
+ -98.8403 -100.6261  -98.0660   -0.7743   % concat_coords.cdf, Frame 799
+ -90.4994  -85.9747  -86.3904   -4.1090   % concat_coords.cdf, Frame 800
+ -85.8513  -78.8968  -85.5402   -0.3111   % concat_coords.cdf, Frame 801
+ -99.5741 -101.4979  -99.5503   -0.0238   % concat_coords.cdf, Frame 802
+ -94.6730  -94.2244  -93.0070   -1.6660   % concat_coords.cdf, Frame 803
+ -91.3439  -86.8673  -87.2577   -4.0863   % concat_coords.cdf, Frame 804
+ -92.1742  -88.9066  -91.0060   -1.1682   % concat_coords.cdf, Frame 805
+-101.9524 -103.0658 -100.0282   -1.9242   % concat_coords.cdf, Frame 807
+ -99.4536 -101.1179  -98.7139   -0.7398   % concat_coords.cdf, Frame 808
+-103.7687 -105.7395 -103.9076    0.1389   % concat_coords.cdf, Frame 809
+ -88.9973  -84.2666  -90.0354    1.0381   % concat_coords.cdf, Frame 811
+-102.2126 -103.5302 -101.8016   -0.4111   % concat_coords.cdf, Frame 813
+-102.4323 -104.9792 -103.5308    1.0985   % concat_coords.cdf, Frame 814
+ -89.4254  -86.4234  -88.6545   -0.7709   % concat_coords.cdf, Frame 815
+ -86.8794  -82.0357  -85.6953   -1.1841   % concat_coords.cdf, Frame 816
+ -91.6331  -87.4649  -86.2301   -5.4030   % concat_coords.cdf, Frame 818
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 819
+ -89.6853  -95.5884  -93.9183    4.2330   % concat_coords.cdf, Frame 820
+ -96.4583  -99.2411  -96.9698    0.5115   % concat_coords.cdf, Frame 823
+ -87.6734  -84.9219  -88.4990    0.8256   % concat_coords.cdf, Frame 824
+-102.8437 -105.1683 -103.4984    0.6547   % concat_coords.cdf, Frame 825
+-100.1093 -103.1837 -100.3531    0.2438   % concat_coords.cdf, Frame 826
+ -99.1766 -101.5737  -99.0128   -0.1639   % concat_coords.cdf, Frame 828
+ -89.2264  -82.7259  -88.8518   -0.3746   % concat_coords.cdf, Frame 829
+ -96.7096  -97.2431  -99.7145    3.0049   % concat_coords.cdf, Frame 830
+ -89.2282  -85.3806  -87.5994   -1.6288   % concat_coords.cdf, Frame 831
+ -94.5837  -90.8406  -93.3704   -1.2133   % concat_coords.cdf, Frame 832
+-104.4773 -106.2968 -104.8658    0.3885   % concat_coords.cdf, Frame 833
+-100.3132 -102.8038 -100.8458    0.5326   % concat_coords.cdf, Frame 834
+ -92.4840  -90.4621  -90.4823   -2.0017   % concat_coords.cdf, Frame 836
+ -94.3796  -98.2263  -95.9673    1.5877   % concat_coords.cdf, Frame 837
+ -87.6658  -83.9668  -88.3223    0.6565   % concat_coords.cdf, Frame 838
+ -88.5078  -85.3298  -89.7393    1.2314   % concat_coords.cdf, Frame 839
+ -91.3868  -86.8447  -88.6013   -2.7854   % concat_coords.cdf, Frame 840
+ -92.5425  -89.3616  -91.4843   -1.0583   % concat_coords.cdf, Frame 841
+ -92.0386  -87.9192  -88.5545   -3.4841   % concat_coords.cdf, Frame 842
+ -94.8712  -96.0821  -97.8040    2.9329   % concat_coords.cdf, Frame 843
+ -86.5504  -81.2107  -85.1114   -1.4390   % concat_coords.cdf, Frame 844
+ -94.4796  -96.4959  -95.7307    1.2511   % concat_coords.cdf, Frame 846
+ -97.4932 -100.6377  -98.6717    1.1785   % concat_coords.cdf, Frame 849
+ -90.2010  -83.9737  -91.2596    1.0586   % concat_coords.cdf, Frame 850
+ -99.7486 -102.1217  -99.8609    0.1123   % concat_coords.cdf, Frame 852
+ -95.1944  -89.9266  -91.2639   -3.9305   % concat_coords.cdf, Frame 853
+ -84.0463  -81.6151  -84.2915    0.2452   % concat_coords.cdf, Frame 855
+-103.3679 -104.4965 -101.1656   -2.2023   % concat_coords.cdf, Frame 858
+-101.1396 -102.7172 -101.0591   -0.0805   % concat_coords.cdf, Frame 859
+ -89.2362  -84.7838  -88.2514   -0.9848   % concat_coords.cdf, Frame 860
+ -94.6588  -90.3513  -93.6740   -0.9849   % concat_coords.cdf, Frame 861
+ -89.0644  -83.7631  -87.1710   -1.8934   % concat_coords.cdf, Frame 862
+ -90.5193  -86.6256  -88.6489   -1.8704   % concat_coords.cdf, Frame 864
+ -94.3058  -96.2481  -94.4329    0.1271   % concat_coords.cdf, Frame 865
+-104.6719 -106.9094 -105.0635    0.3916   % concat_coords.cdf, Frame 866
+ -84.9947  -84.0682  -85.4508    0.4561   % concat_coords.cdf, Frame 867
+ -97.6788  -99.0631  -97.7821    0.1032   % concat_coords.cdf, Frame 868
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 870
+ -87.5437  -86.5452  -89.7351    2.1914   % concat_coords.cdf, Frame 871
+ -91.1725  -86.4076  -87.4244   -3.7481   % concat_coords.cdf, Frame 873
+ -84.4282  -85.1924  -86.1694    1.7412   % concat_coords.cdf, Frame 874
+ -92.5508  -88.6390  -91.5860   -0.9648   % concat_coords.cdf, Frame 875
+ -95.1066  -90.4617  -92.5064   -2.6002   % concat_coords.cdf, Frame 876
+-103.0449 -103.9668 -102.1038   -0.9411   % concat_coords.cdf, Frame 877
+-103.1506 -106.2582 -104.3041    1.1535   % concat_coords.cdf, Frame 879
+-101.0657 -103.4699 -102.1488    1.0831   % concat_coords.cdf, Frame 880
+ -92.6180  -96.6397  -94.1820    1.5640   % concat_coords.cdf, Frame 881
+-100.7504 -103.5960 -101.7285    0.9780   % concat_coords.cdf, Frame 885
+ -95.3369 -100.0543  -97.9029    2.5660   % concat_coords.cdf, Frame 886
+-103.1001 -104.0914 -100.6380   -2.4621   % concat_coords.cdf, Frame 887
+-103.8680 -105.9907 -104.0808    0.2128   % concat_coords.cdf, Frame 888
+-100.6115 -104.3910 -102.4184    1.8069   % concat_coords.cdf, Frame 889
+ -97.7271 -100.4213  -99.0064    1.2793   % concat_coords.cdf, Frame 890
+ -91.7122  -91.4601  -91.4182   -0.2940   % concat_coords.cdf, Frame 891
+ -94.5387  -91.6967  -91.9701   -2.5686   % concat_coords.cdf, Frame 892
+ -94.9110  -90.6527  -93.4245   -1.4865   % concat_coords.cdf, Frame 894
+-100.9228 -103.8604 -102.1063    1.1835   % concat_coords.cdf, Frame 895
+ -96.0672  -95.8241  -94.8823   -1.1849   % concat_coords.cdf, Frame 896
+-103.6748 -105.2075 -103.3061   -0.3687   % concat_coords.cdf, Frame 900
+ -94.9412  -96.2673  -95.0320    0.0907   % concat_coords.cdf, Frame 901
+-103.2467 -105.6655 -103.9738    0.7272   % concat_coords.cdf, Frame 902
+ -98.5224  -99.7357  -98.0005   -0.5220   % concat_coords.cdf, Frame 903
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 904
+ -94.8712  -96.0821  -97.8040    2.9329   % concat_coords.cdf, Frame 905
+-100.5987 -101.1209  -98.2687   -2.3300   % concat_coords.cdf, Frame 906
+ -94.7381  -88.7521  -90.0577   -4.6804   % concat_coords.cdf, Frame 907
+ -88.3874  -85.9667  -89.4938    1.1064   % concat_coords.cdf, Frame 908
+ -95.0294  -95.4737  -91.8672   -3.1622   % concat_coords.cdf, Frame 909
+ -95.2611  -98.1891  -95.6929    0.4318   % concat_coords.cdf, Frame 910
+ -91.9882  -93.0045  -90.2197   -1.7685   % concat_coords.cdf, Frame 911
+ -96.8569  -98.8752  -96.7336   -0.1233   % concat_coords.cdf, Frame 912
+ -92.8235  -89.0852  -89.8886   -2.9349   % concat_coords.cdf, Frame 913
+-100.1697 -102.7873 -100.1665   -0.0032   % concat_coords.cdf, Frame 915
+ -93.9713  -97.5452  -96.1661    2.1948   % concat_coords.cdf, Frame 917
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 918
+ -94.7955  -98.6824  -97.2621    2.4666   % concat_coords.cdf, Frame 920
+ -95.1443  -90.4655  -91.1272   -4.0171   % concat_coords.cdf, Frame 921
+ -88.8568  -85.1571  -89.4081    0.5513   % concat_coords.cdf, Frame 923
+ -95.2237  -99.5324  -98.1021    2.8784   % concat_coords.cdf, Frame 924
+-103.7312 -106.3742 -104.4429    0.7117   % concat_coords.cdf, Frame 925
+ -93.8189  -90.6973  -92.1660   -1.6528   % concat_coords.cdf, Frame 926
+ -86.5995  -85.3706  -88.2883    1.6888   % concat_coords.cdf, Frame 927
+-100.5698 -103.1007  -99.0018   -1.5680   % concat_coords.cdf, Frame 928
+ -89.6293  -85.6039  -89.1892   -0.4401   % concat_coords.cdf, Frame 929
+ -90.5377  -84.9504  -89.0177   -1.5200   % concat_coords.cdf, Frame 930
+ -85.8669  -83.3341  -87.3636    1.4968   % concat_coords.cdf, Frame 931
+ -88.6010  -85.0519  -88.6470    0.0460   % concat_coords.cdf, Frame 932
+ -92.7901  -87.2706  -88.7571   -4.0330   % concat_coords.cdf, Frame 933
+ -91.2997  -87.3874  -88.5374   -2.7623   % concat_coords.cdf, Frame 934
+ -94.1485  -99.1542  -97.1161    2.9676   % concat_coords.cdf, Frame 935
+ -95.9035  -97.3323  -95.0022   -0.9013   % concat_coords.cdf, Frame 937
+ -88.5487  -85.7729  -89.7012    1.1525   % concat_coords.cdf, Frame 939
+ -97.6630  -98.9249  -97.6159   -0.0471   % concat_coords.cdf, Frame 942
+ -94.5358  -97.5547  -96.1637    1.6279   % concat_coords.cdf, Frame 943
+ -98.9917 -101.2781  -99.7837    0.7920   % concat_coords.cdf, Frame 944
+ -94.4620  -90.0415  -91.3694   -3.0925   % concat_coords.cdf, Frame 945
+ -95.9568  -97.8046  -95.9855    0.0287   % concat_coords.cdf, Frame 946
+ -95.1270  -93.7754  -95.0330   -0.0939   % concat_coords.cdf, Frame 947
+-100.9999 -102.0972 -100.4796   -0.5204   % concat_coords.cdf, Frame 948
+ -98.2026 -101.5341  -99.8504    1.6478   % concat_coords.cdf, Frame 951
+ -94.8824  -89.6271  -90.0489   -4.8335   % concat_coords.cdf, Frame 953
+ -95.6270  -98.0911  -95.1363   -0.4907   % concat_coords.cdf, Frame 955
+ -99.2295 -100.9478  -97.6860   -1.5435   % concat_coords.cdf, Frame 956
+ -97.0447  -98.7946  -97.4369    0.3922   % concat_coords.cdf, Frame 957
+ -98.1335 -101.4793  -99.9814    1.8479   % concat_coords.cdf, Frame 958
+-100.0605 -102.7728 -100.5863    0.5258   % concat_coords.cdf, Frame 959
+ -89.6161  -85.8312  -87.3092   -2.3069   % concat_coords.cdf, Frame 960
+ -98.9704 -100.0287  -97.4426   -1.5278   % concat_coords.cdf, Frame 961
+ -91.0212  -93.7447  -91.5445    0.5232   % concat_coords.cdf, Frame 963
+ -93.2050  -89.4155  -91.2291   -1.9759   % concat_coords.cdf, Frame 966
+ -98.6597 -101.8210 -100.2939    1.6341   % concat_coords.cdf, Frame 967
+ -99.9760 -102.5571 -100.3014    0.3254   % concat_coords.cdf, Frame 968
+ -98.0738 -101.9798 -100.0900    2.0162   % concat_coords.cdf, Frame 969
+ -75.0637  -71.1845  -71.7556   -3.3081   % concat_coords_G2.cdf, Frame 5
+ -93.0994  -92.7213  -97.4842    4.3848   % concat_coords_G2.cdf, Frame 9
+ -93.8943  -94.2761  -99.1404    5.2460   % concat_coords_G2.cdf, Frame 15
 ];
 
 % System mon_V.top
@@ -1474,6 +1477,9 @@ components0 = [
 -122.4864    6.0539    0.8711    2.7899   10.9505    % concat_coords.cdf, Frame 967
 -122.3682    5.9433    0.7740    3.5715    9.5223    % concat_coords.cdf, Frame 968
 -121.4227    7.4906    1.0294    5.1447    5.7781    % concat_coords.cdf, Frame 969
+-121.2273    5.5038    4.0377   16.4302   24.0711    % concat_coords_G2.cdf, Frame 5
+-122.9078    6.6782    4.4841    9.4819    9.5423    % concat_coords_G2.cdf, Frame 9
+-123.0916    6.5477    4.5774    9.3543    8.3361    % concat_coords_G2.cdf, Frame 15
 ];
 figure; hold on;
 plot(data0(:,1), data0(:,2), 'k.');

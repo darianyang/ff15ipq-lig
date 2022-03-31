@@ -39,7 +39,7 @@ cat << EOF > FIT_${ITERATION}_G2.in
   fita          ce  c2  n
   FitAnglEq     1,
   arst          0.0002,
-  arstcpl       1.0,  
+  arstcpl       10,  
   
   % Torsion fitting input
   fith          n   c3  ce  c
