@@ -9,7 +9,7 @@
 # CPUs per node to use for the slurm script
 # note that this number should evenly divide into the number
 # of CONFS per slurm job for max efficiency
-CPUS=8
+CPUS=5
 # arbitrary name of the iteration directory
 ITERATION=v00
 # 3 letter restype identifier for your molecule

@@ -4,7 +4,7 @@
 
 PDB=mon
 ITERATION=v00
-FRCMOD=FIT_${ITERATION}.frcmod
+FRCMOD=mon.frcmod
 
 cd $ITERATION &&
 
@@ -12,14 +12,14 @@ cd $ITERATION &&
 cat << EOF > FIT_${ITERATION}_G2.in
 &files
   -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
-  -fmod $FRCMOD
+  -fmod ../$FRCMOD
   -d FIT_${ITERATION}_G2.frcmod
   -o FIT_${ITERATION}_G2.out
 &end
 
 &param
-  System    ${PDB}_V.top     concat_coords.cdf    energies.dat
-  System    ${PDB}_V.top     concat_coords_G2.cdf    energies_G2.dat
+  System    ${PDB}_V.top    concat_coords.cdf       energies.dat
+  System    ${PDB}_V.top    concat_coords_G2.cdf    energies_G2.dat
   ParmOutput    frcmod
   verbose       1,
   eunits        hartree,

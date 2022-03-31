@@ -3,7 +3,7 @@
 #SBATCH --cluster=invest
 #SBATCH --partition=lchong
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=5
 #SBATCH --mem=16g
 #SBATCH --time=23:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
@@ -49,7 +49,7 @@ for I in {1..1000} ; do
     let "NJOB+=1"
 
     # run on multiple CPUs
-    if [ ${NJOB} -eq 8 ] ; then
+    if [ ${NJOB} -eq 5 ] ; then
         NJOB=0
         wait
     fi

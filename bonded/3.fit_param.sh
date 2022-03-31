@@ -32,13 +32,13 @@ cat << EOF > FIT_${ITERATION}.in
   %esigtol       5
 
   % 0 for file akin to frcmod file, default 1 (write all parameters)
-  %repall        0,
+  %repall        1,
 
   % Angle fitting input
   fita          ce  c2  n
   FitAnglEq     1,
   arst          0.0002,
-  arstcpl       1.0,  
+  arstcpl       10,  
 
   % Torsion fitting input
   fith          n   c3  ce  c
@@ -52,3 +52,5 @@ cat << EOF > FIT_${ITERATION}.in
 EOF
 
 mdgx -i FIT_${ITERATION}.in -O
+
+# TODO: fill out improper dihedrals from parmchk frcmod
