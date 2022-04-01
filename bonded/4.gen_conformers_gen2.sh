@@ -24,7 +24,6 @@ FRCMOD=FIT_${ITERATION}.frcmod
 ###########################################################
 ###########################################################
 
-mkdir $ITERATION
 cd $ITERATION &&
 
 # 1) make directory for each res class and create vac top and crd files
