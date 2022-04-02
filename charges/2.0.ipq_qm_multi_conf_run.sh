@@ -4,7 +4,7 @@
 ##############################################################
 
 CPU=1
-ITERATION=gaff_02
+ITERATION=gaff_03
 PDB=mon
 
 # go to conformers directory
