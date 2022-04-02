@@ -2,7 +2,7 @@
 # RUN AS: $ bash 2.extract_spes.dat
 
 PDB=mon
-ITERATION=v01
+ITERATION=v02
 
 cd $ITERATION
 

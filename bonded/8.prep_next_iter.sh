@@ -8,9 +8,9 @@
 # this should be your 3 letter PDB residue name
 PDB=mon
 # this is the $ITERATION variable from the previous run
-PREV_ITER=v00
+PREV_ITER=v01
 # put your desired $ITERATION variable for the next run
-NEXT_ITER=v01
+NEXT_ITER=v02
 # set this to true if you ran gen2 scripts
 GEN2=true
 #GEN2=false

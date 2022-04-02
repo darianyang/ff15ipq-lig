@@ -3,7 +3,7 @@
 # Execute ipq parameter fitting protocols
 
 PDB=mon
-ITERATION=v01
+ITERATION=v02
 FRCMOD=mon.frcmod
 
 cd $ITERATION &&
@@ -12,8 +12,8 @@ cd $ITERATION &&
 cat << EOF > FIT_${ITERATION}_G2.in
 &files
   -parm /ihome/crc/build/amber/amber18_x64/amber18/dat/leap/parm/gaff.dat
-  %-fmod $FRCMOD
-  -fmod FIT_${ITERATION}.frcmod
+  -fmod $FRCMOD
+  %-fmod FIT_${ITERATION}.frcmod
   -d FIT_${ITERATION}_G2.frcmod
   -o FIT_${ITERATION}_G2.out
 &end
