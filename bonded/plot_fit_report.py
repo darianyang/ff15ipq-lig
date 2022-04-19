@@ -19,7 +19,7 @@ def load_report(report, res=None):
     else:
         # only keep rows with E(mm) and E(qm) data for all datasets
         data = [line[:42] for line in lines 
-                if line.startswith(" ") and line[42] == "%"]
+                if line.startswith("-") and line[42] == "%"]
 
     # columns are: qm_target, mm_original, mm_fitted, error
     return np.loadtxt(data)
@@ -39,20 +39,20 @@ def energy_plot(data):
     mm_original = data[:,1]
     mm_fitted = data[:,2]
 
-    # calc RMSE to put on label
+    # TODO: calc RMSE to put on label
     #og_rmse = calc_rmse(data)
-    fit_rmse = calc_rmse(data)
+    #fit_rmse = calc_rmse(data)
 
     fig, ax = plt.subplots(figsize=(5,4))
     # TODO: calc RMSE from report or grab from fit.out
-    ax.scatter(qm_target, mm_original, c='k', s=4, label="Original (RMSE = 3.34 kcal/mol)")
-    ax.scatter(qm_target, mm_fitted, c='r', s=4, label="Fitted (RMSE = 2.01 kcal/mol)")
+    ax.scatter(qm_target, mm_original, c='k', s=4, label="Original (RMSE = 2.25 kcal/mol)")
+    ax.scatter(qm_target, mm_fitted, c='r', s=4, label="Fitted (RMSE = 2.19 kcal/mol)")
     
     # draw diagonal line
     ax.plot([0, 1], [0, 1], transform=ax.transAxes, linestyle="--", color="grey")
 
     # xy limits and labels
-    lims = (-105, -75)
+    lims = (-150, -110)
     ax.set_ylim(lims)
     ax.set_xlim(lims)
     ax.set_ylabel('Model Energy (kcal/mol)',size=12)
@@ -61,11 +61,11 @@ def energy_plot(data):
     ax.grid(True)
     ax.legend(prop={'size': 8}, markerscale=2, loc="lower right")
     fig.tight_layout()
+    fig.savefig("mon_v01_g1.pdf")
     plt.show()
-    #plt.savefig("AIB_iter01_fit.pdf")
 
 # plot for a single system
-rep = load_report("v00/report.m")
+rep = load_report("v01/report.m")
 energy_plot(rep)
 
 def violin_plot(report, res_classes):

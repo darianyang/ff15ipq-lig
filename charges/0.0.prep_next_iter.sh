@@ -66,7 +66,8 @@ echo -e "the MOL2 restype should be MON and all UNIT entries in the library file
 # at this point I like to check the new charges in chimerax
 if [ $CHECK = "true" ] ; then
     CMD="open $NEXT_ITER/${PDB}.mol2 \n"
-    CMD="$CMD color byattribute charge range -1,1"
+    # red is negative and blue is positive
+    CMD="$CMD color byattribute charge range -1,1 palette redblue"
     echo -e "$CMD" > mol2view.cxc
     chimerax mol2view.cxc
     rm mol2view.cxc
