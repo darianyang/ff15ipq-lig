@@ -3,7 +3,7 @@
 #SBATCH --cluster=invest
 #SBATCH --partition=lchong
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=20
 #SBATCH --mem=16g
 #SBATCH --time=11:59:59  
 #SBATCH --mail-user=dty7@pitt.edu
@@ -11,7 +11,7 @@
 #SBATCH --output=job_logs/slurm_equil.out
 #SBATCH --error=job_logs/slurm_equil.err
 
-# *** make sure that job_logs directory is setup ***
+# *** make sure that job_logs directory is setup *** #
 
 # load appropriate modules, first purge all modules 
 # then load in intel (a prereq for loading in amber) and then amber 
@@ -25,13 +25,16 @@ set -x
 ######################################################################
 # set variables
 PDB=mon
-ITERATION=gaff_03
+ITERATION=gaff_00
 LIB=${PDB}.lib
 FRCMOD=${PDB}.frcmod
+# make sure to change this in the requested sbatch CPUs
+CPUS=20
 
-export DO_PARALLEL="mpirun -np 8 pmemd.MPI"
+export DO_PARALLEL="mpirun -np $CPUS pmemd.MPI"
 ######################################################################
 
+# run using all available CPUs
 function high_T_conf_gen {
     # run for a single iteration
     cd $ITERATION
@@ -91,7 +94,8 @@ function high_T_conf_gen {
     cd ..
 }
 
-function equil_confs {
+# run if you want to use all available CPUs on each conformation serially
+function equil_confs_serial {
     cd $ITERATION/GenConformers
     # for each conformation,
     for CONF in {1..20}; do
@@ -125,9 +129,51 @@ function equil_confs {
     cd ../../
 }
 
+# run if you want to use 1 CPU per conformation, but all 20 in parallel
+function equil_confs_parallel {
+    cd $ITERATION/GenConformers
+    NJOB=0
+    # for each conformation,
+    for CONF in {1..20}; do
+        # make and go into subdirectory
+        mkdir Conf${CONF}
+        if [[ -f Conf${CONF}.rst || -f Conf${CONF}.pdb ]] ; then
+            mv Conf${CONF}.rst Conf${CONF}
+            mv Conf${CONF}.pdb Conf${CONF}
+        fi
+        cd Conf${CONF}
+    
+        # run each conformation on 1 CPU seperately across multiple CPUs
+
+        # restrained 2000 step minimization (500 SD)
+        # 20 ps restrained NVT equilibration using Langevin thermostat
+        # 100 ps restrained NPT equilibration using Langevin thermostat and MC barostat
+        (pmemd -O -i ../../../amber/6.1_min.in -o 6.1_min.out \
+            -p ../../${PDB}.top -c Conf${CONF}.rst -r 6.1_min.rst -ref Conf${CONF}.rst ;
+        echo ${CONF}.min finished ;
+        pmemd -O -i ../../../amber/6.2_eq1.in -o 6.2_eq1.out \
+            -p ../../${PDB}.top -c 6.1_min.rst -r 6.2_eq1.rst -ref 6.1_min.rst ;
+        echo ${CONF}.eq1 finished ;
+        pmemd -O -i ../../../amber/6.3_eq2.in -o 6.3_eq2.out \
+            -p ../../${PDB}.top -c 6.2_eq1.rst -r 6.3_eq2.rst -ref 6.2_eq1.rst ;
+        echo ${CONF}.eq2 finished) &
+
+        # for unevenly ran jobs
+        if [ $NJOB -eq $CPUS ] ; then
+            NJOB=0
+            wait
+        fi
+    
+        cd ../
+    done
+    
+    echo "Done solvating and equilibrating ${PDB} conformations."
+    cd ../../
+}
+
 #########################################################################
 ### The following functions are for high temp conformation generation ###
 #########################################################################
 high_T_conf_gen &&
-equil_confs
+equil_confs_parallel
 
