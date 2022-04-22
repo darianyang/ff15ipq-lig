@@ -157,6 +157,7 @@ function equil_confs_parallel {
         pmemd -O -i ../../../amber/6.3_eq2.in -o 6.3_eq2.out \
             -p ../../${PDB}.top -c 6.2_eq1.rst -r 6.3_eq2.rst -ref 6.2_eq1.rst ;
         echo ${CONF}.eq2 finished) &
+        let "NJOB+=1"
 
         # for unevenly ran jobs
         if [ $NJOB -eq $CPUS ] ; then
